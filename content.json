@@ -6,25 +6,29 @@
     "hero": {
         "title": "RUSS HERITAGE",
         "subtitle": "PHOTOGRAPHER & WRITER",
-        "image": "https://inkmeetslens.com/images/jj-6.jpg"
+        "image": ""
     },
     "about": {
         "title": "About Me",
         "image": "https://inkmeetslens.com/images/russ2.jpg",
-        "text": "I am a photographer who specializes in capturing the raw beauty of the female form, and writer who explores the human condition."
+        "text": "I am a photographer who specializes in capturing the raw beauty of the female form, and a writer who explores the human condition."
     },
     "socials": [
         {
             "name": "Instagram",
-            "url": "https://instagram.com/yourhandle"
+            "url": "https://instagram.com/russ.heritage"
         },
         {
-            "name": "Twitter",
-            "url": "https://twitter.com/yourhandle"
+            "name": "Threads",
+            "url": "https://www.threads.com/@russ.heritage"
+        },
+        {
+            "name": "Substack",
+            "url": "https://russheritage.substack.com/"
         },
         {
             "name": "Email",
-            "url": "mailto:your@email.com"
+            "url": "russ@russheritage.com"
         }
     ],
     "photography": [
@@ -67,26 +71,46 @@
             "id": 8,
             "src": "https://inkmeetslens.com/images/ii-3.jpg",
             "caption": "A silhouetted woman lies on her back within a glowing circular frame, her arms raised above her head with fingers spread, her legs bent at the knees and lifted upward, showcasing the smooth curves of her body, including her full breasts, slender waist, and rounded hips, all rendered in deep shadow against a radiant golden-yellow backdrop, illuminated by warm rim lighting that highlights her form, creating a dramatic contrast between light and dark, evoking a sense of serene elegance and graceful movement, captured in sharp focus with photorealistic detail."
+        },
+        {
+            "id": 9,
+            "src": "https://inkmeetslens.com/images/ee-33.jpg",
+            "caption": ""
+        },
+        {
+            "id": 10,
+            "src": "https://inkmeetslens.com/images/kk-4.jpg",
+            "caption": ""
+        },
+        {
+            "id": 11,
+            "src": "https://inkmeetslens.com/images/oo-2.jpg",
+            "caption": ""
+        },
+        {
+            "id": 12,
+            "src": "https://inkmeetslens.com/images/nn-5.jpg",
+            "caption": ""
         }
     ],
     "writing": [
         {
             "id": 1,
-            "title": "Remember the Old Internet?",
-            "url": "https://substack.com/home/post/p-178526481",
-            "date": "2024"
+            "title": "Things are really bad in here in Minnesota",
+            "url": "https://russheritage.substack.com/p/things-are-really-bad-here-in-minnesota",
+            "date": "2026"
         },
         {
             "id": 2,
-            "title": "Views from Oxford, England",
-            "url": "https://medium.com/",
-            "date": "2024"
+            "title": "Remember the Old Internet?",
+            "url": "https://russheritage.substack.com/p/remember-the-old-internet",
+            "date": "2025"
         },
         {
             "id": 3,
-            "title": "---",
-            "url": "https://???.com/",
-            "date": "2024"
+            "title": "Views from Oxford, England",
+            "url": "https://russheritage.substack.com/p/views-from-oxford-england",
+            "date": "2023"
         }
     ]
 }
