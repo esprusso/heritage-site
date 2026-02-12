@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
 import { useContent } from '../contexts/ContentContext';
 
 const Hero = () => {
@@ -15,7 +16,8 @@ const Hero = () => {
             justifyContent: 'center',
             alignItems: 'center',
             textAlign: 'center',
-            padding: '2rem'
+            padding: '2rem',
+            position: 'relative' // Needed for absolute positioning of scroll indicator
         }}>
             <motion.div
                 initial="hidden"
@@ -43,7 +45,7 @@ const Hero = () => {
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
-                    gap: '0.2em' // Add gap between words
+                    gap: '0.2em'
                 }}>
                     {content.hero.title.split(' ').map((word, wordIndex) => (
                         <span key={wordIndex} style={{ display: 'inline-flex' }}>
@@ -81,6 +83,39 @@ const Hero = () => {
                     </motion.span>
                 </p>
             </motion.div>
+
+            <motion.a
+                href="#portfolio"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2.5, duration: 0.8 }}
+                style={{
+                    position: 'absolute',
+                    bottom: '3rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    color: 'var(--sub-text-color)',
+                    textDecoration: 'none',
+                    fontSize: '0.8rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    cursor: 'pointer'
+                }}
+            >
+                <span>Explore Work</span>
+                <motion.div
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                >
+                    <ArrowDown size={20} />
+                </motion.div>
+            </motion.a>
         </section>
     );
 };
