@@ -13,7 +13,8 @@ const About = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '6rem 2rem'
+            padding: '6rem 2rem',
+            scrollMarginTop: '100px'
         }}>
             <div style={{
                 display: 'grid',

@@ -32,6 +32,7 @@ const Contact = () => {
         <section id="contact" style={{
             minHeight: '80vh',
             padding: '100px 2rem',
+            scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',

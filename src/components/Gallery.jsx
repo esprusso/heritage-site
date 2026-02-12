@@ -8,7 +8,7 @@ const Gallery = () => {
     if (loading) return null;
 
     return (
-        <section id="portfolio" style={{ padding: '2rem' }}>
+        <section id="portfolio" style={{ padding: '2rem', scrollMarginTop: '100px' }}>
             <div className="gallery-grid">
                 {content.photography.map((photo, index) => (
                     <motion.div

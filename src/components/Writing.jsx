@@ -40,7 +40,7 @@ const Writing = () => {
     }
 
     return (
-        <section id="writing" style={{ minHeight: '80vh', padding: '12rem 2rem 6rem' }}>
+        <section id="writing" style={{ minHeight: '80vh', padding: '6rem 2rem', scrollMarginTop: '100px' }}>
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
