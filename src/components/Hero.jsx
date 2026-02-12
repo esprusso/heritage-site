@@ -18,9 +18,18 @@ const Hero = () => {
             padding: '2rem'
         }}>
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                initial="hidden"
+                animate="visible"
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                        opacity: 1,
+                        transition: {
+                            staggerChildren: 0.08,
+                            delayChildren: 0.3
+                        }
+                    }
+                }}
             >
                 <h1 style={{
                     fontFamily: 'var(--font-heading)',
@@ -30,18 +39,46 @@ const Hero = () => {
                     letterSpacing: '-0.03em',
                     textTransform: 'uppercase',
                     marginBottom: '1.5rem',
-                    color: 'var(--text-color)'
+                    color: 'var(--text-color)',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: '0.2em' // Add gap between words
                 }}>
-                    {content.hero.title}
+                    {content.hero.title.split(' ').map((word, wordIndex) => (
+                        <span key={wordIndex} style={{ display: 'inline-flex' }}>
+                            {word.split('').map((char, charIndex) => (
+                                <motion.span
+                                    key={`${wordIndex}-${charIndex}`}
+                                    variants={{
+                                        hidden: { opacity: 0, y: 20 },
+                                        visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+                                    }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
+                        </span>
+                    ))}
                 </h1>
                 <p style={{
                     fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.2em',
                     color: 'var(--sub-text-color)',
-                    fontWeight: 500
+                    fontWeight: 500,
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: '0.5em'
                 }}>
-                    {content.hero.subtitle}
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.5, duration: 1 }}
+                    >
+                        {content.hero.subtitle}
+                    </motion.span>
                 </p>
             </motion.div>
         </section>
