@@ -90,30 +90,29 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2.5, duration: 0.8 }}
                 style={{
-                    position: 'absolute',
-                    bottom: '3rem',
+                    marginTop: '4rem', // Position closer to text
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '0.5rem',
+                    gap: '0.8rem',
                     color: 'var(--sub-text-color)',
                     textDecoration: 'none',
-                    fontSize: '0.8rem',
+                    fontSize: '1rem', // Larger text
                     textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.15em',
                     cursor: 'pointer'
                 }}
             >
-                <span>Explore Work</span>
+                <span style={{ fontWeight: 500 }}>Explore Work</span>
                 <motion.div
-                    animate={{ y: [0, 8, 0] }}
+                    animate={{ y: [0, 10, 0] }}
                     transition={{
                         duration: 1.5,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
                 >
-                    <ArrowDown size={20} />
+                    <ArrowDown size={32} /> {/* Larger icon */}
                 </motion.div>
             </motion.a>
         </section>
