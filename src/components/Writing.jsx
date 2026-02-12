@@ -76,10 +76,10 @@ const Writing = () => {
                                     style={{ display: 'block', group: 'group', textDecoration: 'none', color: 'inherit' }}
                                 >
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                        {/* Debug Log Unconditional */}
+                                        {console.log("Post Item:", item)}
                                         {item.feature_image && (
                                             <div style={{ width: '100%', maxWidth: '600px', marginBottom: '2rem' }}>
-                                                {/* Debug Log */}
-                                                {console.log("Post:", item.title, "Image:", item.feature_image)}
                                                 <img
                                                     src={item.feature_image}
                                                     alt={item.title}
