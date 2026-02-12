@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useContent } from '../contexts/ContentContext';
 
+import ScrollPrompt from './ScrollPrompt';
+
 const About = () => {
     const { content, loading } = useContent();
 
@@ -11,9 +13,10 @@ const About = () => {
         <section id="about" style={{
             minHeight: '100vh',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '6rem 2rem',
+            padding: '8rem 2rem',
             scrollMarginTop: '100px'
         }}>
             <div style={{
@@ -22,7 +25,8 @@ const About = () => {
                 gap: '4rem',
                 maxWidth: '1200px',
                 width: '100%',
-                alignItems: 'center'
+                alignItems: 'center',
+                flex: 1
             }}>
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -67,6 +71,9 @@ const About = () => {
                     </p>
                 </motion.div>
             </div>
+
+            <ScrollPrompt targetId="contact" label="Get in Touch" />
+
             <style>{`
                 @media (max-width: 768px) {
                     #about > div {

@@ -4,6 +4,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../lib/ghost';
 
+import ScrollPrompt from './ScrollPrompt';
+
 const Writing = () => {
     const [writings, setWritings] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,7 +24,7 @@ const Writing = () => {
 
     if (loading) {
         return (
-            <section id="writing" style={{ minHeight: '80vh', padding: '12rem 2rem 6rem' }}>
+            <section id="writing" style={{ minHeight: '80vh', padding: '8rem 2rem', scrollMarginTop: '100px' }}>
                 <div style={{ width: '200px', height: '3rem', backgroundColor: '#f0f0f0', marginBottom: '4rem', borderRadius: '4px', margin: '0 auto 4rem' }}></div>
                 <div className="blog-masonry">
                     {[1, 2, 3, 4].map(i => (
@@ -40,13 +42,19 @@ const Writing = () => {
     }
 
     return (
-        <section id="writing" style={{ minHeight: '80vh', padding: '6rem 2rem', scrollMarginTop: '100px' }}>
+        <section id="writing" style={{
+            minHeight: '80vh',
+            padding: '8rem 2rem',
+            scrollMarginTop: '100px',
+            display: 'flex',
+            flexDirection: 'column'
+        }}>
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 style={{
-                    marginBottom: '4rem',
+                    marginBottom: '6rem',
                     fontSize: 'clamp(2rem, 4vw, 3rem)',
                     textAlign: 'center',
                     fontWeight: 500,
@@ -111,6 +119,10 @@ const Writing = () => {
                     <p style={{ color: 'var(--sub-text-color)' }}>No posts found.</p>
                 </div>
             )}
+
+            <div style={{ marginTop: 'auto', paddingTop: '4rem', display: 'flex', justifyContent: 'center' }}>
+                <ScrollPrompt targetId="about" label="About Me" />
+            </div>
 
             <style>{`
                 .blog-masonry {

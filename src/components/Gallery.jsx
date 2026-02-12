@@ -1,6 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useContent } from '../contexts/ContentContext';
+import ScrollPrompt from './ScrollPrompt';
 
 const Gallery = () => {
     const { content, loading } = useContent();
@@ -8,8 +6,14 @@ const Gallery = () => {
     if (loading) return null;
 
     return (
-        <section id="portfolio" style={{ padding: '2rem', scrollMarginTop: '100px' }}>
-            <div className="gallery-grid">
+        <section id="portfolio" style={{
+            padding: '2rem 2rem 8rem 2rem', // Increased bottom padding
+            scrollMarginTop: '100px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        }}>
+            <div className="gallery-grid" style={{ width: '100%' }}>
                 {content.photography.map((photo, index) => (
                     <motion.div
                         key={photo.id}
@@ -30,6 +34,9 @@ const Gallery = () => {
                     </motion.div>
                 ))}
             </div>
+
+            <ScrollPrompt targetId="writing" label="Read Words" />
+
             <style>{`
                 .gallery-grid {
                     column-count: 3;
