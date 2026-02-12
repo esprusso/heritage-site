@@ -17,7 +17,11 @@ const Hero = () => {
             alignItems: 'center',
             textAlign: 'center',
             padding: '2rem',
-            position: 'relative' // Needed for absolute positioning of scroll indicator
+            position: 'relative',
+            backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/dd-3.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            color: '#FFFFFF' // Force white text base
         }}>
             <motion.div
                 initial="hidden"
@@ -27,7 +31,7 @@ const Hero = () => {
                     visible: {
                         opacity: 1,
                         transition: {
-                            staggerChildren: 0.05, // Faster typing
+                            staggerChildren: 0.05,
                             delayChildren: 0.2
                         }
                     }
@@ -41,7 +45,7 @@ const Hero = () => {
                     letterSpacing: '-0.03em',
                     textTransform: 'uppercase',
                     marginBottom: '1.5rem',
-                    color: 'var(--text-color)',
+                    color: '#FFFFFF', // Explicit white
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
@@ -67,7 +71,7 @@ const Hero = () => {
                     fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.2em',
-                    color: 'var(--sub-text-color)',
+                    color: 'rgba(255, 255, 255, 0.9)', // Light/white with slight transparency
                     fontWeight: 500,
                     display: 'flex',
                     flexWrap: 'wrap',
@@ -83,7 +87,7 @@ const Hero = () => {
                                 opacity: 1,
                                 transition: {
                                     staggerChildren: 0.03,
-                                    delayChildren: 1.5 // Start after title finishes
+                                    delayChildren: 1.5
                                 }
                             }
                         }}
@@ -101,7 +105,6 @@ const Hero = () => {
                             </motion.span>
                         ))}
                     </motion.span>
-                    {/* Blinking Cursor moved here */}
                     <motion.span
                         initial={{ opacity: 0 }}
                         animate={{ opacity: [0, 1, 0] }}
@@ -109,13 +112,13 @@ const Hero = () => {
                             duration: 0.8,
                             repeat: Infinity,
                             ease: "linear",
-                            delay: 2.5 // Start blinking after subtitle finishes
+                            delay: 2.5
                         }}
                         style={{
                             display: 'inline-block',
                             width: '0.15em',
                             height: '0.8em',
-                            backgroundColor: 'var(--text-color)',
+                            backgroundColor: '#FFFFFF', // White cursor
                             marginLeft: '0.1em',
                             alignSelf: 'center'
                         }}
@@ -130,19 +133,19 @@ const Hero = () => {
                 transition={{ delay: 2.0, duration: 0.8 }}
                 whileHover={{
                     scale: 1.05,
-                    backgroundColor: 'var(--text-color)',
-                    color: 'var(--bg-color)'
+                    backgroundColor: '#FFFFFF',
+                    color: '#000000'
                 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
-                    marginTop: '6rem', // Lowered significantly
+                    marginTop: '6rem',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.8rem',
                     padding: '1rem 2.5rem',
-                    border: '1px solid var(--text-color)',
+                    border: '1px solid #FFFFFF',
                     borderRadius: '50px',
-                    color: 'var(--text-color)',
+                    color: '#FFFFFF',
                     textDecoration: 'none',
                     fontSize: '0.9rem',
                     textTransform: 'uppercase',
