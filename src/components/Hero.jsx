@@ -62,7 +62,6 @@ const Hero = () => {
                             ))}
                         </span>
                     ))}
-                    ))}
                 </h1>
                 <p style={{
                     fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
