@@ -62,25 +62,7 @@ const Hero = () => {
                             ))}
                         </span>
                     ))}
-                    {/* Blinking Cursor */}
-                    <motion.span
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{
-                            duration: 0.8,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: 1.5
-                        }}
-                        style={{
-                            display: 'inline-block',
-                            width: '0.15em',
-                            height: '0.8em',
-                            backgroundColor: 'var(--text-color)',
-                            marginLeft: '0.1em',
-                            alignSelf: 'center'
-                        }}
-                    />
+                    ))}
                 </h1>
                 <p style={{
                     fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
@@ -94,12 +76,51 @@ const Hero = () => {
                     gap: '0.5em'
                 }}>
                     <motion.span
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.2, duration: 1 }}
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: {
+                                    staggerChildren: 0.03,
+                                    delayChildren: 1.5 // Start after title finishes
+                                }
+                            }
+                        }}
+                        style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.2em' }}
                     >
-                        {content.hero.subtitle}
+                        {content.hero.subtitle.split('').map((char, index) => (
+                            <motion.span
+                                key={index}
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    visible: { opacity: 1 }
+                                }}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
                     </motion.span>
+                    {/* Blinking Cursor moved here */}
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: [0, 1, 0] }}
+                        transition={{
+                            duration: 0.8,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: 2.5 // Start blinking after subtitle finishes
+                        }}
+                        style={{
+                            display: 'inline-block',
+                            width: '0.15em',
+                            height: '0.8em',
+                            backgroundColor: 'var(--text-color)',
+                            marginLeft: '0.1em',
+                            alignSelf: 'center'
+                        }}
+                    />
                 </p>
             </motion.div>
 
