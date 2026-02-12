@@ -77,16 +77,21 @@ const Writing = () => {
                                 >
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                         {item.feature_image && (
-                                            <div style={{ width: '100%', maxWidth: '600px', marginBottom: '2rem', overflow: 'hidden' }}>
+                                            <div style={{ width: '100%', maxWidth: '600px', marginBottom: '2rem' }}>
+                                                {/* Debug Log */}
+                                                {console.log("Post:", item.title, "Image:", item.feature_image)}
                                                 <img
                                                     src={item.feature_image}
                                                     alt={item.title}
+                                                    onError={(e) => {
+                                                        console.error("Image failed to load:", item.feature_image);
+                                                        e.target.style.display = 'none';
+                                                    }}
                                                     style={{
                                                         width: '100%',
                                                         height: 'auto',
                                                         display: 'block',
-                                                        objectFit: 'cover',
-                                                        aspectRatio: '3/2'
+                                                        objectFit: 'cover'
                                                     }}
                                                 />
                                             </div>
