@@ -27,8 +27,8 @@ const Hero = () => {
                     visible: {
                         opacity: 1,
                         transition: {
-                            staggerChildren: 0.08,
-                            delayChildren: 0.3
+                            staggerChildren: 0.05, // Faster typing
+                            delayChildren: 0.2
                         }
                     }
                 }}
@@ -54,7 +54,7 @@ const Hero = () => {
                                     key={`${wordIndex}-${charIndex}`}
                                     variants={{
                                         hidden: { opacity: 0, y: 20 },
-                                        visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+                                        visible: { opacity: 1, y: 0, transition: { duration: 0.2 } }
                                     }}
                                 >
                                     {char}
@@ -62,6 +62,25 @@ const Hero = () => {
                             ))}
                         </span>
                     ))}
+                    {/* Blinking Cursor */}
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: [0, 1, 0] }}
+                        transition={{
+                            duration: 0.8,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: 1.5
+                        }}
+                        style={{
+                            display: 'inline-block',
+                            width: '0.15em',
+                            height: '0.8em',
+                            backgroundColor: 'var(--text-color)',
+                            marginLeft: '0.1em',
+                            alignSelf: 'center'
+                        }}
+                    />
                 </h1>
                 <p style={{
                     fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
@@ -77,7 +96,7 @@ const Hero = () => {
                     <motion.span
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 1.5, duration: 1 }}
+                        transition={{ delay: 1.2, duration: 1 }}
                     >
                         {content.hero.subtitle}
                     </motion.span>
@@ -88,7 +107,7 @@ const Hero = () => {
                 href="#portfolio"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 2.5, duration: 0.8 }}
+                transition={{ delay: 2.0, duration: 0.8 }}
                 whileHover={{
                     scale: 1.05,
                     backgroundColor: 'var(--text-color)',
@@ -96,7 +115,7 @@ const Hero = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
-                    marginTop: '3rem',
+                    marginTop: '6rem', // Lowered significantly
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.8rem',
