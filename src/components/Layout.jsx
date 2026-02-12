@@ -213,7 +213,7 @@ const Layout = ({ children }) => {
                     ))}
                 </div>
                 <p style={{ color: 'var(--sub-text-color)', fontSize: '0.75rem', opacity: 0.5 }}>
-                    &copy; {new Date().getFullYear()} {content.meta.title} <span style={{ opacity: 0.3, marginLeft: '10px' }}>v1.0.1</span>
+                    &copy; {new Date().getFullYear()} {content.meta.title} <span style={{ opacity: 0.3, marginLeft: '10px' }}>v1.0.2</span>
                 </p>
             </footer>
         </div>
