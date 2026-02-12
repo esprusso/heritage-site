@@ -155,7 +155,7 @@ const Gallery = () => {
                             <ChevronRight size={48} />
                         </button>
 
-                        {/* Caption/Counter */}
+                        {/* Counter only, caption removed from visual display */}
                         <div style={{
                             position: 'absolute',
                             bottom: '2rem',
@@ -165,9 +165,6 @@ const Gallery = () => {
                             color: 'rgba(255,255,255,0.8)',
                             pointerEvents: 'none'
                         }}>
-                            <p style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>
-                                {content.photography[selectedIndex].caption}
-                            </p>
                             <span style={{ fontSize: '0.9rem', opacity: 0.6 }}>
                                 {selectedIndex + 1} / {content.photography.length}
                             </span>
