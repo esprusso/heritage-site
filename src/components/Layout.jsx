@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useContent } from '../contexts/ContentContext';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -119,9 +120,9 @@ const Layout = ({ children }) => {
 
             {/* Navigation */}
             <nav className={`nav-container ${scrolled ? 'scrolled' : ''}`}>
-                <a href="#" className="logo">
+                <Link to="/" className="logo">
                     {content.meta.title}
-                </a>
+                </Link>
 
                 <ul className="desktop-menu">
                     {navLinks.map((link) => (

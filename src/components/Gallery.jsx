@@ -25,11 +25,7 @@ const Gallery = () => {
                             style={{
                                 width: '100%',
                                 display: 'block',
-                                filter: 'grayscale(100%)', // Optional per aesthetic, can remove if he wants full color
-                                transition: 'filter 0.3s ease'
                             }}
-                            onMouseOver={e => e.currentTarget.style.filter = 'grayscale(0%)'}
-                            onMouseOut={e => e.currentTarget.style.filter = 'grayscale(100%)'}
                         />
                     </motion.div>
                 ))}

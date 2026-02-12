@@ -10,6 +10,10 @@ const BlogPost = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [slug]);
+
+    useEffect(() => {
         async function fetchPost() {
             setLoading(true);
             const data = await getSinglePost(slug);
