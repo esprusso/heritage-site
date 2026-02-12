@@ -37,7 +37,6 @@ const About = () => {
                             width: '100%',
                             maxHeight: '80vh',
                             objectFit: 'cover',
-                            filter: 'grayscale(100%)',
                             border: '1px solid var(--border-color)'
                         }}
                     />
