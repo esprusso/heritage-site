@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useContent } from '../contexts/ContentContext';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,8 @@ const Layout = ({ children }) => {
     const { content, loading, error } = useContent();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
+    const isHome = location.pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -44,11 +46,15 @@ const Layout = ({ children }) => {
                     color: var(--text-color);
                     transition: all 0.3s ease;
                 }
+                .nav-container.transparent-light {
+                    color: #FFFFFF;
+                }
                 .nav-container.scrolled {
                     padding: 1.5rem 3rem;
                     background: rgba(255, 255, 255, 0.9);
                     backdrop-filter: blur(10px);
                     border-bottom: 1px solid var(--border-color);
+                    color: var(--text-color) !important; /* Ensure dark text when scrolled */
                 }
                 .logo {
                     font-family: var(--font-heading);
@@ -119,7 +125,7 @@ const Layout = ({ children }) => {
             <div className="grain-overlay"></div>
 
             {/* Navigation */}
-            <nav className={`nav-container ${scrolled ? 'scrolled' : ''}`}>
+            <nav className={`nav-container ${scrolled ? 'scrolled' : ''} ${!scrolled && isHome ? 'transparent-light' : ''}`}>
                 <Link to="/" className="logo">
                     {content.meta.title}
                 </Link>
