@@ -89,31 +89,32 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2.5, duration: 0.8 }}
+                whileHover={{
+                    scale: 1.05,
+                    backgroundColor: 'var(--text-color)',
+                    color: 'var(--bg-color)'
+                }}
+                whileTap={{ scale: 0.95 }}
                 style={{
-                    marginTop: '4rem', // Position closer to text
-                    display: 'flex',
-                    flexDirection: 'column',
+                    marginTop: '3rem',
+                    display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.8rem',
-                    color: 'var(--sub-text-color)',
+                    padding: '1rem 2.5rem',
+                    border: '1px solid var(--text-color)',
+                    borderRadius: '50px',
+                    color: 'var(--text-color)',
                     textDecoration: 'none',
-                    fontSize: '1rem', // Larger text
+                    fontSize: '0.9rem',
                     textTransform: 'uppercase',
                     letterSpacing: '0.15em',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    fontWeight: 500,
+                    transition: 'colors 0.3s ease'
                 }}
             >
-                <span style={{ fontWeight: 500 }}>Explore Work</span>
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                >
-                    <ArrowDown size={32} /> {/* Larger icon */}
-                </motion.div>
+                <span>Explore Work</span>
+                <ArrowDown size={20} />
             </motion.a>
         </section>
     );
