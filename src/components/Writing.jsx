@@ -147,10 +147,12 @@ const Writing = () => {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    transition: transform 0.4s ease;
+                    filter: grayscale(100%);
+                    transition: transform 0.4s ease, filter 0.3s ease;
                 }
                 .blog-card:hover .blog-card-thumbnail img {
                     transform: scale(1.03);
+                    filter: grayscale(0%);
                 }
                 .blog-card-content {
                     padding: 1.5rem;
