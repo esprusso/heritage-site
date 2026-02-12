@@ -18,18 +18,20 @@ const Writing = () => {
         fetchData();
     }, []);
 
-    // Filter out posts that might not have a slug or are invalid, if needed.
     const validWritings = writings.filter(post => post.slug);
 
     if (loading) {
         return (
-            <section id="writing" style={{ minHeight: '80vh', padding: '12rem 2rem 6rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ width: '200px', height: '3rem', backgroundColor: '#f0f0f0', marginBottom: '4rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100%', maxWidth: '700px', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-                    {[1, 2, 3].map(i => (
-                        <div key={i} style={{ borderBottom: '1px solid #f0f0f0', paddingBottom: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                            <div style={{ width: '80%', height: '1.8rem', backgroundColor: '#f0f0f0', borderRadius: '4px' }}></div>
-                            <div style={{ width: '40px', height: '1rem', backgroundColor: '#f0f0f0', borderRadius: '4px' }}></div>
+            <section id="writing" style={{ minHeight: '80vh', padding: '12rem 2rem 6rem' }}>
+                <div style={{ width: '200px', height: '3rem', backgroundColor: '#f0f0f0', marginBottom: '4rem', borderRadius: '4px', margin: '0 auto 4rem' }}></div>
+                <div className="blog-masonry">
+                    {[1, 2, 3, 4].map(i => (
+                        <div key={i} className="blog-card-skeleton">
+                            <div style={{ width: '100%', height: '220px', backgroundColor: '#f0f0f0' }}></div>
+                            <div style={{ padding: '1.5rem' }}>
+                                <div style={{ width: '80%', height: '1.2rem', backgroundColor: '#f0f0f0', borderRadius: '4px', marginBottom: '0.75rem' }}></div>
+                                <div style={{ width: '40%', height: '0.8rem', backgroundColor: '#f0f0f0', borderRadius: '4px' }}></div>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -38,7 +40,7 @@ const Writing = () => {
     }
 
     return (
-        <section id="writing" style={{ minHeight: '80vh', padding: '12rem 2rem 6rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <section id="writing" style={{ minHeight: '80vh', padding: '12rem 2rem 6rem' }}>
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -48,85 +50,151 @@ const Writing = () => {
                     fontSize: 'clamp(2rem, 4vw, 3rem)',
                     textAlign: 'center',
                     fontWeight: 500,
-                    letterSpacing: '0.02em',
-                    maxWidth: '800px'
+                    letterSpacing: '0.02em'
                 }}
             >
                 Written Words
             </motion.h2>
 
-            <div style={{ maxWidth: '700px', width: '100%', margin: '0 auto' }}>
-                {validWritings.length > 0 ? (
-                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-                        {validWritings.map((item, index) => (
-                            <motion.li
-                                key={item.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                style={{
-                                    borderBottom: '1px solid var(--border-color)',
-                                    paddingBottom: '3rem',
-                                    textAlign: 'center'
-                                }}
+            {validWritings.length > 0 ? (
+                <div className="blog-masonry">
+                    {validWritings.map((item, index) => (
+                        <motion.div
+                            key={item.id}
+                            className="blog-card"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.08 }}
+                        >
+                            <Link
+                                to={`/blog/${item.slug}`}
+                                style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
                             >
-                                <Link
-                                    to={`/blog/${item.slug}`}
-                                    style={{ display: 'block', group: 'group', textDecoration: 'none', color: 'inherit' }}
-                                >
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                        {/* Debug Log Unconditional */}
-                                        {console.log("Post Item:", item)}
-                                        {item.feature_image && (
-                                            <div style={{ width: '100%', maxWidth: '600px', marginBottom: '2rem' }}>
-                                                <img
-                                                    src={item.feature_image}
-                                                    alt={item.title}
-                                                    onError={(e) => {
-                                                        console.error("Image failed to load:", item.feature_image);
-                                                        e.target.style.display = 'none';
-                                                    }}
-                                                    style={{
-                                                        width: '100%',
-                                                        height: 'auto',
-                                                        display: 'block',
-                                                        objectFit: 'cover'
-                                                    }}
-                                                />
-                                            </div>
-                                        )}
-                                        <h3 style={{
-                                            fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
-                                            marginBottom: '1rem',
-                                            fontWeight: 500,
-                                            lineHeight: 1.4,
-                                            letterSpacing: '-0.01em'
-                                        }}>
-                                            {item.title}
-                                            <span style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '0.6rem' }}>
-                                                <ArrowUpRight size={22} />
-                                            </span>
-                                        </h3>
-                                        <span style={{
-                                            color: 'var(--sub-text-color)',
-                                            fontSize: '0.85rem',
-                                            textTransform: 'uppercase',
-                                            letterSpacing: '0.1em'
-                                        }}>
-                                            {new Date(item.published_at).getFullYear()}
-                                        </span>
+                                {item.feature_image && (
+                                    <div className="blog-card-thumbnail">
+                                        <img
+                                            src={item.feature_image}
+                                            alt={item.title}
+                                            onError={(e) => {
+                                                e.target.parentElement.style.display = 'none';
+                                            }}
+                                        />
                                     </div>
-                                </Link>
-                            </motion.li>
-                        ))}
-                    </ul>
-                ) : (
-                    <div style={{ textAlign: 'center', padding: '4rem', border: '1px dashed var(--border-color)' }}>
-                        <p style={{ color: 'var(--sub-text-color)' }}>No posts found.</p>
-                    </div>
-                )}
-            </div>
+                                )}
+                                <div className="blog-card-content">
+                                    <h3 className="blog-card-title">
+                                        {item.title}
+                                        <ArrowUpRight size={16} className="blog-card-arrow" />
+                                    </h3>
+                                    {item.excerpt && (
+                                        <p className="blog-card-excerpt">
+                                            {item.excerpt.length > 120
+                                                ? item.excerpt.substring(0, 120) + '...'
+                                                : item.excerpt}
+                                        </p>
+                                    )}
+                                    <span className="blog-card-date">
+                                        {new Date(item.published_at).toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric'
+                                        })}
+                                    </span>
+                                </div>
+                            </Link>
+                        </motion.div>
+                    ))}
+                </div>
+            ) : (
+                <div style={{ textAlign: 'center', padding: '4rem', border: '1px dashed var(--border-color)', maxWidth: '600px', margin: '0 auto' }}>
+                    <p style={{ color: 'var(--sub-text-color)' }}>No posts found.</p>
+                </div>
+            )}
+
+            <style>{`
+                .blog-masonry {
+                    column-count: 3;
+                    column-gap: 1.5rem;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 1rem;
+                }
+                .blog-card {
+                    break-inside: avoid;
+                    margin-bottom: 1.5rem;
+                    border: 1px solid var(--border-color);
+                    overflow: hidden;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    background: var(--bg-color);
+                }
+                .blog-card:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+                }
+                .blog-card-skeleton {
+                    break-inside: avoid;
+                    margin-bottom: 1.5rem;
+                    border: 1px solid #f0f0f0;
+                    overflow: hidden;
+                }
+                .blog-card-thumbnail {
+                    width: 100%;
+                    height: 220px;
+                    overflow: hidden;
+                }
+                .blog-card-thumbnail img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.4s ease;
+                }
+                .blog-card:hover .blog-card-thumbnail img {
+                    transform: scale(1.03);
+                }
+                .blog-card-content {
+                    padding: 1.5rem;
+                }
+                .blog-card-title {
+                    font-size: 1.15rem;
+                    font-weight: 600;
+                    line-height: 1.4;
+                    margin-bottom: 0.75rem;
+                    letter-spacing: -0.01em;
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 0.4rem;
+                }
+                .blog-card-arrow {
+                    flex-shrink: 0;
+                    margin-top: 0.2rem;
+                    opacity: 0;
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                }
+                .blog-card:hover .blog-card-arrow {
+                    opacity: 1;
+                    transform: translate(2px, -2px);
+                }
+                .blog-card-excerpt {
+                    font-size: 0.9rem;
+                    line-height: 1.6;
+                    color: var(--sub-text-color);
+                    margin-bottom: 1rem;
+                }
+                .blog-card-date {
+                    font-size: 0.78rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--sub-text-color);
+                }
+                @media (max-width: 1024px) {
+                    .blog-masonry { column-count: 2; }
+                }
+                @media (max-width: 600px) {
+                    .blog-masonry { column-count: 1; }
+                    .blog-card-thumbnail { height: 200px; }
+                }
+            `}</style>
         </section>
     );
 };
