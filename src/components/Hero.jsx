@@ -9,20 +9,7 @@ const Hero = () => {
     if (loading) return null;
 
     return (
-        <section id="home" style={{
-            height: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-            padding: '2rem',
-            position: 'relative',
-            backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url(/images/dd-3.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            color: '#FFFFFF' // Force white text base
-        }}>
+        <section id="home" className="hero-section">
             <motion.div
                 initial="hidden"
                 animate="visible"
@@ -158,6 +145,30 @@ const Hero = () => {
                 <span>Explore Work</span>
                 <ArrowDown size={20} />
             </motion.a>
+
+            <style>{`
+                .hero-section {
+                    height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    padding: 2rem;
+                    position: relative;
+                    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url(/images/dd-3.jpg);
+                    background-size: cover;
+                    background-position: center;
+                    color: #FFFFFF;
+                }
+                @media (max-width: 768px) {
+                    .hero-section {
+                        height: 70vh; /* Reduced height on mobile to show more width */
+                        min-height: 500px;
+                        background-attachment: scroll; /* often better for mobile perf */
+                    }
+                }
+            `}</style>
         </section>
     );
 };
