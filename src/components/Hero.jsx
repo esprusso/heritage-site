@@ -18,7 +18,7 @@ const Hero = () => {
             textAlign: 'center',
             padding: '2rem',
             position: 'relative',
-            backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/dd-3.jpg)',
+            backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url(/images/dd-3.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             color: '#FFFFFF' // Force white text base
