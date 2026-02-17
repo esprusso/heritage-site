@@ -32,7 +32,7 @@ const Hero = () => {
                     letterSpacing: '-0.03em',
                     textTransform: 'uppercase',
                     marginBottom: '1.5rem',
-                    color: '#FFFFFF', // Explicit white
+                    color: '#000000', // Explicit black
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
@@ -58,7 +58,7 @@ const Hero = () => {
                     fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.2em',
-                    color: 'rgba(255, 255, 255, 0.9)', // Light/white with slight transparency
+                    color: 'rgba(0, 0, 0, 0.9)', // Dark/black with slight transparency
                     fontWeight: 500,
                     display: 'flex',
                     flexWrap: 'wrap',
@@ -105,7 +105,7 @@ const Hero = () => {
                             display: 'inline-block',
                             width: '0.15em',
                             height: '0.8em',
-                            backgroundColor: '#FFFFFF', // White cursor
+                            backgroundColor: '#000000', // Black cursor
                             marginLeft: '0.1em',
                             alignSelf: 'center'
                         }}
@@ -120,8 +120,8 @@ const Hero = () => {
                 transition={{ delay: 2.0, duration: 0.8 }}
                 whileHover={{
                     scale: 1.05,
-                    backgroundColor: '#FFFFFF',
-                    color: '#000000'
+                    backgroundColor: '#000000',
+                    color: '#FFFFFF'
                 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
@@ -130,9 +130,9 @@ const Hero = () => {
                     alignItems: 'center',
                     gap: '0.8rem',
                     padding: '1rem 2.5rem',
-                    border: '1px solid #FFFFFF',
+                    border: '1px solid #000000',
                     borderRadius: '50px',
-                    color: '#FFFFFF',
+                    color: '#000000',
                     textDecoration: 'none',
                     fontSize: '0.9rem',
                     textTransform: 'uppercase',
@@ -159,7 +159,7 @@ const Hero = () => {
                     /* background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url(/images/dd-3.jpg); */
                     background-size: cover;
                     background-position: center;
-                    color: #FFFFFF;
+                    color: #000000;
                 }
                 @media (max-width: 768px) {
                     .hero-section {
