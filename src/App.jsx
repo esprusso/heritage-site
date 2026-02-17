@@ -11,7 +11,7 @@ import BlogPost from './components/BlogPost';
 
 const Home = () => (
     <>
-        <Hero />
+        {/* <Hero /> */}
         <Gallery />
         <Writing />
         <About />
