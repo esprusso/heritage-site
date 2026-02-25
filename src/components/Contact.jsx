@@ -30,8 +30,7 @@ const Contact = () => {
     if (loading) return null;
     return (
         <section id="contact" style={{
-            minHeight: '80vh',
-            padding: '100px 2rem',
+            padding: '8rem 2rem 10rem',
             scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
@@ -44,7 +43,14 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
             >
-                <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: 'var(--sub-text-color)' }}>
+                <p style={{
+                    fontSize: '0.75rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.25em',
+                    marginBottom: '2.5rem',
+                    color: 'var(--sub-text-color)',
+                    fontWeight: 500
+                }}>
                     Interested in working together?
                 </p>
                 <a

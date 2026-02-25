@@ -13,7 +13,7 @@ const ScrollPrompt = ({
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.5, duration: 1 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
             style={{
                 display: 'flex',
                 flexDirection: 'column',

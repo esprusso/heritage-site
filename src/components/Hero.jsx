@@ -18,25 +18,25 @@ const Hero = () => {
                     visible: {
                         opacity: 1,
                         transition: {
-                            staggerChildren: 0.05,
-                            delayChildren: 0.2
+                            staggerChildren: 0.015,
+                            delayChildren: 0.1
                         }
                     }
                 }}
             >
                 <h1 style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(3rem, 10vw, 8rem)',
-                    fontWeight: 800,
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(3.5rem, 11vw, 9rem)',
+                    fontWeight: 700,
                     lineHeight: 0.9,
-                    letterSpacing: '-0.03em',
+                    letterSpacing: '0.02em',
                     textTransform: 'uppercase',
                     marginBottom: '1.5rem',
-                    color: '#000000', // Explicit black
+                    color: '#ffffff',
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
-                    gap: '0.2em'
+                    gap: '0.25em'
                 }}>
                     {content.hero.title.split(' ').map((word, wordIndex) => (
                         <span key={wordIndex} style={{ display: 'inline-flex' }}>
@@ -44,8 +44,8 @@ const Hero = () => {
                                 <motion.span
                                     key={`${wordIndex}-${charIndex}`}
                                     variants={{
-                                        hidden: { opacity: 0, y: 20 },
-                                        visible: { opacity: 1, y: 0, transition: { duration: 0.2 } }
+                                        hidden: { opacity: 0, y: 16 },
+                                        visible: { opacity: 1, y: 0, transition: { duration: 0.15 } }
                                     }}
                                 >
                                     {char}
@@ -55,11 +55,12 @@ const Hero = () => {
                     ))}
                 </h1>
                 <p style={{
-                    fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
+                    fontSize: 'clamp(0.75rem, 1.5vw, 0.95rem)',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.2em',
-                    color: 'rgba(0, 0, 0, 0.9)', // Dark/black with slight transparency
-                    fontWeight: 500,
+                    letterSpacing: '0.3em',
+                    color: 'rgba(255, 255, 255, 0.55)',
+                    fontWeight: 400,
+                    fontFamily: 'var(--font-heading)',
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
@@ -73,8 +74,8 @@ const Hero = () => {
                             visible: {
                                 opacity: 1,
                                 transition: {
-                                    staggerChildren: 0.03,
-                                    delayChildren: 1.5
+                                    staggerChildren: 0.02,
+                                    delayChildren: 0.3
                                 }
                             }
                         }}
@@ -99,13 +100,13 @@ const Hero = () => {
                             duration: 0.8,
                             repeat: Infinity,
                             ease: "linear",
-                            delay: 2.5
+                            delay: 0.7
                         }}
                         style={{
                             display: 'inline-block',
-                            width: '0.15em',
+                            width: '0.12em',
                             height: '0.8em',
-                            backgroundColor: '#000000', // Black cursor
+                            backgroundColor: 'rgba(255,255,255,0.55)',
                             marginLeft: '0.1em',
                             alignSelf: 'center'
                         }}
@@ -115,35 +116,37 @@ const Hero = () => {
 
             <motion.a
                 href="#portfolio"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 2.0, duration: 0.8 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
                 whileHover={{
-                    scale: 1.05,
-                    backgroundColor: '#000000',
-                    color: '#FFFFFF'
+                    scale: 1.04,
+                    backgroundColor: '#ffffff',
+                    color: '#0d0d0d',
+                    borderColor: '#ffffff'
                 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.96 }}
                 style={{
-                    marginTop: '6rem',
+                    marginTop: '2.5rem',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.8rem',
-                    padding: '1rem 2.5rem',
-                    border: '1px solid #000000',
+                    padding: '0.85rem 2.2rem',
+                    border: '1px solid rgba(255,255,255,0.35)',
                     borderRadius: '50px',
-                    color: '#000000',
+                    color: 'rgba(255,255,255,0.85)',
                     textDecoration: 'none',
-                    fontSize: '0.9rem',
+                    fontSize: '0.75rem',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.15em',
+                    letterSpacing: '0.2em',
                     cursor: 'pointer',
                     fontWeight: 500,
-                    transition: 'colors 0.3s ease'
+                    fontFamily: 'var(--font-heading)',
+                    transition: 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease'
                 }}
             >
                 <span>Explore Work</span>
-                <ArrowDown size={20} />
+                <ArrowDown size={16} />
             </motion.a>
 
             <style>{`
@@ -156,16 +159,13 @@ const Hero = () => {
                     text-align: center;
                     padding: 2rem;
                     position: relative;
-                    /* background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url(/images/dd-3.jpg); */
-                    background-size: cover;
-                    background-position: center;
-                    color: #000000;
+                    background: #0d0d0d;
+                    color: #ffffff;
                 }
                 @media (max-width: 768px) {
                     .hero-section {
-                        height: 70vh; /* Reduced height on mobile to show more width */
+                        height: 70vh;
                         min-height: 500px;
-                        background-attachment: scroll; /* often better for mobile perf */
                     }
                 }
             `}</style>

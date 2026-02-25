@@ -67,7 +67,7 @@ const Layout = ({ children }) => {
                 }
                 .desktop-menu {
                     display: flex;
-                    gap: 3rem;
+                    gap: 2rem;
                 }
                 .desktop-menu a {
                     font-size: 0.85rem;
@@ -129,7 +129,7 @@ const Layout = ({ children }) => {
             {/* Navigation */}
             <nav className={`nav-container ${scrolled ? 'scrolled' : ''} ${!scrolled && isHome ? 'transparent-light' : ''}`}>
                 <Link to="/" className="logo">
-                    {content.meta.title}
+                    {content.hero.title}
                 </Link>
 
                 <ul className="desktop-menu">
@@ -175,7 +175,7 @@ const Layout = ({ children }) => {
                                 right: '2rem',
                                 background: 'transparent',
                                 border: 'none',
-                                color: 'white',
+                                color: 'var(--text-color)',
                                 cursor: 'pointer'
                             }}
                         >
@@ -222,7 +222,7 @@ const Layout = ({ children }) => {
                     ))}
                 </div>
                 <p style={{ color: 'var(--sub-text-color)', fontSize: '0.75rem', opacity: 0.5 }}>
-                    &copy; {new Date().getFullYear()} {content.meta.title} <span style={{ opacity: 0.3, marginLeft: '10px' }}>v1.0.2</span>
+                    &copy; {new Date().getFullYear()} {content.meta.title}
                 </p>
             </footer>
         </div>

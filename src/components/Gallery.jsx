@@ -42,7 +42,30 @@ const Gallery = () => {
             flexDirection: 'column',
             alignItems: 'center'
         }}>
-            <div className="gallery-grid" style={{ width: '100%' }}>
+            <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{
+                width: '100%',
+                paddingBottom: '2.5rem',
+                borderBottom: '1px solid var(--border-color)',
+                marginBottom: '2.5rem'
+            }}
+        >
+            <span style={{
+                fontSize: '0.7rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.25em',
+                color: 'var(--sub-text-color)',
+                fontWeight: 500
+            }}>
+                Selected Work
+            </span>
+        </motion.div>
+
+        <div className="gallery-grid" style={{ width: '100%' }}>
                 {content.photography.map((photo, index) => (
                     <motion.div
                         key={photo.id}
@@ -50,6 +73,7 @@ const Gallery = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.05 }}
+                        className="gallery-item"
                         style={{ marginBottom: '1.5rem', breakInside: 'avoid', cursor: 'pointer' }}
                         onClick={() => setSelectedIndex(index)}
                         whileHover={{ scale: 1.02 }}
@@ -179,6 +203,12 @@ const Gallery = () => {
                 .gallery-grid {
                     column-count: 3;
                     column-gap: 1.5rem;
+                }
+                .gallery-item img {
+                    transition: filter 0.35s ease;
+                }
+                .gallery-item:hover img {
+                    filter: brightness(0.88);
                 }
                 .nav-btn {
                     opacity: 0.7;

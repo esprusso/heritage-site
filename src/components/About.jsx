@@ -11,12 +11,11 @@ const About = () => {
 
     return (
         <section id="about" style={{
-            minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '8rem 2rem',
+            padding: '10rem 2rem 6rem',
             scrollMarginTop: '100px'
         }}>
             <div style={{
@@ -25,8 +24,7 @@ const About = () => {
                 gap: '4rem',
                 maxWidth: '1200px',
                 width: '100%',
-                alignItems: 'center',
-                flex: 1
+                alignItems: 'center'
             }}>
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
