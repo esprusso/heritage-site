@@ -166,8 +166,7 @@ const Hero = () => {
                 }
                 @media (max-width: 768px) {
                     .hero-section {
-                        height: 70vh;
-                        min-height: 500px;
+                        height: 100vh;
                         background-attachment: scroll;
                     }
                 }
