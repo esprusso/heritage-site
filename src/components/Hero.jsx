@@ -159,13 +159,16 @@ const Hero = () => {
                     text-align: center;
                     padding: 2rem;
                     position: relative;
-                    background: #0d0d0d;
+                    background-image: linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.58)), url(/images/mm-2.jpg);
+                    background-size: cover;
+                    background-position: center;
                     color: #ffffff;
                 }
                 @media (max-width: 768px) {
                     .hero-section {
                         height: 70vh;
                         min-height: 500px;
+                        background-attachment: scroll;
                     }
                 }
             `}</style>
