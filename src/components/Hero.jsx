@@ -168,6 +168,7 @@ const Hero = () => {
                     .hero-section {
                         height: 100vh;
                         background-attachment: scroll;
+                        background-position: 62% center;
                     }
                 }
             `}</style>
