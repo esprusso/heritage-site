@@ -25,6 +25,8 @@ const Layout = ({ children }) => {
     const navLinks = [
         { name: 'Home', href: '/#home' },
         { name: 'Work', href: '/#portfolio' },
+        ...(content?.ai?.length > 0 ? [{ name: 'AI', href: '/#ai' }] : []),
+        ...(content?.video?.length > 0 ? [{ name: 'Video', href: '/#video' }] : []),
         { name: 'Blog', href: '/blog' },
         { name: 'About', href: '/#about' },
         { name: 'Contact', href: '/#contact' },

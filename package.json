@@ -11,6 +11,7 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.4.0",
     "@tryghost/content-api": "^1.11.20",
     "framer-motion": "^11.0.3",
     "lucide-react": "^0.331.0",
