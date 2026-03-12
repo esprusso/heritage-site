@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getSinglePost } from '../lib/ghost';
 import { ArrowLeft } from 'lucide-react';
+import DOMPurify from 'dompurify';
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -26,13 +27,13 @@ const BlogPost = () => {
     if (loading) {
         return (
             <article style={{ maxWidth: '800px', margin: '0 auto', padding: '12rem 2rem 6rem', minHeight: '100vh' }}>
-                <div style={{ width: '120px', height: '1rem', backgroundColor: '#f0f0f0', marginBottom: '4rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '80%', height: '4rem', backgroundColor: '#f0f0f0', margin: '0 auto 1rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100px', height: '1rem', backgroundColor: '#f0f0f0', margin: '0 auto 4rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100%', height: '400px', backgroundColor: '#f0f0f0', marginBottom: '4rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100%', height: '1.2rem', backgroundColor: '#f0f0f0', marginBottom: '1rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100%', height: '1.2rem', backgroundColor: '#f0f0f0', marginBottom: '1rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '80%', height: '1.2rem', backgroundColor: '#f0f0f0', marginBottom: '1rem', borderRadius: '4px' }}></div>
+                <div style={{ width: '120px', height: '1rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '4rem', borderRadius: '4px' }}></div>
+                <div style={{ width: '80%', height: '4rem', backgroundColor: 'var(--skeleton-color)', margin: '0 auto 1rem', borderRadius: '4px' }}></div>
+                <div style={{ width: '100px', height: '1rem', backgroundColor: 'var(--skeleton-color)', margin: '0 auto 4rem', borderRadius: '4px' }}></div>
+                <div style={{ width: '100%', height: '400px', backgroundColor: 'var(--skeleton-color)', marginBottom: '4rem', borderRadius: '4px' }}></div>
+                <div style={{ width: '100%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '1rem', borderRadius: '4px' }}></div>
+                <div style={{ width: '100%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '1rem', borderRadius: '4px' }}></div>
+                <div style={{ width: '80%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '1rem', borderRadius: '4px' }}></div>
             </article>
         );
     }
@@ -53,7 +54,7 @@ const BlogPost = () => {
             padding: '12rem 2rem 6rem',
             minHeight: '100vh'
         }}>
-            <Link to="/" style={{
+            <Link to="/" className="back-link" style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
@@ -62,7 +63,8 @@ const BlogPost = () => {
                 textDecoration: 'none',
                 textTransform: 'uppercase',
                 fontSize: '0.9rem',
-                letterSpacing: '0.1em'
+                letterSpacing: '0.1em',
+                transition: 'color 0.3s ease'
             }}>
                 <ArrowLeft size={16} /> Back to Home
             </Link>
@@ -111,7 +113,7 @@ const BlogPost = () => {
                                     fontSize: '0.9rem',
                                     fontStyle: 'italic'
                                 }}
-                                dangerouslySetInnerHTML={{ __html: post.feature_image_caption }}
+                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.feature_image_caption) }}
                             />
                         )}
                     </figure>
@@ -119,7 +121,7 @@ const BlogPost = () => {
 
                 <div
                     className="gh-content"
-                    dangerouslySetInnerHTML={{ __html: post.html }}
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html) }}
                     style={{
                         fontSize: '1.2rem',
                         lineHeight: 1.8,
@@ -128,6 +130,7 @@ const BlogPost = () => {
                 />
 
                 <style>{`
+                    .back-link:hover { color: var(--text-color); }
                     .gh-content p { margin-bottom: 2rem; }
                     .gh-content h2 { margin-top: 4rem; margin-bottom: 1.5rem; font-size: 2rem; }
                     .gh-content h3 { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.5rem; }

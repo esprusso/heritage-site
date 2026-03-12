@@ -30,7 +30,7 @@ const Contact = () => {
     if (loading) return null;
     return (
         <section id="contact" style={{
-            padding: '8rem 2rem 10rem',
+            padding: '4rem 2rem 6rem',
             scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
@@ -39,9 +39,10 @@ const Contact = () => {
             textAlign: 'center'
         }}>
             <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
             >
                 <p style={{
                     fontSize: '0.75rem',
@@ -87,7 +88,8 @@ const Contact = () => {
                         transform-origin: right;
                         transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
                     }
-                    .contact-link:hover::after {
+                    .contact-link:hover::after,
+                    .contact-link:focus-visible::after {
                         transform: scaleX(1);
                         transform-origin: left;
                     }

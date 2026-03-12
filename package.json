@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",
     "@tryghost/content-api": "^1.11.20",
+    "dompurify": "^3.3.3",
     "framer-motion": "^11.0.3",
     "lucide-react": "^0.331.0",
     "react": "^18.2.0",

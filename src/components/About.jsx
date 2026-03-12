@@ -15,7 +15,7 @@ const About = () => {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '10rem 2rem 6rem',
+            padding: '8rem 2rem',
             scrollMarginTop: '100px'
         }}>
             <div style={{
@@ -35,7 +35,8 @@ const About = () => {
                 >
                     <img
                         src={content.about.image}
-                        alt="Portrait"
+                        alt={`Portrait of ${content.hero?.title || 'the photographer'}`}
+                        loading="lazy"
                         style={{
                             width: '100%',
                             maxHeight: '80vh',
@@ -55,7 +56,7 @@ const About = () => {
                         fontSize: 'clamp(2rem, 5vw, 4rem)',
                         marginBottom: '2rem',
                         textTransform: 'uppercase',
-                        fontWeight: 300
+                        fontWeight: 400
                     }}>
                         {content.about.title}
                     </h2>

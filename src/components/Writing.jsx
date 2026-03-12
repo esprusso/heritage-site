@@ -25,14 +25,14 @@ const Writing = () => {
     if (loading) {
         return (
             <section id="writing" style={{ minHeight: '80vh', padding: '8rem 2rem', scrollMarginTop: '100px' }}>
-                <div style={{ width: '200px', height: '3rem', backgroundColor: '#f0f0f0', marginBottom: '4rem', borderRadius: '4px', margin: '0 auto 4rem' }}></div>
+                <div style={{ width: '200px', height: '3rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '4rem', borderRadius: '4px', margin: '0 auto 4rem' }}></div>
                 <div className="blog-masonry">
                     {[1, 2, 3, 4].map(i => (
                         <div key={i} className="blog-card-skeleton">
-                            <div style={{ width: '100%', height: '220px', backgroundColor: '#f0f0f0' }}></div>
+                            <div style={{ width: '100%', height: '220px', backgroundColor: 'var(--skeleton-color)' }}></div>
                             <div style={{ padding: '1.5rem' }}>
-                                <div style={{ width: '80%', height: '1.2rem', backgroundColor: '#f0f0f0', borderRadius: '4px', marginBottom: '0.75rem' }}></div>
-                                <div style={{ width: '40%', height: '0.8rem', backgroundColor: '#f0f0f0', borderRadius: '4px' }}></div>
+                                <div style={{ width: '80%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px', marginBottom: '0.75rem' }}></div>
+                                <div style={{ width: '40%', height: '0.8rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px' }}></div>
                             </div>
                         </div>
                     ))}
@@ -54,7 +54,7 @@ const Writing = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 style={{
-                    marginBottom: '6rem',
+                    marginBottom: '4rem',
                     fontSize: 'clamp(2rem, 4vw, 3rem)',
                     textAlign: 'center',
                     fontWeight: 500,
@@ -84,6 +84,7 @@ const Writing = () => {
                                         <img
                                             src={item.feature_image}
                                             alt={item.title}
+                                            loading="lazy"
                                             onError={(e) => {
                                                 e.target.parentElement.style.display = 'none';
                                             }}
@@ -140,14 +141,22 @@ const Writing = () => {
                     transition: transform 0.3s ease, box-shadow 0.3s ease;
                     background: var(--bg-color);
                 }
-                .blog-card:hover {
+                .blog-card:hover,
+                .blog-card:focus-within {
                     transform: translateY(-4px);
                     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+                }
+                .blog-card a:focus-visible {
+                    outline: none;
+                }
+                .blog-card:focus-within {
+                    outline: 2px solid var(--accent-color);
+                    outline-offset: 4px;
                 }
                 .blog-card-skeleton {
                     break-inside: avoid;
                     margin-bottom: 1.5rem;
-                    border: 1px solid #f0f0f0;
+                    border: 1px solid var(--border-color);
                     overflow: hidden;
                 }
                 .blog-card-thumbnail {
@@ -159,12 +168,11 @@ const Writing = () => {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    filter: grayscale(100%);
-                    transition: transform 0.4s ease, filter 0.3s ease;
+                    transition: transform 0.4s ease;
                 }
-                .blog-card:hover .blog-card-thumbnail img {
+                .blog-card:hover .blog-card-thumbnail img,
+                .blog-card:focus-within .blog-card-thumbnail img {
                     transform: scale(1.03);
-                    filter: grayscale(0%);
                 }
                 .blog-card-content {
                     padding: 1.5rem;
@@ -185,7 +193,8 @@ const Writing = () => {
                     opacity: 0;
                     transition: opacity 0.3s ease, transform 0.3s ease;
                 }
-                .blog-card:hover .blog-card-arrow {
+                .blog-card:hover .blog-card-arrow,
+                .blog-card:focus-within .blog-card-arrow {
                     opacity: 1;
                     transform: translate(2px, -2px);
                 }

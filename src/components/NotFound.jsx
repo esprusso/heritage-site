@@ -40,7 +40,6 @@ const NotFound = () => {
                 <p style={{
                     fontSize: '1.2rem',
                     color: 'var(--sub-text-color)',
-                    marginBottom: '3rem',
                     maxWidth: '400px',
                     margin: '0 auto 3rem'
                 }}>
@@ -52,7 +51,7 @@ const NotFound = () => {
                     alignItems: 'center',
                     padding: '1rem 2.5rem',
                     backgroundColor: 'var(--accent-color)',
-                    color: '#FFFFFF',
+                    color: 'var(--bg-color)',
                     textDecoration: 'none',
                     borderRadius: '50px',
                     fontSize: '0.9rem',
@@ -66,6 +65,10 @@ const NotFound = () => {
                 <style>{`
                     .back-home-btn:hover {
                         opacity: 0.8;
+                    }
+                    .back-home-btn:focus-visible {
+                        outline: 2px solid var(--accent-color);
+                        outline-offset: 4px;
                     }
                 `}</style>
             </motion.div>

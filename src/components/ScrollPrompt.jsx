@@ -38,7 +38,7 @@ const ScrollPrompt = ({
                 animate={{ y: [0, 8, 0] }}
                 transition={{
                     duration: 2,
-                    repeat: Infinity,
+                    repeat: 3,
                     ease: "easeInOut"
                 }}
             >

@@ -15,7 +15,7 @@ const AIShowcase = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            backgroundColor: '#FAFAFA' // Slightly different background to distinguish section
+            backgroundColor: '#fafafa'
         }}>
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}

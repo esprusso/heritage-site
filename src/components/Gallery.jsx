@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContent } from '../contexts/ContentContext';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -7,8 +7,13 @@ import ScrollPrompt from './ScrollPrompt';
 const Gallery = () => {
     const { content, loading } = useContent();
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const triggerRef = useRef(null);
+    const closeButtonRef = useRef(null);
+    const modalRef = useRef(null);
 
-    const closeModal = () => setSelectedIndex(null);
+    const closeModal = useCallback(() => {
+        setSelectedIndex(null);
+    }, []);
 
     const showNext = useCallback((e) => {
         e?.stopPropagation();
@@ -20,6 +25,7 @@ const Gallery = () => {
         setSelectedIndex((prev) => (prev - 1 + content.photography.length) % content.photography.length);
     }, [content?.photography?.length]);
 
+    // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (selectedIndex === null) return;
@@ -30,42 +36,59 @@ const Gallery = () => {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [selectedIndex, showNext, showPrev]);
+    }, [selectedIndex, showNext, showPrev, closeModal]);
+
+    // Body scroll lock and focus management
+    useEffect(() => {
+        if (selectedIndex !== null) {
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => {
+                closeButtonRef.current?.focus();
+            });
+        } else {
+            document.body.style.overflow = '';
+            triggerRef.current?.focus();
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [selectedIndex]);
+
+    // Focus trap inside modal
+    useEffect(() => {
+        if (selectedIndex === null || !modalRef.current) return;
+        const modal = modalRef.current;
+
+        const handleTab = (e) => {
+            if (e.key !== 'Tab') return;
+            const focusable = modal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        };
+
+        modal.addEventListener('keydown', handleTab);
+        return () => modal.removeEventListener('keydown', handleTab);
+    }, [selectedIndex]);
 
     if (loading) return null;
 
     return (
         <section id="portfolio" style={{
-            padding: '2rem 2rem 8rem 2rem',
+            padding: '8rem 2rem',
             scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center'
         }}>
-            <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{
-                width: '100%',
-                paddingBottom: '2.5rem',
-                borderBottom: '1px solid var(--border-color)',
-                marginBottom: '2.5rem'
-            }}
-        >
-            <span style={{
-                fontSize: '0.7rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.25em',
-                color: 'var(--sub-text-color)',
-                fontWeight: 500
-            }}>
-                Selected Work
-            </span>
-        </motion.div>
-
-        <div className="gallery-grid" style={{ width: '100%' }}>
+            <div className="gallery-grid" style={{ width: '100%' }}>
                 {content.photography.map((photo, index) => (
                     <motion.div
                         key={photo.id}
@@ -75,12 +98,26 @@ const Gallery = () => {
                         transition={{ delay: index * 0.05 }}
                         className="gallery-item"
                         style={{ marginBottom: '1.5rem', breakInside: 'avoid', cursor: 'pointer' }}
-                        onClick={() => setSelectedIndex(index)}
+                        onClick={() => {
+                            triggerRef.current = document.activeElement;
+                            setSelectedIndex(index);
+                        }}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                triggerRef.current = e.currentTarget;
+                                setSelectedIndex(index);
+                            }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`View photo ${index + 1}: ${photo.caption || 'Portfolio image'}`}
                         whileHover={{ scale: 1.02 }}
                     >
                         <img
                             src={photo.src}
-                            alt={photo.caption || ''}
+                            alt={photo.caption || `Portfolio photograph ${index + 1}`}
+                            loading="lazy"
                             style={{
                                 width: '100%',
                                 display: 'block',
@@ -93,6 +130,10 @@ const Gallery = () => {
             <AnimatePresence>
                 {selectedIndex !== null && (
                     <motion.div
+                        ref={modalRef}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={`Photo ${selectedIndex + 1} of ${content.photography.length}`}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -112,7 +153,9 @@ const Gallery = () => {
                         }}
                     >
                         <button
+                            ref={closeButtonRef}
                             onClick={closeModal}
+                            aria-label="Close lightbox"
                             style={{
                                 position: 'absolute',
                                 top: '2rem',
@@ -121,7 +164,8 @@ const Gallery = () => {
                                 border: 'none',
                                 color: 'white',
                                 cursor: 'pointer',
-                                zIndex: 1001
+                                zIndex: 1001,
+                                padding: '0.5rem'
                             }}
                         >
                             <X size={32} />
@@ -129,6 +173,7 @@ const Gallery = () => {
 
                         <button
                             onClick={showPrev}
+                            aria-label="Previous photo"
                             style={{
                                 position: 'absolute',
                                 left: '2rem',
@@ -151,19 +196,19 @@ const Gallery = () => {
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                             src={content.photography[selectedIndex].src}
-                            alt={content.photography[selectedIndex].caption}
-                            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image
+                            alt={content.photography[selectedIndex].caption || `Portfolio photograph ${selectedIndex + 1}`}
+                            onClick={(e) => e.stopPropagation()}
                             style={{
                                 maxWidth: '90vw',
                                 maxHeight: '90vh',
                                 objectFit: 'contain',
-                                borderRadius: '4px',
                                 boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
                             }}
                         />
 
                         <button
                             onClick={showNext}
+                            aria-label="Next photo"
                             style={{
                                 position: 'absolute',
                                 right: '2rem',
@@ -179,16 +224,20 @@ const Gallery = () => {
                             <ChevronRight size={48} />
                         </button>
 
-                        {/* Counter only, caption removed from visual display */}
-                        <div style={{
-                            position: 'absolute',
-                            bottom: '2rem',
-                            left: '0',
-                            width: '100%',
-                            textAlign: 'center',
-                            color: 'rgba(255,255,255,0.8)',
-                            pointerEvents: 'none'
-                        }}>
+                        {/* Counter with live region for screen readers */}
+                        <div
+                            aria-live="polite"
+                            aria-atomic="true"
+                            style={{
+                                position: 'absolute',
+                                bottom: '2rem',
+                                left: '0',
+                                width: '100%',
+                                textAlign: 'center',
+                                color: 'rgba(255,255,255,0.8)',
+                                pointerEvents: 'none'
+                            }}
+                        >
                             <span style={{ fontSize: '0.9rem', opacity: 0.6 }}>
                                 {selectedIndex + 1} / {content.photography.length}
                             </span>
@@ -204,6 +253,13 @@ const Gallery = () => {
                     column-count: 3;
                     column-gap: 1.5rem;
                 }
+                .gallery-item {
+                    outline: none;
+                }
+                .gallery-item:focus-visible {
+                    outline: 2px solid var(--accent-color);
+                    outline-offset: 4px;
+                }
                 .gallery-item img {
                     transition: filter 0.35s ease;
                 }
@@ -217,6 +273,11 @@ const Gallery = () => {
                 .nav-btn:hover {
                     opacity: 1;
                     transform: scale(1.1);
+                }
+                .nav-btn:focus-visible {
+                    outline: 2px solid white;
+                    outline-offset: 4px;
+                    opacity: 1;
                 }
                 @media (max-width: 1024px) {
                     .gallery-grid { column-count: 2; }

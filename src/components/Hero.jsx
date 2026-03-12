@@ -152,6 +152,7 @@ const Hero = () => {
             <style>{`
                 .hero-section {
                     height: 100vh;
+                    height: 100dvh;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -167,6 +168,7 @@ const Hero = () => {
                 @media (max-width: 768px) {
                     .hero-section {
                         height: 100vh;
+                        height: 100dvh;
                         background-attachment: scroll;
                         background-position: 62% center;
                     }

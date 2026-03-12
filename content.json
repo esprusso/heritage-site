@@ -112,5 +112,111 @@
             "url": "https://russheritage.substack.com/p/views-from-oxford-england",
             "date": "2023"
         }
+    ],
+    "vibe": [
+        {
+            "id": "vibe-nexus",
+            "title": "Nexus Dashboard",
+            "description": "A high-performance analytics dashboard designed for cryptocurrency traders. The interface leverages deep neumorphic shadows against a clean #FAFAFA background to reduce eye strain during long trading sessions while keeping critical data points highly legible.",
+            "techStack": [
+                "React",
+                "Framer Motion",
+                "Tailwind CSS",
+                "Recharts"
+            ],
+            "media": [
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Main Analytics Overview"
+                },
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Detailed Market Metrics"
+                },
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Portfolio Performance Graph"
+                }
+            ]
+        },
+        {
+            "id": "vibe-aura",
+            "title": "Aura Music Player",
+            "description": "A conceptual music player application focused on spatial audio and tactile interactions. The UI mimics physical hardware with soft, extruded buttons and satisfying states that make clicking feel visceral.",
+            "techStack": [
+                "React Native",
+                "Expo",
+                "Reanimated"
+            ],
+            "media": [
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                    "caption": "Now Playing Interface"
+                },
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                    "caption": "Library and Equalizer"
+                }
+            ]
+        },
+        {
+            "id": "vibe-lumin",
+            "title": "Lumin Smart Home",
+            "description": "An IoT control center that brings elegance to home automation. Lumin uses dynamic lighting effects and high-contrast neumorphism to indicate module states (on/off, temperature, security alerts).",
+            "techStack": [
+                "Vue.js",
+                "GSAP",
+                "Socket.io"
+            ],
+            "media": [
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Living Room Controls"
+                },
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Security Feed Integration"
+                },
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Climate Settings"
+                },
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1520699697851-3dc68aa3a474?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Energy Consumption View"
+                }
+            ]
+        },
+        {
+            "id": "vibe-echo",
+            "title": "Echo Social",
+            "description": "A minimalist, text-first social network designed to reduce doomscrolling. Echo relies on profound typography, expansive whitespace, and subtle shadow hierarchies to direct attention without overwhelming the user.",
+            "techStack": [
+                "Next.js",
+                "Prisma",
+                "Tailwind CSS"
+            ],
+            "media": [
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "User Feed"
+                },
+                {
+                    "type": "image",
+                    "src": "https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                    "caption": "Profile and Connections"
+                }
+            ]
+        }
     ]
 }
