@@ -4,6 +4,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useContent } from '../contexts/ContentContext';
 import { X, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 
+const useSwipe = (onLeft, onRight) => {
+    const touchStart = useRef(null);
+    const onTouchStart = useCallback((e) => {
+        touchStart.current = e.touches[0].clientX;
+    }, []);
+    const onTouchEnd = useCallback((e) => {
+        if (touchStart.current === null) return;
+        const diff = touchStart.current - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) onLeft();
+            else onRight();
+        }
+        touchStart.current = null;
+    }, [onLeft, onRight]);
+    return { onTouchStart, onTouchEnd };
+};
+
 const CategoryGallery = () => {
     const { categoryId } = useParams();
     const { content, loading } = useContent();
@@ -40,6 +57,8 @@ const CategoryGallery = () => {
         e?.stopPropagation();
         setSelectedIndex((prev) => (prev - 1 + allPhotos.length) % allPhotos.length);
     }, [allPhotos.length]);
+
+    const swipeHandlers = useSwipe(showNext, showPrev);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -187,7 +206,7 @@ const CategoryGallery = () => {
     let globalOffset = 0;
 
     return (
-        <section style={{
+        <section className="cat-gallery-section" style={{
             maxWidth: '1400px',
             margin: '0 auto',
             padding: '12rem 2rem 6rem',
@@ -297,6 +316,7 @@ const CategoryGallery = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={closeModal}
+                        {...swipeHandlers}
                         style={{
                             position: 'fixed',
                             top: 0,
@@ -497,7 +517,13 @@ const CategoryGallery = () => {
                     .model-photo-item {
                         height: 260px;
                     }
-                    .cat-nav-btn svg { width: 32px; height: 32px; }
+                    .cat-nav-btn {
+                        padding: 0.5rem !important;
+                    }
+                    .cat-nav-btn svg { width: 28px; height: 28px; }
+                    .cat-gallery-section {
+                        padding-top: 7rem !important;
+                    }
                 }
             `}</style>
         </section>

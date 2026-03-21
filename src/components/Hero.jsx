@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, MapPin } from 'lucide-react';
 import { useContent } from '../contexts/ContentContext';
 
 const Hero = () => {
@@ -149,7 +149,38 @@ const Hero = () => {
                 <ArrowDown size={16} />
             </motion.a>
 
+            <motion.div
+                className="hero-location"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+            >
+                <MapPin size={12} strokeWidth={1.5} />
+                <span>Minneapolis&thinsp;/&thinsp;St. Paul</span>
+            </motion.div>
+
             <style>{`
+                .hero-location {
+                    position: absolute;
+                    bottom: 2.5rem;
+                    left: 2.5rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: rgba(255, 255, 255, 0.35);
+                    font-family: var(--font-heading);
+                    font-size: 0.65rem;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                    letter-spacing: 0.18em;
+                }
+                @media (max-width: 768px) {
+                    .hero-location {
+                        bottom: 1.5rem;
+                        left: 1.5rem;
+                        font-size: 0.6rem;
+                    }
+                }
                 .hero-section {
                     height: 100vh;
                     height: 100dvh;

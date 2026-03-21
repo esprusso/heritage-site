@@ -13,7 +13,7 @@ const Portfolio = () => {
     if (loading || !content?.portfolioCategories) return null;
 
     return (
-        <section style={{
+        <section className="portfolio-page-section" style={{
             maxWidth: '1400px',
             margin: '0 auto',
             padding: '10rem 2rem 6rem',
@@ -229,11 +229,20 @@ const Portfolio = () => {
                         gap: 0.75rem;
                     }
                     .portfolio-category-card {
-                        height: 60vh;
+                        height: clamp(280px, 45vh, 400px);
+                    }
+                    .portfolio-card-content {
+                        padding: 1.5rem 1.25rem;
+                    }
+                    .portfolio-card-title {
+                        font-size: 1.25rem;
                     }
                     .portfolio-card-count {
                         opacity: 1;
                         transform: translateY(0);
+                    }
+                    .portfolio-page-section {
+                        padding-top: 7rem !important;
                     }
                 }
             `}</style>

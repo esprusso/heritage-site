@@ -95,7 +95,7 @@ const Contact = () => {
                     }
                 `}</style>
 
-                <div style={{ marginTop: '4rem', display: 'flex', gap: '3rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <div className="contact-socials" style={{ marginTop: '4rem', display: 'flex', gap: '3rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     {content.socials.map((social) => (
                         social.name !== 'Email' && (
                             <a
@@ -126,6 +126,11 @@ const Contact = () => {
                 <style>{`
                     .social-icon-link:hover {
                         opacity: 0.6;
+                    }
+                    @media (max-width: 600px) {
+                        .contact-socials {
+                            gap: 2rem !important;
+                        }
                     }
                 `}</style>
             </motion.div>

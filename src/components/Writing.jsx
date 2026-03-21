@@ -193,6 +193,7 @@ const Writing = () => {
                     .blog-card-link {
                         flex-wrap: wrap;
                         gap: 0.75rem 1.25rem;
+                        padding: 1.5rem 0.5rem;
                     }
                     .blog-card-number {
                         font-size: 1.8rem;
@@ -200,6 +201,9 @@ const Writing = () => {
                     }
                     .blog-card-body {
                         flex-basis: calc(100% - 3.75rem);
+                    }
+                    .blog-card-title {
+                        font-size: 1rem;
                     }
                     .blog-card-end {
                         flex-direction: row;
