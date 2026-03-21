@@ -73,7 +73,7 @@
                     ]
                 },
                 {
-                    "model": "emiy",
+                    "model": "meredith",
                     "photos": [
                         { "id": 38, "src": "/images/ee-01.jpg", "caption": "" },
                         { "id": 4,  "src": "/images/ee-02.jpg", "caption": "" },
@@ -83,7 +83,7 @@
                     ]
                 },
                 {
-                    "model": "Model LL",
+                    "model": "emily",
                     "photos": [
                         { "id": 42, "src": "/images/ll-3.jpg",  "caption": "" }
                     ]
