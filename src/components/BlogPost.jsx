@@ -128,7 +128,9 @@ const BlogPost = () => {
                     style={{
                         fontSize: '1.2rem',
                         lineHeight: 1.8,
-                        color: 'var(--text-color)'
+                        color: 'var(--text-color)',
+                        fontFamily: "'Source Sans 3', 'source-sans-pro', sans-serif",
+                        fontWeight: 200
                     }}
                 />
 
