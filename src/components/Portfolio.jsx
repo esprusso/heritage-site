@@ -70,7 +70,7 @@ const Portfolio = () => {
                                 <h2 className="portfolio-card-title">{category.name}</h2>
                                 <p className="portfolio-card-desc">{category.description}</p>
                                 <span className="portfolio-card-count">
-                                    {category.photos.length} {category.photos.length === 1 ? 'image' : 'images'}
+                                    {(() => { const count = category.modelGroups?.reduce((sum, g) => sum + g.photos.length, 0) ?? 0; return `${count} ${count === 1 ? 'image' : 'images'}`; })()}
                                 </span>
                             </div>
                         </Link>
