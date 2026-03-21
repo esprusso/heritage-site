@@ -33,7 +33,7 @@
     ],
     "featuredWork": [
         {
-            "src": "/images/bb-5.jpg",
+            "src": "/images/ee-02.jpg",
             "category": "Editorial",
             "categoryId": "editorial"
         },
@@ -58,7 +58,7 @@
             "id": "editorial",
             "name": "Editorial",
             "description": "Fashion-forward portraiture with bold styling and dramatic lighting.",
-            "thumbnail": "/images/bb-5.jpg",
+            "thumbnail": "/images/ee-02.jpg",
             "nsfw": false,
             "photos": [
                 { "id": 33, "src": "/images/bb-1.jpg",  "caption": "" },
