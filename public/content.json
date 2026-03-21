@@ -43,9 +43,14 @@
             "categoryId": "portraits"
         },
         {
-            "src": "/images/ii-01.jpg",
+            "src": "/images/ii-1.jpg",
             "category": "Fine Art",
             "categoryId": "fine-art"
+        },
+        {
+            "src": "/images/hh-1.jpg",
+            "category": "Boudoir",
+            "categoryId": "boudoir"
         }
     ],
     "portfolioCategories": [

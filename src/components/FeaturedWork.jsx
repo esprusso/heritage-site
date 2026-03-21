@@ -83,10 +83,10 @@ const FeaturedWork = () => {
             <style>{`
                 .featured-grid {
                     display: grid;
-                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-columns: repeat(2, 1fr);
                     gap: 1.5rem;
                     width: 100%;
-                    max-width: 1200px;
+                    max-width: 1000px;
                 }
                 .featured-card {
                     display: block;
