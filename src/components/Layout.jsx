@@ -90,9 +90,6 @@ const Layout = ({ children }) => {
     const navLinks = [
         { name: 'Home', href: '/#home' },
         { name: 'Portfolio', href: '/portfolio' },
-        ...(content?.ai?.length > 0 ? [{ name: 'AI', href: '/#ai' }] : []),
-        ...(content?.video?.length > 0 ? [{ name: 'Video', href: '/#video' }] : []),
-        // ...(content?.vibe?.length > 0 ? [{ name: 'Vibe', href: '/vibe' }] : []),
         { name: 'Blog', href: '/blog' },
         { name: 'About', href: '/about' },
         { name: 'Contact', href: '/#contact' },

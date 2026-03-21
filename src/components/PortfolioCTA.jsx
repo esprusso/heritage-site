@@ -13,7 +13,7 @@ const PortfolioCTA = () => {
 
     return (
         <section id="portfolio" style={{
-            padding: '10rem 2rem',
+            padding: '6rem 2rem',
             scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
@@ -21,13 +21,13 @@ const PortfolioCTA = () => {
             justifyContent: 'center',
         }}>
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6 }}
                 style={{ textAlign: 'center', maxWidth: '800px' }}
             >
-                <nav className="portfolio-cta-categories" aria-label="Portfolio categories">
+                <div className="portfolio-cta-categories">
                     {categories.map((cat, i) => (
                         <React.Fragment key={cat.id}>
                             {i > 0 && <span className="portfolio-cta-divider" aria-hidden="true">/</span>}
@@ -39,19 +39,13 @@ const PortfolioCTA = () => {
                             </Link>
                         </React.Fragment>
                     ))}
-                </nav>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    style={{ marginTop: '3rem' }}
-                >
+                <div style={{ marginTop: '2.5rem' }}>
                     <Link to="/portfolio" className="portfolio-cta-button">
                         Explore the Portfolio <ArrowRight size={18} />
                     </Link>
-                </motion.div>
+                </div>
             </motion.div>
 
             <style>{`

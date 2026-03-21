@@ -2,8 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
 import PortfolioCTA from './components/PortfolioCTA';
-import AIShowcase from './components/AIShowcase';
-import VideoShowcase from './components/VideoShowcase';
 import Writing from './components/Writing';
 import Contact from './components/Contact';
 
@@ -37,8 +35,6 @@ const Home = () => (
     <>
         <Hero />
         <PortfolioCTA />
-        <AIShowcase />
-        <VideoShowcase />
         <Writing />
         <Contact />
     </>

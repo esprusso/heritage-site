@@ -22,15 +22,22 @@ const Writing = () => {
 
     if (loading) {
         return (
-            <section id="writing" style={{ minHeight: '80vh', padding: '8rem 2rem', scrollMarginTop: '100px' }}>
-                <div style={{ width: '200px', height: '3rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '4rem', borderRadius: '4px', margin: '0 auto 4rem' }}></div>
-                <div className="blog-grid">
-                    {[1, 2, 3, 4].map(i => (
+            <section id="writing" style={{
+                backgroundColor: '#f3f3f3',
+                margin: '0 -9999px',
+                padding: '6rem 9999px',
+                scrollMarginTop: '100px'
+            }}>
+                <div className="blog-list">
+                    {[1, 2, 3].map(i => (
                         <div key={i} className="blog-card-skeleton">
-                            <div style={{ width: '100%', height: '220px', backgroundColor: 'var(--skeleton-color)' }}></div>
-                            <div style={{ padding: '1.5rem' }}>
-                                <div style={{ width: '80%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px', marginBottom: '0.75rem' }}></div>
-                                <div style={{ width: '40%', height: '0.8rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px' }}></div>
+                            <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', padding: '2rem 0.5rem' }}>
+                                <div style={{ width: '3.5rem', height: '2rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px', flexShrink: 0 }} />
+                                <div style={{ flex: 1 }}>
+                                    <div style={{ width: '60%', height: '1.1rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px', marginBottom: '0.5rem' }} />
+                                    <div style={{ width: '90%', height: '0.8rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px' }} />
+                                </div>
+                                <div style={{ width: '5rem', height: '0.7rem', backgroundColor: 'var(--skeleton-color)', borderRadius: '4px', flexShrink: 0 }} />
                             </div>
                         </div>
                     ))}
@@ -41,14 +48,10 @@ const Writing = () => {
 
     return (
         <section id="writing" style={{
-            minHeight: '80vh',
-            padding: '8rem 2rem',
             scrollMarginTop: '100px',
-            display: 'flex',
-            flexDirection: 'column',
             backgroundColor: '#f3f3f3',
             margin: '0 -9999px',
-            padding: '8rem 9999px',
+            padding: '6rem 9999px',
         }}>
             {validWritings.length > 0 ? (
                 <div className="blog-list">
