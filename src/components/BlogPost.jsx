@@ -129,6 +129,7 @@ const BlogPost = () => {
                         fontSize: '1.2rem',
                         lineHeight: 1.8,
                         color: 'var(--text-color)',
+                        fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
                     }}
                 />
 
