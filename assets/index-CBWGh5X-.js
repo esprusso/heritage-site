@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/VibeShowcase-CzDgbuKz.js","assets/vendor-motion-JbGu3LFv.js","assets/vendor-react-CDFnBdCK.js","assets/chevron-right-CDwc9gg5.js","assets/BlogPost-Cv0fTc4W.js","assets/arrow-left-C63OPbb7.js","assets/Portfolio-CbgbNkcQ.js","assets/CategoryGallery-ZqgxwqUq.js","assets/About-CHbsKC_B.js","assets/NotFound-BQFy9B7M.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/VibeShowcase-BDscvo13.js","assets/vendor-motion-JbGu3LFv.js","assets/vendor-react-CDFnBdCK.js","assets/chevron-right-CtYLgXop.js","assets/BlogPost-X92RvMOK.js","assets/arrow-left-B62Qsvzy.js","assets/Portfolio-DZVvkA6D.js","assets/CategoryGallery-BC5KwIMV.js","assets/About-CbxIO4yE.js","assets/NotFound-BQFy9B7M.js"])))=>i.map(i=>d[i]);
 import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r as w,R as lt,u as Bt,L as ce,b as zt,c as U,B as It}from"./vendor-react-CDFnBdCK.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))n(o);new MutationObserver(o=>{for(const s of o)if(s.type==="childList")for(const i of s.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&n(i)}).observe(document,{childList:!0,subtree:!0});function r(o){const s={};return o.integrity&&(s.integrity=o.integrity),o.referrerPolicy&&(s.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?s.credentials="include":o.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function n(o){if(o.ep)return;o.ep=!0;const s=r(o);fetch(o.href,s)}})();var ct,Me=Ut;ct=Me.createRoot,Me.hydrateRoot;const ut=w.createContext(),$t=({children:e})=>{const[t,r]=w.useState(null),[n,o]=w.useState(!0),[s,i]=w.useState(null);return w.useEffect(()=>{fetch("/content.json").then(a=>{if(!a.ok)throw new Error("Failed to load content configuration");return a.json()}).then(a=>{r(a),o(!1)}).catch(a=>{console.error("Error loading content:",a),i(a),o(!1)})},[]),c.jsx(ut.Provider,{value:{content:t,loading:n,error:s},children:e})},Oe=()=>w.useContext(ut);class Mt extends lt.Component{constructor(t){super(t),this.state={hasError:!1,error:null}}static getDerivedStateFromError(t){return{hasError:!0,error:t}}componentDidCatch(t,r){console.error("ErrorBoundary caught an error:",t,r)}render(){return this.state.hasError?c.jsxs("div",{style:{minHeight:"100vh",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",padding:"2rem",textAlign:"center",fontFamily:"var(--font-heading, Montserrat, sans-serif)"},role:"alert",children:[c.jsx("h1",{style:{fontSize:"clamp(2rem, 5vw, 3rem)",fontWeight:600,marginBottom:"1rem",textTransform:"uppercase"},children:"Something went wrong"}),c.jsx("p",{style:{fontSize:"1.1rem",color:"var(--sub-text-color, #666)",marginBottom:"2rem",maxWidth:"500px"},children:"An unexpected error occurred. Please try refreshing the page."}),c.jsx("button",{onClick:()=>{this.setState({hasError:!1,error:null}),window.location.href="/"},style:{display:"inline-flex",alignItems:"center",padding:"1rem 2.5rem",backgroundColor:"var(--accent-color, #000)",color:"var(--bg-color, #fff)",border:"none",borderRadius:"50px",fontSize:"0.9rem",fontWeight:500,textTransform:"uppercase",letterSpacing:"0.1em",cursor:"pointer",transition:"opacity 0.3s ease"},children:"Return Home"})]}):this.props.children}}const qt="modulepreload",Ht=function(e){return"/"+e},qe={},H=function(t,r,n){let o=Promise.resolve();if(r&&r.length>0){document.getElementsByTagName("link");const i=document.querySelector("meta[property=csp-nonce]"),a=(i==null?void 0:i.nonce)||(i==null?void 0:i.getAttribute("nonce"));o=Promise.allSettled(r.map(p=>{if(p=Ht(p),p in qe)return;qe[p]=!0;const f=p.endsWith(".css"),d=f?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${p}"]${d}`))return;const m=document.createElement("link");if(m.rel=f?"stylesheet":qt,f||(m.as="script"),m.crossOrigin="",m.href=p,a&&m.setAttribute("nonce",a),document.head.appendChild(m),f)return new Promise((y,E)=>{m.addEventListener("load",y),m.addEventListener("error",()=>E(new Error(`Unable to preload CSS for ${p}`)))})}))}function s(i){const a=new Event("vite:preloadError",{cancelable:!0});if(a.payload=i,window.dispatchEvent(a),!a.defaultPrevented)throw i}return o.then(i=>{for(const a of i||[])a.status==="rejected"&&s(a.reason);return t().catch(s)})};/**
  * @license lucide-react v0.331.0 - ISC
  *
@@ -155,7 +155,7 @@ import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r 
                     background-color: #111;
                     border-top: 1px solid rgba(255, 255, 255, 0.1);
                 }
-            `}),c.jsx("div",{className:"grain-overlay","aria-hidden":"true"}),c.jsx("a",{href:"#main-content",className:"skip-to-content",children:"Skip to main content"}),c.jsxs("nav",{className:`nav-container ${i?"scrolled":""} ${!i&&f?"transparent-light":""}`,"aria-label":"Main navigation",children:[c.jsx(ce,{to:"/",className:"logo",children:c.jsx("img",{src:"/images/RH_bw.png",alt:t.hero.title,className:"logo-img"})}),c.jsx("ul",{className:"desktop-menu",role:"menubar",children:E.map(u=>c.jsx("li",{role:"none",children:c.jsx("a",{href:u.href,role:"menuitem",children:u.name})},u.name))}),c.jsx("button",{ref:m,className:"mobile-toggle",onClick:()=>s(!0),"aria-label":"Open navigation menu","aria-expanded":o,"aria-controls":"mobile-menu",children:c.jsx(Yt,{size:24})})]}),c.jsx(Dt,{children:o&&c.jsxs(G.div,{ref:y,id:"mobile-menu",role:"dialog","aria-modal":"true","aria-label":"Navigation menu",initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.4,ease:[.16,1,.3,1]},style:{position:"fixed",top:0,left:0,width:"100%",height:"100vh",backgroundColor:"var(--bg-color)",zIndex:200,display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"},children:[c.jsx("button",{ref:d,onClick:()=>s(!1),"aria-label":"Close navigation menu",style:{position:"absolute",top:"2rem",right:"2rem",background:"transparent",border:"none",color:"var(--text-color)",cursor:"pointer",padding:"0.5rem"},children:c.jsx(Zt,{size:32})}),c.jsx("nav",{"aria-label":"Mobile navigation",style:{display:"flex",flexDirection:"column",gap:"2rem",alignItems:"center"},children:E.map(u=>c.jsx(G.a,{href:u.href,initial:{y:20,opacity:0},animate:{y:0,opacity:1},transition:{duration:.5},onClick:()=>s(!1),style:{fontFamily:"var(--font-display)",fontSize:"3rem",color:"var(--accent-color)",fontStyle:"italic",fontWeight:400,letterSpacing:"0.02em"},children:u.name},u.name))})]})}),c.jsx("main",{id:"main-content",children:e}),c.jsx("footer",{children:c.jsxs("p",{style:{color:"rgba(255, 255, 255, 0.3)",fontSize:"0.75rem"},children:["© ",new Date().getFullYear()," ",t.meta.title]})})]})},er=()=>c.jsxs("section",{id:"home",className:"hero-section",children:[c.jsx("div",{className:"hero-bg","aria-hidden":"true"}),c.jsxs("div",{className:"hero-split",children:[c.jsxs("a",{href:"#writing",className:"hero-panel hero-panel-left hero-fade-in",onClick:e=>{var t;e.preventDefault(),(t=document.getElementById("writing"))==null||t.scrollIntoView({behavior:"smooth"})},children:[c.jsx("span",{className:"hero-panel-label",children:"Stories & Essays"}),c.jsx("span",{className:"hero-panel-title",children:"Ink"}),c.jsx("span",{className:"hero-panel-hint",children:"Read"})]}),c.jsxs("div",{className:"hero-center hero-reveal",children:[c.jsx("div",{className:"hero-divider-line"}),c.jsxs("div",{className:"hero-center-content",children:[c.jsx("span",{className:"hero-name",children:"Russ Heritage"}),c.jsxs("span",{className:"hero-location",children:[c.jsx(Gt,{size:10,strokeWidth:1.5}),"Twin Cities"]})]}),c.jsx("div",{className:"hero-divider-line"})]}),c.jsxs("a",{href:"#portfolio",className:"hero-panel hero-panel-right hero-fade-in",onClick:e=>{var t;e.preventDefault(),(t=document.getElementById("portfolio"))==null||t.scrollIntoView({behavior:"smooth"})},children:[c.jsx("span",{className:"hero-panel-label",children:"Editorial & Portraiture"}),c.jsx("span",{className:"hero-panel-title",children:"Lens"}),c.jsx("span",{className:"hero-panel-hint",children:"View"})]})]}),c.jsx("style",{children:`
+            `}),c.jsx("div",{className:"grain-overlay","aria-hidden":"true"}),c.jsx("a",{href:"#main-content",className:"skip-to-content",children:"Skip to main content"}),c.jsxs("nav",{className:`nav-container ${i?"scrolled":""} ${!i&&f?"transparent-light":""}`,"aria-label":"Main navigation",children:[c.jsx(ce,{to:"/",className:"logo",children:c.jsx("img",{src:"/images/RH_bw.png",alt:t.hero.title,className:"logo-img"})}),c.jsx("ul",{className:"desktop-menu",role:"menubar",children:E.map(u=>c.jsx("li",{role:"none",children:c.jsx("a",{href:u.href,role:"menuitem",children:u.name})},u.name))}),c.jsx("button",{ref:m,className:"mobile-toggle",onClick:()=>s(!0),"aria-label":"Open navigation menu","aria-expanded":o,"aria-controls":"mobile-menu",children:c.jsx(Yt,{size:24})})]}),c.jsx(Dt,{children:o&&c.jsxs(G.div,{ref:y,id:"mobile-menu",role:"dialog","aria-modal":"true","aria-label":"Navigation menu",initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:.4,ease:[.16,1,.3,1]},style:{position:"fixed",top:0,left:0,width:"100%",height:"100vh",backgroundColor:"var(--bg-color)",zIndex:200,display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"},children:[c.jsx("button",{ref:d,onClick:()=>s(!1),"aria-label":"Close navigation menu",style:{position:"absolute",top:"2rem",right:"2rem",background:"transparent",border:"none",color:"var(--text-color)",cursor:"pointer",padding:"0.5rem"},children:c.jsx(Zt,{size:32})}),c.jsx("nav",{"aria-label":"Mobile navigation",style:{display:"flex",flexDirection:"column",gap:"2rem",alignItems:"center"},children:E.map(u=>c.jsx(G.a,{href:u.href,initial:{y:20,opacity:0},animate:{y:0,opacity:1},transition:{duration:.5},onClick:()=>s(!1),style:{fontFamily:"var(--font-display)",fontSize:"3rem",color:"var(--accent-color)",fontStyle:"italic",fontWeight:400,letterSpacing:"0.02em"},children:u.name},u.name))})]})}),c.jsx("main",{id:"main-content",children:e}),c.jsx("footer",{children:c.jsxs("p",{style:{color:"rgba(255, 255, 255, 0.3)",fontSize:"0.75rem"},children:["© ",new Date().getFullYear()," ",t.meta.title]})})]})},er=()=>c.jsxs("section",{id:"home",className:"hero-section",children:[c.jsx("div",{className:"hero-bg","aria-hidden":"true"}),c.jsxs("div",{className:"hero-split",children:[c.jsx("div",{className:"hero-panel hero-panel-left hero-fade-in",children:c.jsxs("a",{href:"#writing",className:"hero-block",onClick:e=>{var t;e.preventDefault(),(t=document.getElementById("writing"))==null||t.scrollIntoView({behavior:"smooth"})},children:[c.jsx("span",{className:"hero-block-label",children:"Stories & Essays"}),c.jsx("span",{className:"hero-block-title",children:"Ink"}),c.jsx("span",{className:"hero-block-hint",children:"Read"})]})}),c.jsxs("div",{className:"hero-center hero-reveal",children:[c.jsx("div",{className:"hero-divider-line"}),c.jsxs("div",{className:"hero-center-content",children:[c.jsx("span",{className:"hero-name",children:"Russ Heritage"}),c.jsxs("span",{className:"hero-location",children:[c.jsx(Gt,{size:10,strokeWidth:1.5}),"Twin Cities"]})]}),c.jsx("div",{className:"hero-divider-line"})]}),c.jsx("div",{className:"hero-panel hero-panel-right hero-fade-in",children:c.jsxs("a",{href:"#portfolio",className:"hero-block",onClick:e=>{var t;e.preventDefault(),(t=document.getElementById("portfolio"))==null||t.scrollIntoView({behavior:"smooth"})},children:[c.jsx("span",{className:"hero-block-label",children:"Editorial & Portraiture"}),c.jsx("span",{className:"hero-block-title",children:"Lens"}),c.jsx("span",{className:"hero-block-hint",children:"View"})]})})]}),c.jsx("style",{children:`
                 .hero-section {
                     height: 100vh;
                     height: 100dvh;
@@ -177,26 +177,38 @@ import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r 
                     height: 100%;
                     align-items: stretch;
                 }
+
+                /* Panels are passive layout containers */
                 .hero-panel {
                     flex: 1;
                     display: flex;
-                    flex-direction: column;
                     justify-content: center;
+                    align-items: center;
+                }
+
+                /* The clickable block — contained around the text */
+                .hero-block {
+                    display: flex;
+                    flex-direction: column;
                     align-items: center;
                     text-decoration: none;
                     color: #fff;
                     cursor: pointer;
+                    padding: 3rem 4rem;
                     position: relative;
-                    transition: background 0.5s ease;
+                    border: 1px solid rgba(255, 255, 255, 0);
+                    transition: border-color 0.5s ease, background 0.5s ease;
                 }
-                .hero-panel:hover {
+                .hero-block:hover {
+                    border-color: rgba(255, 255, 255, 0.25);
                     background: rgba(0, 0, 0, 0.15);
                 }
-                .hero-panel:focus-visible {
+                .hero-block:focus-visible {
                     outline: 2px solid rgba(255,255,255,0.6);
-                    outline-offset: -8px;
+                    outline-offset: 4px;
                 }
-                .hero-panel-label {
+
+                .hero-block-label {
                     font-family: var(--font-heading);
                     font-size: 0.7rem;
                     font-weight: 500;
@@ -206,10 +218,10 @@ import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r 
                     margin-bottom: 1.25rem;
                     transition: color 0.4s ease;
                 }
-                .hero-panel:hover .hero-panel-label {
+                .hero-block:hover .hero-block-label {
                     color: rgba(255, 255, 255, 0.65);
                 }
-                .hero-panel-title {
+                .hero-block-title {
                     font-family: var(--font-display);
                     font-size: clamp(4rem, 10vw, 8rem);
                     font-weight: 400;
@@ -218,10 +230,10 @@ import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r 
                     line-height: 1;
                     transition: letter-spacing 0.5s cubic-bezier(0.25, 1, 0.5, 1);
                 }
-                .hero-panel:hover .hero-panel-title {
+                .hero-block:hover .hero-block-title {
                     letter-spacing: 0.06em;
                 }
-                .hero-panel-hint {
+                .hero-block-hint {
                     font-family: var(--font-heading);
                     font-size: 0.7rem;
                     font-weight: 400;
@@ -232,7 +244,7 @@ import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r 
                     transition: color 0.4s ease, transform 0.4s ease;
                     transform: translateY(4px);
                 }
-                .hero-panel:hover .hero-panel-hint {
+                .hero-block:hover .hero-block-hint {
                     color: rgba(255, 255, 255, 0.5);
                     transform: translateY(0);
                 }
@@ -314,14 +326,18 @@ import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r 
                     .hero-panel {
                         flex: 1;
                     }
-                    .hero-panel-title {
+                    .hero-block {
+                        padding: 2rem 3rem;
+                        border-color: rgba(255, 255, 255, 0.15);
+                    }
+                    .hero-block-title {
                         font-size: clamp(3.5rem, 14vw, 5rem);
                     }
-                    .hero-panel-label {
+                    .hero-block-label {
                         font-size: 0.6rem;
                         margin-bottom: 0.75rem;
                     }
-                    .hero-panel-hint {
+                    .hero-block-hint {
                         margin-top: 1rem;
                         color: rgba(255, 255, 255, 0.3);
                         transform: translateY(0);
@@ -586,5 +602,5 @@ import{j as c,A as Dt,m as G}from"./vendor-motion-JbGu3LFv.js";import{a as Ut,r 
                             gap: 2rem !important;
                         }
                     }
-                `})]})})},Xn=w.lazy(()=>H(()=>import("./VibeShowcase-CzDgbuKz.js"),__vite__mapDeps([0,1,2,3]))),Gn=w.lazy(()=>H(()=>import("./BlogPost-Cv0fTc4W.js"),__vite__mapDeps([4,1,2,5]))),Yn=w.lazy(()=>H(()=>import("./Portfolio-CbgbNkcQ.js"),__vite__mapDeps([6,1,2]))),Zn=w.lazy(()=>H(()=>import("./CategoryGallery-ZqgxwqUq.js"),__vite__mapDeps([7,1,2,5,3]))),Qn=w.lazy(()=>H(()=>import("./About-CHbsKC_B.js"),__vite__mapDeps([8,1,2]))),eo=w.lazy(()=>H(()=>import("./NotFound-BQFy9B7M.js"),__vite__mapDeps([9,1,2]))),to=()=>c.jsx("div",{style:{minHeight:"60vh",display:"flex",justifyContent:"center",alignItems:"center",fontFamily:"var(--font-heading)",fontSize:"1rem",textTransform:"uppercase",letterSpacing:"0.1em",color:"var(--sub-text-color)"},children:"Loading..."}),ro=()=>c.jsxs(c.Fragment,{children:[c.jsx(er,{}),c.jsx(tr,{}),c.jsx(_t,{}),c.jsx(Kn,{})]});function no(){return c.jsx(Qt,{children:c.jsx(w.Suspense,{fallback:c.jsx(to,{}),children:c.jsxs(zt,{children:[c.jsx(U,{path:"/",element:c.jsx(ro,{})}),c.jsx(U,{path:"/portfolio",element:c.jsx(Yn,{})}),c.jsx(U,{path:"/portfolio/:categoryId",element:c.jsx(Zn,{})}),c.jsx(U,{path:"/vibe",element:c.jsx(Xn,{})}),c.jsx(U,{path:"/blog",element:c.jsx(_t,{})}),c.jsx(U,{path:"/blog/:slug",element:c.jsx(Gn,{})}),c.jsx(U,{path:"/about",element:c.jsx(Qn,{})}),c.jsx(U,{path:"*",element:c.jsx(eo,{})})]})})})}typeof window<"u"&&(console.log("%c RH ",'background: #000; color: #fff; font-size: 24px; font-family: "Cormorant Garamond", serif; font-style: italic; padding: 8px 16px;'),console.log(`%cPhotographer & Writer — Minneapolis / St. Paul
+                `})]})})},Xn=w.lazy(()=>H(()=>import("./VibeShowcase-BDscvo13.js"),__vite__mapDeps([0,1,2,3]))),Gn=w.lazy(()=>H(()=>import("./BlogPost-X92RvMOK.js"),__vite__mapDeps([4,1,2,5]))),Yn=w.lazy(()=>H(()=>import("./Portfolio-DZVvkA6D.js"),__vite__mapDeps([6,1,2]))),Zn=w.lazy(()=>H(()=>import("./CategoryGallery-BC5KwIMV.js"),__vite__mapDeps([7,1,2,5,3]))),Qn=w.lazy(()=>H(()=>import("./About-CbxIO4yE.js"),__vite__mapDeps([8,1,2]))),eo=w.lazy(()=>H(()=>import("./NotFound-BQFy9B7M.js"),__vite__mapDeps([9,1,2]))),to=()=>c.jsx("div",{style:{minHeight:"60vh",display:"flex",justifyContent:"center",alignItems:"center",fontFamily:"var(--font-heading)",fontSize:"1rem",textTransform:"uppercase",letterSpacing:"0.1em",color:"var(--sub-text-color)"},children:"Loading..."}),ro=()=>c.jsxs(c.Fragment,{children:[c.jsx(er,{}),c.jsx(tr,{}),c.jsx(_t,{}),c.jsx(Kn,{})]});function no(){return c.jsx(Qt,{children:c.jsx(w.Suspense,{fallback:c.jsx(to,{}),children:c.jsxs(zt,{children:[c.jsx(U,{path:"/",element:c.jsx(ro,{})}),c.jsx(U,{path:"/portfolio",element:c.jsx(Yn,{})}),c.jsx(U,{path:"/portfolio/:categoryId",element:c.jsx(Zn,{})}),c.jsx(U,{path:"/vibe",element:c.jsx(Xn,{})}),c.jsx(U,{path:"/blog",element:c.jsx(_t,{})}),c.jsx(U,{path:"/blog/:slug",element:c.jsx(Gn,{})}),c.jsx(U,{path:"/about",element:c.jsx(Qn,{})}),c.jsx(U,{path:"*",element:c.jsx(eo,{})})]})})})}typeof window<"u"&&(console.log("%c RH ",'background: #000; color: #fff; font-size: 24px; font-family: "Cormorant Garamond", serif; font-style: italic; padding: 8px 16px;'),console.log(`%cPhotographer & Writer — Minneapolis / St. Paul
 %cCurious about the code? Say hello → russheritage.com`,"color: #333; font-size: 12px; font-family: Montserrat, sans-serif; letter-spacing: 0.05em;","color: #999; font-size: 11px; font-family: Montserrat, sans-serif;"));ct(document.getElementById("root")).render(c.jsx(w.StrictMode,{children:c.jsx(Mt,{children:c.jsx($t,{children:c.jsx(It,{children:c.jsx(no,{})})})})}));export{Zt as X,V as c,io as g,Oe as u};
