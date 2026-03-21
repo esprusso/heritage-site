@@ -121,7 +121,10 @@ const BlogPost = () => {
 
                 <div
                     className="gh-content"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html) }}
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html, {
+                        ADD_TAGS: ['iframe'],
+                        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src', 'width', 'height', 'title']
+                    }) }}
                     style={{
                         fontSize: '1.2rem',
                         lineHeight: 1.8,
@@ -137,7 +140,11 @@ const BlogPost = () => {
                     .gh-content blockquote { border-left: 2px solid var(--accent-color); padding-left: 2rem; margin: 3rem 0; font-style: italic; }
                     .gh-content a { text-decoration: underline; color: inherit; }
                     .gh-content figure { margin: 3rem 0; }
+                    .gh-content figcaption { text-align: center; margin-top: 0.75rem; color: var(--sub-text-color); font-size: 0.9rem; font-style: italic; }
                     .gh-content img { max-width: 100%; height: auto; }
+                    .gh-content iframe { max-width: 100%; display: block; margin: 0 auto; }
+                    .gh-content .kg-embed-card { margin: 3rem 0; }
+                    .gh-content .kg-embed-card iframe { width: 100%; aspect-ratio: 16/9; height: auto; }
                     .gh-content ul, .gh-content ol { margin-bottom: 2rem; padding-left: 2rem; }
                     .gh-content li { margin-bottom: 0.5rem; }
                 `}</style>
