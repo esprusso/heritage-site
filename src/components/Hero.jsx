@@ -7,20 +7,22 @@ const Hero = () => {
             {/* Background image */}
             <div className="hero-bg" aria-hidden="true" />
 
-            {/* Split panels */}
+            {/* Split layout */}
             <div className="hero-split">
-                <a
-                    href="#writing"
-                    className="hero-panel hero-panel-left hero-fade-in"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        document.getElementById('writing')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                >
-                    <span className="hero-panel-label">Stories & Essays</span>
-                    <span className="hero-panel-title">Ink</span>
-                    <span className="hero-panel-hint">Read</span>
-                </a>
+                <div className="hero-panel hero-panel-left hero-fade-in">
+                    <a
+                        href="#writing"
+                        className="hero-block"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('writing')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
+                        <span className="hero-block-label">Stories & Essays</span>
+                        <span className="hero-block-title">Ink</span>
+                        <span className="hero-block-hint">Read</span>
+                    </a>
+                </div>
 
                 {/* Center divider with name and location */}
                 <div className="hero-center hero-reveal">
@@ -35,18 +37,20 @@ const Hero = () => {
                     <div className="hero-divider-line" />
                 </div>
 
-                <a
-                    href="#portfolio"
-                    className="hero-panel hero-panel-right hero-fade-in"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                >
-                    <span className="hero-panel-label">Editorial & Portraiture</span>
-                    <span className="hero-panel-title">Lens</span>
-                    <span className="hero-panel-hint">View</span>
-                </a>
+                <div className="hero-panel hero-panel-right hero-fade-in">
+                    <a
+                        href="#portfolio"
+                        className="hero-block"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
+                        <span className="hero-block-label">Editorial & Portraiture</span>
+                        <span className="hero-block-title">Lens</span>
+                        <span className="hero-block-hint">View</span>
+                    </a>
+                </div>
             </div>
 
             <style>{`
@@ -71,26 +75,38 @@ const Hero = () => {
                     height: 100%;
                     align-items: stretch;
                 }
+
+                /* Panels are passive layout containers */
                 .hero-panel {
                     flex: 1;
                     display: flex;
-                    flex-direction: column;
                     justify-content: center;
+                    align-items: center;
+                }
+
+                /* The clickable block — contained around the text */
+                .hero-block {
+                    display: flex;
+                    flex-direction: column;
                     align-items: center;
                     text-decoration: none;
                     color: #fff;
                     cursor: pointer;
+                    padding: 3rem 4rem;
                     position: relative;
-                    transition: background 0.5s ease;
+                    border: 1px solid rgba(255, 255, 255, 0);
+                    transition: border-color 0.5s ease, background 0.5s ease;
                 }
-                .hero-panel:hover {
+                .hero-block:hover {
+                    border-color: rgba(255, 255, 255, 0.25);
                     background: rgba(0, 0, 0, 0.15);
                 }
-                .hero-panel:focus-visible {
+                .hero-block:focus-visible {
                     outline: 2px solid rgba(255,255,255,0.6);
-                    outline-offset: -8px;
+                    outline-offset: 4px;
                 }
-                .hero-panel-label {
+
+                .hero-block-label {
                     font-family: var(--font-heading);
                     font-size: 0.7rem;
                     font-weight: 500;
@@ -100,10 +116,10 @@ const Hero = () => {
                     margin-bottom: 1.25rem;
                     transition: color 0.4s ease;
                 }
-                .hero-panel:hover .hero-panel-label {
+                .hero-block:hover .hero-block-label {
                     color: rgba(255, 255, 255, 0.65);
                 }
-                .hero-panel-title {
+                .hero-block-title {
                     font-family: var(--font-display);
                     font-size: clamp(4rem, 10vw, 8rem);
                     font-weight: 400;
@@ -112,10 +128,10 @@ const Hero = () => {
                     line-height: 1;
                     transition: letter-spacing 0.5s cubic-bezier(0.25, 1, 0.5, 1);
                 }
-                .hero-panel:hover .hero-panel-title {
+                .hero-block:hover .hero-block-title {
                     letter-spacing: 0.06em;
                 }
-                .hero-panel-hint {
+                .hero-block-hint {
                     font-family: var(--font-heading);
                     font-size: 0.7rem;
                     font-weight: 400;
@@ -126,7 +142,7 @@ const Hero = () => {
                     transition: color 0.4s ease, transform 0.4s ease;
                     transform: translateY(4px);
                 }
-                .hero-panel:hover .hero-panel-hint {
+                .hero-block:hover .hero-block-hint {
                     color: rgba(255, 255, 255, 0.5);
                     transform: translateY(0);
                 }
@@ -208,14 +224,18 @@ const Hero = () => {
                     .hero-panel {
                         flex: 1;
                     }
-                    .hero-panel-title {
+                    .hero-block {
+                        padding: 2rem 3rem;
+                        border-color: rgba(255, 255, 255, 0.15);
+                    }
+                    .hero-block-title {
                         font-size: clamp(3.5rem, 14vw, 5rem);
                     }
-                    .hero-panel-label {
+                    .hero-block-label {
                         font-size: 0.6rem;
                         margin-bottom: 0.75rem;
                     }
-                    .hero-panel-hint {
+                    .hero-block-hint {
                         margin-top: 1rem;
                         color: rgba(255, 255, 255, 0.3);
                         transform: translateY(0);
