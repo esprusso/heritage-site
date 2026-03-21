@@ -137,9 +137,9 @@ const Writing = () => {
                 .blog-card-number {
                     font-family: var(--font-display);
                     font-size: clamp(2rem, 3vw, 2.8rem);
-                    font-weight: 300;
+                    font-weight: 400;
                     color: rgba(0, 0, 0, 0.15);
-                    letter-spacing: -0.02em;
+                    letter-spacing: 0.02em;
                     flex-shrink: 0;
                     width: 3.5rem;
                     line-height: 1;
@@ -155,10 +155,10 @@ const Writing = () => {
                 .blog-card-title {
                     font-family: var(--font-heading);
                     font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-                    font-weight: 600;
+                    font-weight: 500;
                     line-height: 1.3;
                     margin-bottom: 0.4rem;
-                    letter-spacing: 0.01em;
+                    letter-spacing: 0.02em;
                 }
                 .blog-card-excerpt {
                     font-family: var(--font-body);
@@ -177,7 +177,7 @@ const Writing = () => {
                     font-family: var(--font-body);
                     font-size: 0.7rem;
                     text-transform: uppercase;
-                    letter-spacing: 0.12em;
+                    letter-spacing: 0.2em;
                     color: var(--sub-text-color);
                     white-space: nowrap;
                 }

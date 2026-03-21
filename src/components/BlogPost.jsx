@@ -62,7 +62,8 @@ const BlogPost = () => {
                 color: 'var(--sub-text-color)',
                 textDecoration: 'none',
                 textTransform: 'uppercase',
-                fontSize: '0.9rem',
+                fontSize: '0.8rem',
+                fontWeight: 500,
                 letterSpacing: '0.1em',
                 transition: 'color 0.3s ease'
             }}>
@@ -76,18 +77,22 @@ const BlogPost = () => {
             >
                 <header style={{ marginBottom: '4rem', textAlign: 'center' }}>
                     <h1 style={{
+                        fontFamily: 'var(--font-display)',
                         fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                         marginBottom: '1rem',
-                        fontWeight: 500,
-                        lineHeight: 1.2
+                        fontWeight: 400,
+                        fontStyle: 'italic',
+                        lineHeight: 1.2,
+                        letterSpacing: '0.02em',
                     }}>
                         {post.title}
                     </h1>
                     <time style={{
                         color: 'var(--sub-text-color)',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        fontSize: '0.9rem'
+                        letterSpacing: '0.2em',
+                        fontSize: '0.8rem',
+                        fontWeight: 400,
                     }}>
                         {new Date(post.published_at).toLocaleDateString('en-US', {
                             year: 'numeric',
@@ -126,10 +131,10 @@ const BlogPost = () => {
                         ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src', 'width', 'height', 'title']
                     }) }}
                     style={{
-                        fontSize: '1.2rem',
+                        fontSize: '1.1rem',
                         lineHeight: 1.8,
                         color: 'var(--text-color)',
-                        fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+                        fontFamily: 'var(--font-body)',
                     }}
                 />
 

@@ -26,11 +26,11 @@ const Portfolio = () => {
                 style={{ textAlign: 'center', marginBottom: '4rem' }}
             >
                 <h1 style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                    fontWeight: 500,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.15em',
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(3rem, 8vw, 6rem)',
+                    fontWeight: 400,
+                    fontStyle: 'italic',
+                    letterSpacing: '0.02em',
                     marginBottom: '1rem'
                 }}>
                     Portfolio
@@ -140,9 +140,9 @@ const Portfolio = () => {
                     left: 22px;
                     font-family: var(--font-display);
                     font-size: 0.85rem;
-                    font-weight: 300;
+                    font-weight: 400;
                     color: rgba(255, 255, 255, 0.5);
-                    letter-spacing: 0.1em;
+                    letter-spacing: 0.02em;
                     z-index: 3;
                     transition: color 0.4s ease;
                 }
@@ -178,7 +178,7 @@ const Portfolio = () => {
                     font-size: 0.7rem;
                     color: rgba(255, 255, 255, 0.45);
                     text-transform: uppercase;
-                    letter-spacing: 0.15em;
+                    letter-spacing: 0.2em;
                     display: block;
                     opacity: 0;
                     transform: translateY(6px);

@@ -89,7 +89,7 @@ const PortfolioCTA = () => {
                     font-size: 0.78rem;
                     font-weight: 500;
                     text-transform: uppercase;
-                    letter-spacing: 0.18em;
+                    letter-spacing: 0.1em;
                     color: var(--sub-text-color);
                     text-decoration: none;
                     transition: color 0.3s ease;

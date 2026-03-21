@@ -120,9 +120,9 @@ const About = () => {
                 .about-section-title {
                     font-family: var(--font-heading);
                     font-size: 0.8rem;
-                    font-weight: 600;
+                    font-weight: 500;
                     text-transform: uppercase;
-                    letter-spacing: 0.18em;
+                    letter-spacing: 0.2em;
                     margin-bottom: 1.25rem;
                     color: var(--sub-text-color);
                 }

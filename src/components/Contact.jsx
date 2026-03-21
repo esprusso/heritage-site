@@ -45,9 +45,9 @@ const Contact = () => {
                 transition={{ duration: 0.6 }}
             >
                 <p style={{
-                    fontSize: '0.75rem',
+                    fontSize: '0.8rem',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.25em',
+                    letterSpacing: '0.2em',
                     marginBottom: '2.5rem',
                     color: 'var(--sub-text-color)',
                     fontWeight: 500
@@ -57,16 +57,18 @@ const Contact = () => {
                 <a
                     href={`mailto:${content.socials.find(s => s.name === 'Email')?.url.replace('mailto:', '')}`}
                     style={{
-                        fontFamily: 'var(--font-heading)',
-                        fontSize: 'clamp(3rem, 8vw, 6rem)',
-                        fontWeight: '800',
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 'clamp(3.5rem, 9vw, 7rem)',
+                        fontWeight: 400,
+                        fontStyle: 'italic',
                         textDecoration: 'none',
                         color: 'var(--accent-color)',
-                        lineHeight: 1
+                        lineHeight: 1,
+                        letterSpacing: '0.02em',
                     }}
                     className="contact-link"
                 >
-                    GET IN TOUCH
+                    Get in Touch
                 </a>
                 <style>{`
                     .contact-link {
@@ -110,10 +112,9 @@ const Contact = () => {
                                     alignItems: 'center',
                                     gap: '0.8rem',
                                     textDecoration: 'none',
-                                    fontSize: '0.9rem',
-                                    fontWeight: 600,
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.05em'
+                                    fontSize: '0.85rem',
+                                    fontWeight: 500,
+                                    letterSpacing: '0.1em'
                                 }}
                                 className="social-icon-link"
                             >

@@ -139,18 +139,24 @@ const Layout = ({ children }) => {
                     color: var(--text-color) !important;
                 }
                 .logo {
-                    font-family: var(--font-heading);
-                    font-size: 1.5rem;
-                    font-weight: 800;
-                    letter-spacing: -0.02em;
-                    text-transform: uppercase;
+                    display: flex;
+                    align-items: center;
+                }
+                .logo-img {
+                    height: 38px;
+                    width: auto;
+                    display: block;
+                    transition: filter 0.3s ease;
+                }
+                .transparent-light .logo-img {
+                    filter: invert(1);
                 }
                 .desktop-menu {
                     display: flex;
                     gap: 2rem;
                 }
                 .desktop-menu a {
-                    font-size: 0.85rem;
+                    font-size: 0.8rem;
                     text-transform: uppercase;
                     letter-spacing: 0.1em;
                     position: relative;
@@ -205,7 +211,7 @@ const Layout = ({ children }) => {
             {/* Navigation */}
             <nav className={`nav-container ${scrolled ? 'scrolled' : ''} ${!scrolled && isHome ? 'transparent-light' : ''}`} aria-label="Main navigation">
                 <Link to="/" className="logo">
-                    {content.hero.title}
+                    <img src="/images/RH_bw.png" alt={content.hero.title} className="logo-img" />
                 </Link>
 
                 <ul className="desktop-menu" role="menubar">
@@ -283,11 +289,12 @@ const Layout = ({ children }) => {
                                     transition={{ duration: 0.5 }}
                                     onClick={() => setIsMenuOpen(false)}
                                     style={{
-                                        fontFamily: 'var(--font-heading)',
+                                        fontFamily: 'var(--font-display)',
                                         fontSize: '3rem',
                                         color: 'var(--accent-color)',
-                                        textTransform: 'uppercase',
-                                        fontWeight: 700
+                                        fontStyle: 'italic',
+                                        fontWeight: 400,
+                                        letterSpacing: '0.02em',
                                     }}
                                 >
                                     {link.name}

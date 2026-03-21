@@ -57,7 +57,7 @@ const Hero = () => {
                 <p style={{
                     fontSize: 'clamp(0.75rem, 1.5vw, 0.95rem)',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.3em',
+                    letterSpacing: '0.2em',
                     color: 'rgba(255, 255, 255, 0.55)',
                     fontWeight: 400,
                     fontFamily: 'var(--font-heading)',
@@ -126,7 +126,7 @@ const Hero = () => {
                     fontSize: '0.7rem',
                     textTransform: 'uppercase',
                     letterSpacing: '0.2em',
-                    color: 'rgba(255, 255, 255, 0.5)',
+                    color: 'rgba(255, 255, 255, 0.45)',
                     fontFamily: 'var(--font-heading)',
                     fontWeight: 400,
                 }}
@@ -159,7 +159,7 @@ const Hero = () => {
                     textDecoration: 'none',
                     fontSize: '0.75rem',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.2em',
+                    letterSpacing: '0.1em',
                     cursor: 'pointer',
                     fontWeight: 500,
                     fontFamily: 'var(--font-heading)',

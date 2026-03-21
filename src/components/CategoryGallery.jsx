@@ -220,7 +220,8 @@ const CategoryGallery = () => {
                 color: 'var(--sub-text-color)',
                 textDecoration: 'none',
                 textTransform: 'uppercase',
-                fontSize: '0.9rem',
+                fontSize: '0.8rem',
+                fontWeight: 500,
                 letterSpacing: '0.1em',
                 fontFamily: 'var(--font-heading)',
                 transition: 'color 0.3s ease'
@@ -237,11 +238,11 @@ const CategoryGallery = () => {
                 style={{ marginBottom: '4rem' }}
             >
                 <h1 style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: 'clamp(2rem, 4vw, 3rem)',
-                    fontWeight: 500,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.15em',
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                    fontWeight: 400,
+                    fontStyle: 'italic',
+                    letterSpacing: '0.02em',
                     marginBottom: '0.5rem'
                 }}>
                     {category.name}
@@ -432,12 +433,11 @@ const CategoryGallery = () => {
 
                 .model-name {
                     font-family: var(--font-heading);
-                    font-size: 0.85rem;
+                    font-size: 0.8rem;
                     font-weight: 500;
                     text-transform: uppercase;
-                    letter-spacing: 0.12em;
+                    letter-spacing: 0.1em;
                     color: var(--sub-text-color);
-                    writing-mode: horizontal-tb;
                     text-align: center;
                 }
 
