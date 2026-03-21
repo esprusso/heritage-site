@@ -64,11 +64,15 @@ const PortfolioCTA = () => {
                     color: var(--text-color);
                     text-decoration: none;
                     padding: 0 0.75rem;
-                    transition: opacity 0.3s ease;
+                    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
                     line-height: 1.3;
                 }
-                .portfolio-cta-link:hover {
-                    opacity: 0.5;
+                .portfolio-cta-categories:hover .portfolio-cta-link {
+                    opacity: 0.35;
+                }
+                .portfolio-cta-categories:hover .portfolio-cta-link:hover {
+                    opacity: 1;
+                    transform: translateY(-2px);
                 }
                 .portfolio-cta-link:focus-visible {
                     outline: 2px solid var(--accent-color);

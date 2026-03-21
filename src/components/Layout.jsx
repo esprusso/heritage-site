@@ -146,7 +146,11 @@ const Layout = ({ children }) => {
                     height: 38px;
                     width: auto;
                     display: block;
-                    transition: filter 0.3s ease;
+                    transition: filter 0.3s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+                }
+                .logo:hover .logo-img {
+                    transform: scale(1.06);
+                    opacity: 0.8;
                 }
                 .transparent-light .logo-img {
                     filter: invert(1);
@@ -161,20 +165,30 @@ const Layout = ({ children }) => {
                     letter-spacing: 0.1em;
                     position: relative;
                     font-weight: 500;
+                    transition: opacity 0.3s ease;
+                }
+                .desktop-menu:hover a {
+                    opacity: 0.4;
+                }
+                .desktop-menu:hover a:hover {
+                    opacity: 1;
                 }
                 .desktop-menu a::after {
                     content: '';
                     position: absolute;
                     bottom: -4px;
                     left: 0;
-                    width: 0;
+                    width: 100%;
                     height: 1px;
                     background: currentColor;
-                    transition: width 0.3s ease;
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
                 }
                 .desktop-menu a:hover::after,
                 .desktop-menu a:focus-visible::after {
-                    width: 100%;
+                    transform: scaleX(1);
+                    transform-origin: left;
                 }
                 .mobile-toggle {
                     display: none;

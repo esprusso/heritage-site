@@ -58,7 +58,7 @@ const Contact = () => {
                     href={`mailto:${content.socials.find(s => s.name === 'Email')?.url.replace('mailto:', '')}`}
                     style={{
                         fontFamily: 'var(--font-display)',
-                        fontSize: 'clamp(3.5rem, 9vw, 7rem)',
+                        fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
                         fontWeight: 400,
                         fontStyle: 'italic',
                         textDecoration: 'none',
@@ -73,22 +73,22 @@ const Contact = () => {
                 <style>{`
                     .contact-link {
                         position: relative;
-                        transition: opacity 0.3s;
+                        transition: letter-spacing 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s;
                     }
                     .contact-link:hover {
-                        opacity: 0.8;
+                        letter-spacing: 0.06em;
                     }
                     .contact-link::after {
                         content: '';
                         position: absolute;
-                        bottom: 0;
+                        bottom: -4px;
                         left: 0;
                         width: 100%;
-                        height: 2px;
+                        height: 1px;
                         background: currentColor;
                         transform: scaleX(0);
                         transform-origin: right;
-                        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                     }
                     .contact-link:hover::after,
                     .contact-link:focus-visible::after {

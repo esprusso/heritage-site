@@ -110,6 +110,7 @@ const Portfolio = () => {
                     height: 100%;
                     object-fit: cover;
                     object-position: center 20%;
+                    filter: saturate(0.85);
                     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                                 filter 0.6s ease;
                 }
@@ -187,6 +188,7 @@ const Portfolio = () => {
                 /* Hover effects */
                 .portfolio-category-card:hover .portfolio-card-img {
                     transform: scale(1.06);
+                    filter: saturate(1.1);
                 }
                 .portfolio-category-card:hover .portfolio-card-overlay {
                     background: linear-gradient(

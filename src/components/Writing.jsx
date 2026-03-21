@@ -146,7 +146,10 @@ const Writing = () => {
                     transition: color 0.4s ease;
                 }
                 .blog-card:hover .blog-card-number {
-                    color: rgba(0, 0, 0, 0.4);
+                    color: rgba(0, 0, 0, 0.6);
+                }
+                .blog-card:hover .blog-card-title {
+                    color: var(--sub-text-color);
                 }
                 .blog-card-body {
                     flex: 1;
@@ -159,6 +162,7 @@ const Writing = () => {
                     line-height: 1.3;
                     margin-bottom: 0.4rem;
                     letter-spacing: 0.02em;
+                    transition: color 0.4s ease;
                 }
                 .blog-card-excerpt {
                     font-family: var(--font-body);
