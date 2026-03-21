@@ -62,7 +62,7 @@
             "nsfw": false,
             "modelGroups": [
                 {
-                    "model": "Model BB",
+                    "model": "lilliana",
                     "photos": [
                         { "id": 33, "src": "/images/bb-1.jpg",  "caption": "" },
                         { "id": 34, "src": "/images/bb-2.jpg",  "caption": "" },
@@ -73,7 +73,7 @@
                     ]
                 },
                 {
-                    "model": "Model EE",
+                    "model": "emiy",
                     "photos": [
                         { "id": 38, "src": "/images/ee-01.jpg", "caption": "" },
                         { "id": 4,  "src": "/images/ee-02.jpg", "caption": "" },
@@ -89,24 +89,17 @@
                     ]
                 },
                 {
-                    "model": "Model MM",
+                    "model": "NY Fashion",
                     "photos": [
+                        { "id": 47, "src": "/images/zz-2.jpg",  "caption": "" },
                         { "id": 43, "src": "/images/mm-1.jpg",  "caption": "" },
                         { "id": 44, "src": "/images/mm-2.jpg",  "caption": "" },
                         { "id": 45, "src": "/images/mm-3.jpg",  "caption": "" },
-                        { "id": 46, "src": "/images/mm-4.jpg",  "caption": "" }
+                        { "id": 46, "src": "/images/mm-4.jpg",  "caption": "" },
+                        { "id": 49, "src": "/images/zz-8.jpg",  "caption": "" },
+                        { "id": 48, "src": "/images/zz-5.jpg",  "caption": "" }
                     ]
                 },
-                {
-                    "model": "Model ZZ",
-                    "photos": [
-                        { "id": 47, "src": "/images/zz-2.jpg",  "caption": "" },
-                        { "id": 48, "src": "/images/zz-5.jpg",  "caption": "" },
-                        { "id": 49, "src": "/images/zz-8.jpg",  "caption": "" },
-                        { "id": 50, "src": "/images/zz-11.jpg", "caption": "" },
-                        { "id": 51, "src": "/images/zz-14.jpg", "caption": "" }
-                    ]
-                }
             ]
         },
         {
