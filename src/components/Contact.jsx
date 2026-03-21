@@ -29,14 +29,19 @@ const Contact = () => {
     const { content, loading } = useContent();
     if (loading) return null;
     return (
-        <section id="contact" style={{
-            padding: '4rem 2rem 6rem',
+        <section id="contact" className="contact-section" style={{
+            padding: '8rem 2rem',
             scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            textAlign: 'center'
+            textAlign: 'center',
+            backgroundColor: '#111',
+            color: '#fff',
+            margin: '0 -9999px',
+            paddingLeft: '9999px',
+            paddingRight: '9999px',
         }}>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -44,12 +49,23 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
+                <p className="contact-section-label" style={{
+                    fontSize: '0.7rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.2em',
+                    marginBottom: '3rem',
+                    color: 'rgba(255, 255, 255, 0.4)',
+                    fontWeight: 500,
+                    fontFamily: 'var(--font-heading)',
+                }}>
+                    Connect
+                </p>
                 <p style={{
                     fontSize: '0.8rem',
                     textTransform: 'uppercase',
                     letterSpacing: '0.2em',
                     marginBottom: '2.5rem',
-                    color: 'var(--sub-text-color)',
+                    color: 'rgba(255, 255, 255, 0.5)',
                     fontWeight: 500
                 }}>
                     Interested in working together?
@@ -62,7 +78,7 @@ const Contact = () => {
                         fontWeight: 400,
                         fontStyle: 'italic',
                         textDecoration: 'none',
-                        color: 'var(--accent-color)',
+                        color: '#fff',
                         lineHeight: 1,
                         letterSpacing: '0.02em',
                     }}
@@ -106,7 +122,7 @@ const Contact = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
-                                    color: 'var(--text-color)',
+                                    color: 'rgba(255, 255, 255, 0.6)',
                                     transition: 'opacity 0.2s',
                                     display: 'flex',
                                     alignItems: 'center',

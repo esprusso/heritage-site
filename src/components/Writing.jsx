@@ -23,9 +23,9 @@ const Writing = () => {
     if (loading) {
         return (
             <section id="writing" style={{
-                backgroundColor: '#f3f3f3',
+                backgroundColor: '#f0f0ee',
                 margin: '0 -9999px',
-                padding: '6rem 9999px',
+                padding: '8rem 9999px',
                 scrollMarginTop: '100px'
             }}>
                 <div className="blog-list">
@@ -49,10 +49,11 @@ const Writing = () => {
     return (
         <section id="writing" style={{
             scrollMarginTop: '100px',
-            backgroundColor: '#f3f3f3',
+            backgroundColor: '#f0f0ee',
             margin: '0 -9999px',
-            padding: '6rem 9999px',
+            padding: '8rem 9999px',
         }}>
+            <p className="writing-section-label">Writing</p>
             {validWritings.length > 0 ? (
                 <div className="blog-list">
                     {validWritings.map((item, index) => {
@@ -103,6 +104,16 @@ const Writing = () => {
 
 
             <style>{`
+                .writing-section-label {
+                    font-family: var(--font-heading);
+                    font-size: 0.7rem;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2em;
+                    color: var(--sub-text-color);
+                    text-align: center;
+                    margin-bottom: 3rem;
+                }
                 .blog-list {
                     max-width: 900px;
                     margin: 0 auto;

@@ -13,7 +13,7 @@ const PortfolioCTA = () => {
 
     return (
         <section id="portfolio" style={{
-            padding: '6rem 2rem',
+            padding: '8rem 2rem',
             scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
@@ -27,6 +27,7 @@ const PortfolioCTA = () => {
                 transition={{ duration: 0.6 }}
                 style={{ textAlign: 'center', maxWidth: '800px' }}
             >
+                <p className="portfolio-cta-section-label">Photography</p>
                 <div className="portfolio-cta-categories">
                     {categories.map((cat, i) => (
                         <React.Fragment key={cat.id}>
@@ -49,6 +50,15 @@ const PortfolioCTA = () => {
             </motion.div>
 
             <style>{`
+                .portfolio-cta-section-label {
+                    font-family: var(--font-heading);
+                    font-size: 0.7rem;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2em;
+                    color: var(--sub-text-color);
+                    margin-bottom: 2.5rem;
+                }
                 .portfolio-cta-categories {
                     display: flex;
                     flex-wrap: wrap;

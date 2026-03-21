@@ -210,7 +210,8 @@ const Layout = ({ children }) => {
                 footer {
                     padding: 3rem 2rem;
                     text-align: center;
-                    border-top: 1px solid var(--border-color);
+                    background-color: #111;
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
                 }
             `}</style>
 
@@ -326,7 +327,7 @@ const Layout = ({ children }) => {
 
             {/* Footer */}
             <footer>
-                <p style={{ color: 'var(--sub-text-color)', fontSize: '0.75rem' }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.3)', fontSize: '0.75rem' }}>
                     &copy; {new Date().getFullYear()} {content.meta.title}
                 </p>
             </footer>
