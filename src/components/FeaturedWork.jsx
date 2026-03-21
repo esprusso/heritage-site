@@ -10,9 +10,11 @@ const FeaturedWork = () => {
 
     if (loading || !content?.featuredWork) return null;
 
+    const items = content.featuredWork;
+
     return (
         <section id="portfolio" style={{
-            padding: '8rem 2rem',
+            padding: '8rem 2rem 6rem',
             scrollMarginTop: '100px',
             display: 'flex',
             flexDirection: 'column',
@@ -35,40 +37,39 @@ const FeaturedWork = () => {
                 Featured Work
             </motion.h2>
 
-            <div className="featured-grid">
-                {content.featuredWork.map((item, index) => (
-                    <motion.div
-                        key={item.categoryId}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                    >
-                        <Link
-                            to={`/portfolio/${item.categoryId}`}
-                            className="featured-card"
-                            aria-label={`View ${item.category} portfolio`}
+            <div className="featured-rows">
+                {items.map((item, index) => {
+                    const reversed = index % 2 !== 0;
+                    return (
+                        <motion.div
+                            key={item.categoryId}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <div className="featured-image-wrapper">
-                                <img
-                                    src={item.src}
-                                    alt={item.category}
-                                    loading="lazy"
-                                />
-                                <div className="featured-overlay">
-                                    <span className="featured-label">{item.category}</span>
+                            <Link
+                                to={`/portfolio/${item.categoryId}`}
+                                className={`featured-row-card${reversed ? ' featured-row-reversed' : ''}`}
+                                aria-label={`View ${item.category} portfolio`}
+                            >
+                                <div className="featured-row-image">
+                                    <img src={item.src} alt={item.category} loading="lazy" />
                                 </div>
-                            </div>
-                        </Link>
-                    </motion.div>
-                ))}
+                                <div className="featured-row-info">
+                                    <span className="featured-row-label">{item.category}</span>
+                                </div>
+                            </Link>
+                        </motion.div>
+                    );
+                })}
             </div>
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                style={{ marginTop: '3rem' }}
+                style={{ marginTop: '3.5rem' }}
             >
                 <Link
                     to="/portfolio"
@@ -81,68 +82,86 @@ const FeaturedWork = () => {
             <ScrollPrompt targetId="writing" label="Read Words" />
 
             <style>{`
-                .featured-grid {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 1.5rem;
+                .featured-rows {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.25rem;
                     width: 100%;
-                    max-width: 1000px;
+                    max-width: 1100px;
                 }
-                .featured-card {
-                    display: block;
+
+                .featured-row-card {
+                    display: grid;
+                    grid-template-columns: 3fr 2fr;
                     text-decoration: none;
                     color: inherit;
                     outline: none;
+                    height: clamp(320px, 35vw, 450px);
                 }
-                .featured-card:focus-visible {
+
+                .featured-row-card:focus-visible {
                     outline: 2px solid var(--accent-color);
                     outline-offset: 4px;
                 }
-                .featured-image-wrapper {
-                    position: relative;
-                    overflow: hidden;
-                    aspect-ratio: 3 / 4;
+
+                .featured-row-reversed {
+                    grid-template-columns: 2fr 3fr;
                 }
-                .featured-image-wrapper img {
+
+                .featured-row-reversed .featured-row-image {
+                    order: 2;
+                }
+
+                .featured-row-reversed .featured-row-info {
+                    order: 1;
+                }
+
+                .featured-row-image {
+                    overflow: hidden;
+                    position: relative;
+                    height: 100%;
+                }
+
+                .featured-row-image img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    object-position: center 20%;
                     display: block;
-                    transition: transform 0.5s ease;
+                    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                 }
-                .featured-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: rgba(0, 0, 0, 0);
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: center;
-                    padding: 2rem;
-                    transition: background 0.4s ease;
-                }
-                .featured-label {
-                    font-family: var(--font-heading);
-                    font-size: 1rem;
-                    font-weight: 500;
-                    text-transform: uppercase;
-                    letter-spacing: 0.15em;
-                    color: white;
-                    opacity: 0;
-                    transform: translateY(10px);
-                    transition: opacity 0.4s ease, transform 0.4s ease;
-                }
-                .featured-card:hover .featured-overlay,
-                .featured-card:focus-visible .featured-overlay {
-                    background: rgba(0, 0, 0, 0.4);
-                }
-                .featured-card:hover .featured-label,
-                .featured-card:focus-visible .featured-label {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                .featured-card:hover img {
+
+                .featured-row-card:hover img {
                     transform: scale(1.03);
                 }
+
+                .featured-row-info {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #f3f3f3;
+                    transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+
+                .featured-row-label {
+                    font-family: var(--font-heading);
+                    font-size: 1.05rem;
+                    font-weight: 500;
+                    letter-spacing: 0.08em;
+                    color: var(--sub-text-color);
+                    transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+
+                .featured-row-card:hover .featured-row-info,
+                .featured-row-card:focus-visible .featured-row-info {
+                    background: #1a1a1a;
+                }
+
+                .featured-row-card:hover .featured-row-label,
+                .featured-row-card:focus-visible .featured-row-label {
+                    color: #f0f0f0;
+                }
+
                 .portfolio-cta {
                     display: inline-flex;
                     align-items: center;
@@ -167,11 +186,24 @@ const FeaturedWork = () => {
                     outline: 2px solid var(--accent-color);
                     outline-offset: 4px;
                 }
+
                 @media (max-width: 768px) {
-                    .featured-grid {
+                    .featured-row-card,
+                    .featured-row-reversed {
                         grid-template-columns: 1fr;
-                        max-width: 500px;
-                        margin: 0 auto;
+                        min-height: auto;
+                    }
+                    .featured-row-image {
+                        aspect-ratio: 4 / 3;
+                    }
+                    .featured-row-reversed .featured-row-image {
+                        order: 0;
+                    }
+                    .featured-row-reversed .featured-row-info {
+                        order: 0;
+                    }
+                    .featured-row-info {
+                        padding: 2.5rem 1.5rem;
                     }
                 }
             `}</style>
