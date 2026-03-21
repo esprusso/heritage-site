@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
 import About from './components/About';
-import Gallery from './components/Gallery';
+import FeaturedWork from './components/FeaturedWork';
 import AIShowcase from './components/AIShowcase';
 import VideoShowcase from './components/VideoShowcase';
 import Writing from './components/Writing';
@@ -13,6 +13,8 @@ import { Routes, Route } from 'react-router-dom';
 // Lazy load non-home routes — these are separate pages, not needed on initial load
 const VibeShowcase = lazy(() => import('./components/VibeShowcase'));
 const BlogPost = lazy(() => import('./components/BlogPost'));
+const Portfolio = lazy(() => import('./components/Portfolio'));
+const CategoryGallery = lazy(() => import('./components/CategoryGallery'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
 const RouteLoader = () => (
@@ -34,7 +36,7 @@ const RouteLoader = () => (
 const Home = () => (
     <>
         <Hero />
-        <Gallery />
+        <FeaturedWork />
         <AIShowcase />
         <VideoShowcase />
         <Writing />
@@ -49,6 +51,8 @@ function App() {
             <Suspense fallback={<RouteLoader />}>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/portfolio/:categoryId" element={<CategoryGallery />} />
                     <Route path="/vibe" element={<VibeShowcase />} />
                     <Route path="/blog" element={<Writing />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
