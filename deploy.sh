@@ -24,6 +24,9 @@ if [[ -n $(git status -s) ]]; then
     echo "git commit -m \"$commit_message\""
     git commit -m "$commit_message"
     
+    echo "git pull --rebase origin main"
+    git pull --rebase origin main
+
     echo "git push origin main"
     git push origin main
     
