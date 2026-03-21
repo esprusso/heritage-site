@@ -14,16 +14,16 @@ const Portfolio = () => {
 
     return (
         <section style={{
-            maxWidth: '900px',
+            maxWidth: '1400px',
             margin: '0 auto',
-            padding: '12rem 2rem 6rem',
+            padding: '10rem 2rem 6rem',
             minHeight: '100vh'
         }}>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                style={{ textAlign: 'center', marginBottom: '5rem' }}
+                style={{ textAlign: 'center', marginBottom: '4rem' }}
             >
                 <h1 style={{
                     fontFamily: 'var(--font-heading)',
@@ -47,100 +47,193 @@ const Portfolio = () => {
             </motion.div>
 
             <div className="portfolio-grid">
-                {content.portfolioCategories.map((category, index) => (
-                    <motion.div
-                        key={category.id}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1, duration: 0.5 }}
-                    >
-                        <Link
-                            to={`/portfolio/${category.id}`}
-                            className="portfolio-category-card"
-                            aria-label={`View ${category.name} gallery`}
+                {content.portfolioCategories.map((category, index) => {
+                    const count = category.modelGroups?.reduce((sum, g) => sum + g.photos.length, 0) ?? 0;
+                    const num = String(index + 1).padStart(2, '0');
+                    return (
+                        <motion.div
+                            key={category.id}
+                            className="portfolio-card-wrapper"
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.12, duration: 0.6 }}
                         >
-                            <div className="portfolio-card-image">
+                            <Link
+                                to={`/portfolio/${category.id}`}
+                                className="portfolio-category-card"
+                                aria-label={`View ${category.name} gallery`}
+                            >
                                 <img
                                     src={category.thumbnail}
                                     alt={category.name}
                                     loading="lazy"
+                                    className="portfolio-card-img"
                                 />
-                            </div>
-                            <div className="portfolio-card-info">
-                                <h2 className="portfolio-card-title">{category.name}</h2>
-                                <p className="portfolio-card-desc">{category.description}</p>
-                                <span className="portfolio-card-count">
-                                    {(() => { const count = category.modelGroups?.reduce((sum, g) => sum + g.photos.length, 0) ?? 0; return `${count} ${count === 1 ? 'image' : 'images'}`; })()}
-                                </span>
-                            </div>
-                        </Link>
-                    </motion.div>
-                ))}
+                                <div className="portfolio-card-overlay" />
+                                <div className="portfolio-card-frame" />
+                                <span className="portfolio-card-number">{num}</span>
+                                <div className="portfolio-card-content">
+                                    <div className="portfolio-card-rule" />
+                                    <h2 className="portfolio-card-title">{category.name}</h2>
+                                    <span className="portfolio-card-count">
+                                        {count} {count === 1 ? 'image' : 'images'}
+                                    </span>
+                                </div>
+                            </Link>
+                        </motion.div>
+                    );
+                })}
             </div>
 
             <style>{`
                 .portfolio-grid {
                     display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 2rem;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 1rem;
+                }
+                .portfolio-card-wrapper {
+                    position: relative;
                 }
                 .portfolio-category-card {
+                    position: relative;
                     display: block;
                     text-decoration: none;
-                    color: inherit;
-                    border: 1px solid var(--border-color);
+                    color: #fff;
                     overflow: hidden;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    height: clamp(420px, 62vh, 720px);
                     outline: none;
                 }
-                .portfolio-category-card:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-                }
-                .portfolio-category-card:focus-visible {
-                    outline: 2px solid var(--accent-color);
-                    outline-offset: 4px;
-                }
-                .portfolio-card-image {
-                    overflow: hidden;
-                }
-                .portfolio-card-image img {
+                .portfolio-card-img {
+                    position: absolute;
+                    inset: 0;
                     width: 100%;
-                    height: auto;
-                    display: block;
-                    transition: transform 0.5s ease;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center 20%;
+                    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                                filter 0.6s ease;
                 }
-                .portfolio-category-card:hover .portfolio-card-image img {
-                    transform: scale(1.03);
+                .portfolio-card-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(
+                        to top,
+                        rgba(0, 0, 0, 0.65) 0%,
+                        rgba(0, 0, 0, 0.1) 45%,
+                        transparent 100%
+                    );
+                    transition: background 0.5s ease;
                 }
-                .portfolio-card-info {
-                    padding: 1.5rem;
+                /* Inset border frame */
+                .portfolio-card-frame {
+                    position: absolute;
+                    inset: 10px;
+                    border: 1px solid rgba(255, 255, 255, 0.25);
+                    z-index: 2;
+                    pointer-events: none;
+                    transition: inset 0.5s ease, border-color 0.5s ease;
+                }
+                /* Issue number top-left */
+                .portfolio-card-number {
+                    position: absolute;
+                    top: 22px;
+                    left: 22px;
+                    font-family: var(--font-display);
+                    font-size: 0.85rem;
+                    font-weight: 300;
+                    color: rgba(255, 255, 255, 0.5);
+                    letter-spacing: 0.1em;
+                    z-index: 3;
+                    transition: color 0.4s ease;
+                }
+                .portfolio-card-content {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 2rem 1.75rem;
+                    z-index: 3;
+                }
+                /* Decorative rule above title */
+                .portfolio-card-rule {
+                    width: 24px;
+                    height: 1px;
+                    background: rgba(255, 255, 255, 0.5);
+                    margin-bottom: 0.75rem;
+                    transition: width 0.5s ease, background 0.4s ease;
                 }
                 .portfolio-card-title {
-                    font-family: var(--font-heading);
-                    font-size: 1.3rem;
-                    font-weight: 500;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1em;
+                    font-family: var(--font-display);
+                    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+                    font-weight: 400;
+                    font-style: italic;
+                    text-transform: none;
+                    letter-spacing: 0.03em;
                     margin-bottom: 0.5rem;
-                }
-                .portfolio-card-desc {
-                    font-family: var(--font-body);
-                    font-size: 0.95rem;
-                    color: var(--sub-text-color);
-                    line-height: 1.5;
-                    margin-bottom: 0.75rem;
+                    color: #fff;
+                    line-height: 1.2;
                 }
                 .portfolio-card-count {
                     font-family: var(--font-body);
-                    font-size: 0.8rem;
-                    color: var(--sub-text-color);
+                    font-size: 0.7rem;
+                    color: rgba(255, 255, 255, 0.45);
                     text-transform: uppercase;
-                    letter-spacing: 0.08em;
+                    letter-spacing: 0.15em;
+                    display: block;
+                    opacity: 0;
+                    transform: translateY(6px);
+                    transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
                 }
-                @media (max-width: 600px) {
+                /* Hover effects */
+                .portfolio-category-card:hover .portfolio-card-img {
+                    transform: scale(1.06);
+                }
+                .portfolio-category-card:hover .portfolio-card-overlay {
+                    background: linear-gradient(
+                        to top,
+                        rgba(0, 0, 0, 0.8) 0%,
+                        rgba(0, 0, 0, 0.25) 50%,
+                        rgba(0, 0, 0, 0.05) 100%
+                    );
+                }
+                .portfolio-category-card:hover .portfolio-card-frame {
+                    inset: 14px;
+                    border-color: rgba(255, 255, 255, 0.45);
+                }
+                .portfolio-category-card:hover .portfolio-card-number {
+                    color: rgba(255, 255, 255, 0.8);
+                }
+                .portfolio-category-card:hover .portfolio-card-rule {
+                    width: 48px;
+                    background: rgba(255, 255, 255, 0.8);
+                }
+                .portfolio-category-card:hover .portfolio-card-count {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .portfolio-category-card:focus-visible {
+                    outline: 2px solid #fff;
+                    outline-offset: -4px;
+                }
+                @media (max-width: 900px) {
+                    .portfolio-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                    .portfolio-category-card {
+                        height: clamp(320px, 50vh, 520px);
+                    }
+                }
+                @media (max-width: 550px) {
                     .portfolio-grid {
                         grid-template-columns: 1fr;
+                        gap: 0.75rem;
+                    }
+                    .portfolio-category-card {
+                        height: 60vh;
+                    }
+                    .portfolio-card-count {
+                        opacity: 1;
+                        transform: translateY(0);
                     }
                 }
             `}</style>

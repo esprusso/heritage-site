@@ -433,120 +433,6 @@
             ]
         },
         {
-            "id": "portraits",
-            "name": "Portraits",
-            "description": "Authentic, compelling portraits that capture genuine presence.",
-            "thumbnail": "/images/aa-1.jpg",
-            "nsfw": false,
-            "modelGroups": [
-                {
-                    "model": "valerie",
-                    "photos": [
-                        {
-                            "id": 2,
-                            "src": "/images/aa-1.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 88,
-                            "src": "/images/aa-2.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 89,
-                            "src": "/images/aa-3.jpg",
-                            "caption": ""
-                        }
-                    ]
-                },
-                {
-                    "model": "brittni",
-                    "photos": [
-                        {
-                            "id": 90,
-                            "src": "/images/ff-2.jpg",
-                            "caption": ""
-                        }
-                    ]
-                },
-                {
-                    "model": "josie",
-                    "photos": [
-                        {
-                            "id": 91,
-                            "src": "/images/kk-1.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 92,
-                            "src": "/images/kk-2.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 93,
-                            "src": "/images/kk-3.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 10,
-                            "src": "/images/kk-4.jpg",
-                            "caption": ""
-                        }
-                    ]
-                },
-                {
-                    "model": "emily",
-                    "photos": [
-                        {
-                            "id": 94,
-                            "src": "/images/ll-1.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 95,
-                            "src": "/images/ll-2.jpg",
-                            "caption": ""
-                        }
-                    ]
-                },
-                {
-                    "model": "models",
-                    "photos": [
-                        {
-                            "id": 96,
-                            "src": "/images/zz-3.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 97,
-                            "src": "/images/zz-4.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 98,
-                            "src": "/images/zz-6.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 99,
-                            "src": "/images/zz-9.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 100,
-                            "src": "/images/zz-12.jpg",
-                            "caption": ""
-                        },
-                        {
-                            "id": 101,
-                            "src": "/images/zz-13.jpg",
-                            "caption": ""
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "id": "boudoir",
             "name": "Boudoir",
             "description": "Intimate, empowering sessions celebrating confidence and beauty.",
@@ -679,6 +565,120 @@
                         {
                             "id": 32,
                             "src": "/images/zz-10.jpg",
+                            "caption": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "portraits",
+            "name": "Portraits",
+            "description": "Authentic, compelling portraits that capture genuine presence.",
+            "thumbnail": "/images/aa-1.jpg",
+            "nsfw": false,
+            "modelGroups": [
+                {
+                    "model": "valerie",
+                    "photos": [
+                        {
+                            "id": 2,
+                            "src": "/images/aa-1.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 88,
+                            "src": "/images/aa-2.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 89,
+                            "src": "/images/aa-3.jpg",
+                            "caption": ""
+                        }
+                    ]
+                },
+                {
+                    "model": "brittni",
+                    "photos": [
+                        {
+                            "id": 90,
+                            "src": "/images/ff-2.jpg",
+                            "caption": ""
+                        }
+                    ]
+                },
+                {
+                    "model": "josie",
+                    "photos": [
+                        {
+                            "id": 91,
+                            "src": "/images/kk-1.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 92,
+                            "src": "/images/kk-2.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 93,
+                            "src": "/images/kk-3.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 10,
+                            "src": "/images/kk-4.jpg",
+                            "caption": ""
+                        }
+                    ]
+                },
+                {
+                    "model": "emily",
+                    "photos": [
+                        {
+                            "id": 94,
+                            "src": "/images/ll-1.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 95,
+                            "src": "/images/ll-2.jpg",
+                            "caption": ""
+                        }
+                    ]
+                },
+                {
+                    "model": "models",
+                    "photos": [
+                        {
+                            "id": 96,
+                            "src": "/images/zz-3.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 97,
+                            "src": "/images/zz-4.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 98,
+                            "src": "/images/zz-6.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 99,
+                            "src": "/images/zz-9.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 100,
+                            "src": "/images/zz-12.jpg",
+                            "caption": ""
+                        },
+                        {
+                            "id": 101,
+                            "src": "/images/zz-13.jpg",
                             "caption": ""
                         }
                     ]

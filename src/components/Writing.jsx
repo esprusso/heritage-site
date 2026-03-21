@@ -4,8 +4,6 @@ import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../lib/ghost';
 
-import ScrollPrompt from './ScrollPrompt';
-
 const Writing = () => {
     const [writings, setWritings] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -26,7 +24,7 @@ const Writing = () => {
         return (
             <section id="writing" style={{ minHeight: '80vh', padding: '8rem 2rem', scrollMarginTop: '100px' }}>
                 <div style={{ width: '200px', height: '3rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '4rem', borderRadius: '4px', margin: '0 auto 4rem' }}></div>
-                <div className="blog-masonry">
+                <div className="blog-grid">
                     {[1, 2, 3, 4].map(i => (
                         <div key={i} className="blog-card-skeleton">
                             <div style={{ width: '100%', height: '220px', backgroundColor: 'var(--skeleton-color)' }}></div>
@@ -47,73 +45,52 @@ const Writing = () => {
             padding: '8rem 2rem',
             scrollMarginTop: '100px',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            backgroundColor: '#f3f3f3',
+            margin: '0 -9999px',
+            padding: '8rem 9999px',
         }}>
-            <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                style={{
-                    marginBottom: '4rem',
-                    fontSize: 'clamp(2rem, 4vw, 3rem)',
-                    textAlign: 'center',
-                    fontWeight: 500,
-                    letterSpacing: '0.02em'
-                }}
-            >
-                Written Words
-            </motion.h2>
-
             {validWritings.length > 0 ? (
-                <div className="blog-masonry">
-                    {validWritings.map((item, index) => (
-                        <motion.div
-                            key={item.id}
-                            className="blog-card"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.08 }}
-                        >
-                            <Link
-                                to={`/blog/${item.slug}`}
-                                style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
+                <div className="blog-list">
+                    {validWritings.map((item, index) => {
+                        const num = String(index + 1).padStart(2, '0');
+                        const dateStr = new Date(item.published_at).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                        });
+                        return (
+                            <motion.div
+                                key={item.id}
+                                className="blog-card"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.08 }}
                             >
-                                {item.feature_image && (
-                                    <div className="blog-card-thumbnail">
-                                        <img
-                                            src={item.feature_image}
-                                            alt={item.title}
-                                            loading="lazy"
-                                            onError={(e) => {
-                                                e.target.parentElement.style.display = 'none';
-                                            }}
-                                        />
+                                <Link
+                                    to={`/blog/${item.slug}`}
+                                    className="blog-card-link"
+                                >
+                                    <span className="blog-card-number">{num}</span>
+                                    <div className="blog-card-body">
+                                        <h3 className="blog-card-title">{item.title}</h3>
+                                        {item.excerpt && (
+                                            <p className="blog-card-excerpt">
+                                                {item.excerpt.length > 140
+                                                    ? item.excerpt.substring(0, 140) + '...'
+                                                    : item.excerpt}
+                                            </p>
+                                        )}
                                     </div>
-                                )}
-                                <div className="blog-card-content">
-                                    <h3 className="blog-card-title">
-                                        {item.title}
+                                    <div className="blog-card-end">
+                                        <span className="blog-card-date">{dateStr}</span>
                                         <ArrowUpRight size={16} className="blog-card-arrow" />
-                                    </h3>
-                                    {item.excerpt && (
-                                        <p className="blog-card-excerpt">
-                                            {item.excerpt.length > 120
-                                                ? item.excerpt.substring(0, 120) + '...'
-                                                : item.excerpt}
-                                        </p>
-                                    )}
-                                    <span className="blog-card-date">
-                                        {new Date(item.published_at).toLocaleDateString('en-US', {
-                                            year: 'numeric',
-                                            month: 'short',
-                                            day: 'numeric'
-                                        })}
-                                    </span>
-                                </div>
-                            </Link>
-                        </motion.div>
-                    ))}
+                                    </div>
+                                </Link>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             ) : (
                 <div style={{ textAlign: 'center', padding: '4rem', border: '1px dashed var(--border-color)', maxWidth: '600px', margin: '0 auto' }}>
@@ -121,101 +98,115 @@ const Writing = () => {
                 </div>
             )}
 
-            <div style={{ marginTop: 'auto', paddingTop: '4rem', display: 'flex', justifyContent: 'center' }}>
-                <ScrollPrompt targetId="about" label="About Me" />
-            </div>
 
             <style>{`
-                .blog-masonry {
-                    column-count: 3;
-                    column-gap: 1.5rem;
-                    max-width: 1200px;
+                .blog-list {
+                    max-width: 900px;
                     margin: 0 auto;
-                    padding: 0 1rem;
+                    width: 100%;
                 }
                 .blog-card {
-                    break-inside: avoid;
-                    margin-bottom: 1.5rem;
-                    border: 1px solid var(--border-color);
-                    overflow: hidden;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    background: var(--bg-color);
+                    border-top: 1px solid rgba(0, 0, 0, 0.12);
                 }
-                .blog-card:hover,
-                .blog-card:focus-within {
-                    transform: translateY(-4px);
-                    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+                .blog-card:last-child {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                 }
-                .blog-card a:focus-visible {
-                    outline: none;
+                .blog-card-link {
+                    display: flex;
+                    align-items: center;
+                    gap: 2rem;
+                    text-decoration: none;
+                    color: inherit;
+                    padding: 2rem 0.5rem;
+                    transition: padding-left 0.4s ease;
                 }
-                .blog-card:focus-within {
+                .blog-card:hover .blog-card-link {
+                    padding-left: 1.5rem;
+                }
+                .blog-card-link:focus-visible {
                     outline: 2px solid var(--accent-color);
-                    outline-offset: 4px;
+                    outline-offset: -2px;
                 }
                 .blog-card-skeleton {
-                    break-inside: avoid;
-                    margin-bottom: 1.5rem;
-                    border: 1px solid var(--border-color);
-                    overflow: hidden;
+                    border-top: 1px solid rgba(0, 0, 0, 0.12);
+                    padding: 2rem 0.5rem;
                 }
-                .blog-card-thumbnail {
-                    width: 100%;
-                    height: 220px;
-                    overflow: hidden;
+                .blog-card-number {
+                    font-family: var(--font-display);
+                    font-size: clamp(2rem, 3vw, 2.8rem);
+                    font-weight: 300;
+                    color: rgba(0, 0, 0, 0.15);
+                    letter-spacing: -0.02em;
+                    flex-shrink: 0;
+                    width: 3.5rem;
+                    line-height: 1;
+                    transition: color 0.4s ease;
                 }
-                .blog-card-thumbnail img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    transition: transform 0.4s ease;
+                .blog-card:hover .blog-card-number {
+                    color: rgba(0, 0, 0, 0.4);
                 }
-                .blog-card:hover .blog-card-thumbnail img,
-                .blog-card:focus-within .blog-card-thumbnail img {
-                    transform: scale(1.03);
-                }
-                .blog-card-content {
-                    padding: 1.5rem;
+                .blog-card-body {
+                    flex: 1;
+                    min-width: 0;
                 }
                 .blog-card-title {
-                    font-size: 1.15rem;
+                    font-family: var(--font-heading);
+                    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
                     font-weight: 600;
-                    line-height: 1.4;
-                    margin-bottom: 0.75rem;
-                    letter-spacing: -0.01em;
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 0.4rem;
-                }
-                .blog-card-arrow {
-                    flex-shrink: 0;
-                    margin-top: 0.2rem;
-                    opacity: 0;
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                }
-                .blog-card:hover .blog-card-arrow,
-                .blog-card:focus-within .blog-card-arrow {
-                    opacity: 1;
-                    transform: translate(2px, -2px);
+                    line-height: 1.3;
+                    margin-bottom: 0.4rem;
+                    letter-spacing: 0.01em;
                 }
                 .blog-card-excerpt {
-                    font-size: 0.9rem;
-                    line-height: 1.6;
+                    font-family: var(--font-body);
+                    font-size: 0.85rem;
+                    line-height: 1.5;
                     color: var(--sub-text-color);
-                    margin-bottom: 1rem;
+                }
+                .blog-card-end {
+                    flex-shrink: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 0.75rem;
                 }
                 .blog-card-date {
-                    font-size: 0.78rem;
+                    font-family: var(--font-body);
+                    font-size: 0.7rem;
                     text-transform: uppercase;
-                    letter-spacing: 0.1em;
+                    letter-spacing: 0.12em;
                     color: var(--sub-text-color);
+                    white-space: nowrap;
                 }
-                @media (max-width: 1024px) {
-                    .blog-masonry { column-count: 2; }
+                .blog-card-arrow {
+                    color: var(--sub-text-color);
+                    transition: transform 0.3s ease, color 0.3s ease;
+                }
+                .blog-card:hover .blog-card-arrow {
+                    transform: translate(3px, -3px);
+                    color: var(--text-color);
                 }
                 @media (max-width: 600px) {
-                    .blog-masonry { column-count: 1; }
-                    .blog-card-thumbnail { height: 200px; }
+                    .blog-card-link {
+                        flex-wrap: wrap;
+                        gap: 0.75rem 1.25rem;
+                    }
+                    .blog-card-number {
+                        font-size: 1.8rem;
+                        width: 2.5rem;
+                    }
+                    .blog-card-body {
+                        flex-basis: calc(100% - 3.75rem);
+                    }
+                    .blog-card-end {
+                        flex-direction: row;
+                        align-items: center;
+                        width: 100%;
+                        padding-left: 3.75rem;
+                    }
+                    .blog-card-excerpt {
+                        display: none;
+                    }
                 }
             `}</style>
         </section>

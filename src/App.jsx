@@ -1,8 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import Layout from './components/Layout';
 import Hero from './components/Hero';
-import About from './components/About';
-import FeaturedWork from './components/FeaturedWork';
+import PortfolioCTA from './components/PortfolioCTA';
 import AIShowcase from './components/AIShowcase';
 import VideoShowcase from './components/VideoShowcase';
 import Writing from './components/Writing';
@@ -15,6 +14,7 @@ const VibeShowcase = lazy(() => import('./components/VibeShowcase'));
 const BlogPost = lazy(() => import('./components/BlogPost'));
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const CategoryGallery = lazy(() => import('./components/CategoryGallery'));
+const About = lazy(() => import('./components/About'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
 const RouteLoader = () => (
@@ -36,11 +36,10 @@ const RouteLoader = () => (
 const Home = () => (
     <>
         <Hero />
-        <FeaturedWork />
+        <PortfolioCTA />
         <AIShowcase />
         <VideoShowcase />
         <Writing />
-        <About />
         <Contact />
     </>
 );
@@ -56,6 +55,7 @@ function App() {
                     <Route path="/vibe" element={<VibeShowcase />} />
                     <Route path="/blog" element={<Writing />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route path="/about" element={<About />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>
