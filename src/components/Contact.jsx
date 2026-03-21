@@ -68,7 +68,7 @@ const Contact = () => {
                     }}
                     className="contact-link"
                 >
-                    Get in Touch
+                    Let's Create Something
                 </a>
                 <style>{`
                     .contact-link {
