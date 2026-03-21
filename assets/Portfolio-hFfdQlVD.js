@@ -1,4 +1,4 @@
-import{j as o,m as n}from"./vendor-motion-JbGu3LFv.js";import{r as d,L as f}from"./vendor-react-CDFnBdCK.js";import{u as m}from"./index-CXOW_G7E.js";const x=()=>{const{content:t,loading:l}=m();return d.useEffect(()=>{window.scrollTo(0,0)},[]),l||!(t!=null&&t.portfolioCategories)?null:o.jsxs("section",{className:"portfolio-page-section",style:{maxWidth:"1400px",margin:"0 auto",padding:"10rem 2rem 6rem",minHeight:"100vh"},children:[o.jsxs(n.div,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{duration:.6},style:{textAlign:"center",marginBottom:"4rem"},children:[o.jsx("h1",{style:{fontFamily:"var(--font-heading)",fontSize:"clamp(2.5rem, 5vw, 4rem)",fontWeight:500,textTransform:"uppercase",letterSpacing:"0.15em",marginBottom:"1rem"},children:"Portfolio"}),o.jsx("p",{style:{fontFamily:"var(--font-body)",fontSize:"1.1rem",color:"var(--sub-text-color)",maxWidth:"500px",margin:"0 auto"},children:"A curated collection of portrait, editorial, and fine art photography."})]}),o.jsx("div",{className:"portfolio-grid",children:t.portfolioCategories.map((r,e)=>{var i;const a=((i=r.modelGroups)==null?void 0:i.reduce((p,c)=>p+c.photos.length,0))??0,s=String(e+1).padStart(2,"0");return o.jsx(n.div,{className:"portfolio-card-wrapper",initial:{opacity:0,y:40},animate:{opacity:1,y:0},transition:{delay:e*.12,duration:.6},children:o.jsxs(f,{to:`/portfolio/${r.id}`,className:"portfolio-category-card","aria-label":`View ${r.name} gallery`,children:[o.jsx("img",{src:r.thumbnail,alt:r.name,loading:"lazy",className:"portfolio-card-img"}),o.jsx("div",{className:"portfolio-card-overlay"}),o.jsx("div",{className:"portfolio-card-frame"}),o.jsx("span",{className:"portfolio-card-number",children:s}),o.jsxs("div",{className:"portfolio-card-content",children:[o.jsx("div",{className:"portfolio-card-rule"}),o.jsx("h2",{className:"portfolio-card-title",children:r.name}),o.jsxs("span",{className:"portfolio-card-count",children:[a," ",a===1?"image":"images"]})]})]})},r.id)})}),o.jsx("style",{children:`
+import{j as o,m as l}from"./vendor-motion-JbGu3LFv.js";import{r as d,L as f}from"./vendor-react-CDFnBdCK.js";import{u as m}from"./index-DsuaPsRt.js";const x=()=>{const{content:t,loading:n}=m();return d.useEffect(()=>{window.scrollTo(0,0)},[]),n||!(t!=null&&t.portfolioCategories)?null:o.jsxs("section",{className:"portfolio-page-section",style:{maxWidth:"1400px",margin:"0 auto",padding:"10rem 2rem 6rem",minHeight:"100vh"},children:[o.jsxs(l.div,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{duration:.6},style:{textAlign:"center",marginBottom:"4rem"},children:[o.jsx("h1",{style:{fontFamily:"var(--font-display)",fontSize:"clamp(3rem, 8vw, 6rem)",fontWeight:400,fontStyle:"italic",letterSpacing:"0.02em",marginBottom:"1rem"},children:"Portfolio"}),o.jsx("p",{style:{fontFamily:"var(--font-body)",fontSize:"1.1rem",color:"var(--sub-text-color)",maxWidth:"500px",margin:"0 auto"},children:"A curated collection of portrait, editorial, and fine art photography."})]}),o.jsx("div",{className:"portfolio-grid",children:t.portfolioCategories.map((r,e)=>{var i;const a=((i=r.modelGroups)==null?void 0:i.reduce((c,p)=>c+p.photos.length,0))??0,s=String(e+1).padStart(2,"0");return o.jsx(l.div,{className:"portfolio-card-wrapper",initial:{opacity:0,y:40},animate:{opacity:1,y:0},transition:{delay:e*.12,duration:.6},children:o.jsxs(f,{to:`/portfolio/${r.id}`,className:"portfolio-category-card","aria-label":`View ${r.name} gallery`,children:[o.jsx("img",{src:r.thumbnail,alt:r.name,loading:"lazy",className:"portfolio-card-img"}),o.jsx("div",{className:"portfolio-card-overlay"}),o.jsx("div",{className:"portfolio-card-frame"}),o.jsx("span",{className:"portfolio-card-number",children:s}),o.jsxs("div",{className:"portfolio-card-content",children:[o.jsx("div",{className:"portfolio-card-rule"}),o.jsx("h2",{className:"portfolio-card-title",children:r.name}),o.jsxs("span",{className:"portfolio-card-count",children:[a," ",a===1?"image":"images"]})]})]})},r.id)})}),o.jsx("style",{children:`
                 .portfolio-grid {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
@@ -53,9 +53,9 @@ import{j as o,m as n}from"./vendor-motion-JbGu3LFv.js";import{r as d,L as f}from
                     left: 22px;
                     font-family: var(--font-display);
                     font-size: 0.85rem;
-                    font-weight: 300;
+                    font-weight: 400;
                     color: rgba(255, 255, 255, 0.5);
-                    letter-spacing: 0.1em;
+                    letter-spacing: 0.02em;
                     z-index: 3;
                     transition: color 0.4s ease;
                 }
@@ -91,7 +91,7 @@ import{j as o,m as n}from"./vendor-motion-JbGu3LFv.js";import{r as d,L as f}from
                     font-size: 0.7rem;
                     color: rgba(255, 255, 255, 0.45);
                     text-transform: uppercase;
-                    letter-spacing: 0.15em;
+                    letter-spacing: 0.2em;
                     display: block;
                     opacity: 0;
                     transform: translateY(6px);
