@@ -102,13 +102,11 @@ const Portfolio = () => {
                     outline-offset: 4px;
                 }
                 .portfolio-card-image {
-                    aspect-ratio: 4 / 3;
                     overflow: hidden;
                 }
                 .portfolio-card-image img {
                     width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                    height: auto;
                     display: block;
                     transition: transform 0.5s ease;
                 }
