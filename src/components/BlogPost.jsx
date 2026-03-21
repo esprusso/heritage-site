@@ -129,8 +129,6 @@ const BlogPost = () => {
                         fontSize: '1.2rem',
                         lineHeight: 1.8,
                         color: 'var(--text-color)',
-                        fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                        fontWeight: 400
                     }}
                 />
 
