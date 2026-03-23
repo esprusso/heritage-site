@@ -13,29 +13,24 @@ const About = () => {
 
     return (
         <article className="about-page">
-            <motion.header
-                className="about-header"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
-            >
-                <img
-                    src={content.about.image}
-                    alt={`Portrait of ${content.hero?.title || 'the photographer'}`}
-                    className="about-header-img"
-                />
-                <div className="about-header-overlay" />
-                <h1 className="about-header-title">About</h1>
-            </motion.header>
-
             <motion.div
                 className="about-content"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6 }}
             >
                 <div className="about-intro">
-                    <p className="about-lede">{content.about.text}</p>
+                    <div className="about-intro-text">
+                        <h1 className="about-title">About</h1>
+                        <p className="about-lede">{content.about.text}</p>
+                    </div>
+                    <div className="about-photo-wrap">
+                        <img
+                            src={content.about.image}
+                            alt={`Portrait of ${content.hero?.title || 'the photographer'}`}
+                            className="about-photo"
+                        />
+                    </div>
                 </div>
 
                 <div className="about-section">
@@ -60,61 +55,46 @@ const About = () => {
                 .about-page {
                     min-height: 100vh;
                 }
-                .about-header {
-                    position: relative;
-                    height: 50vh;
-                    min-height: 350px;
-                    overflow: hidden;
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: flex-start;
-                }
-                .about-header-img {
-                    position: absolute;
-                    inset: 0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center 20%;
-                }
-                .about-header-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(
-                        to top,
-                        rgba(0, 0, 0, 0.6) 0%,
-                        rgba(0, 0, 0, 0.1) 50%,
-                        transparent 100%
-                    );
-                }
-                .about-header-title {
-                    position: relative;
-                    z-index: 1;
-                    font-family: var(--font-display);
-                    font-size: clamp(3rem, 8vw, 6rem);
-                    font-weight: 400;
-                    font-style: italic;
-                    color: #fff;
-                    padding: 2rem 3rem;
-                    letter-spacing: 0.02em;
-                }
                 .about-content {
-                    max-width: 680px;
+                    max-width: 960px;
                     margin: 0 auto;
-                    padding: 5rem 2rem 8rem;
+                    padding: 8rem 2rem 8rem;
                 }
                 .about-intro {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 4rem;
+                    align-items: start;
                     margin-bottom: 4rem;
                     padding-bottom: 3rem;
                     border-bottom: 1px solid var(--border-color);
                 }
+                .about-title {
+                    font-family: var(--font-display);
+                    font-size: clamp(2.5rem, 6vw, 4rem);
+                    font-weight: 400;
+                    font-style: italic;
+                    color: var(--text-color);
+                    margin-bottom: 1.5rem;
+                    letter-spacing: 0.02em;
+                }
                 .about-lede {
                     font-family: var(--font-body);
-                    font-size: 1.35rem;
+                    font-size: 1.15rem;
                     line-height: 1.8;
                     color: var(--text-color);
                 }
+                .about-photo-wrap {
+                    position: relative;
+                }
+                .about-photo {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    object-fit: cover;
+                }
                 .about-section {
+                    max-width: 680px;
                     margin-bottom: 3rem;
                 }
                 .about-section-title {
@@ -133,15 +113,16 @@ const About = () => {
                     color: var(--text-color);
                     margin-bottom: 1.25rem;
                 }
-                @media (max-width: 600px) {
-                    .about-header {
-                        height: 40vh;
-                    }
-                    .about-header-title {
-                        padding: 1.5rem;
-                    }
+                @media (max-width: 700px) {
                     .about-content {
-                        padding: 3rem 1.5rem 6rem;
+                        padding: 6rem 1.5rem 6rem;
+                    }
+                    .about-intro {
+                        grid-template-columns: 1fr;
+                        gap: 2rem;
+                    }
+                    .about-photo-wrap {
+                        order: -1;
                     }
                 }
             `}</style>
