@@ -11,7 +11,27 @@
     "about": {
         "title": "About Me",
         "image": "/images/russ2.jpg",
-        "text": "I'm a portrait photographer in the Twin Cities who works with models to create images that feel authentic and compelling. Whether we're collaborating through TFP or on commissioned work, my goal is to bring out each person's genuine presence - not just how they look."
+        "text": "I'm a portrait photographer in the Twin Cities who works with models to create compelling images that capture your unique presence.",
+        "sections": [
+            {
+                "title": "The Work",
+                "paragraphs": [
+                    "..."
+                ]
+            },
+            {
+                "title": "Working Together",
+                "paragraphs": [
+                    "..."
+                ]
+            },
+            {
+                "title": "Beyond the Lens",
+                "paragraphs": [
+                    ""
+                ]
+            }
+        ]
     },
     "socials": [
         {
@@ -57,7 +77,7 @@
         {
             "id": "editorial",
             "name": "Editorial",
-            "description": "Fashion-forward portraiture with bold styling and dramatic lighting.",
+            "description": "Fashion-forward portraiture.",
             "thumbnail": "/images/ee-02.jpg",
             "nsfw": false,
             "modelGroups": [
@@ -137,7 +157,7 @@
                     ]
                 },
                 {
-                    "model": "ny fashion",
+                    "model": "nyc fashion",
                     "photos": [
                         {
                             "id": 47,
@@ -181,7 +201,7 @@
         {
             "id": "fine-art",
             "name": "Fine Art",
-            "description": "Artistic explorations of form, light, and the human figure.",
+            "description": "Artistic explorations of the human figure.",
             "thumbnail": "/images/ii-3.jpg",
             "nsfw": true,
             "modelGroups": [
@@ -574,7 +594,7 @@
         {
             "id": "portraits",
             "name": "Portraits",
-            "description": "Authentic, compelling portraits that capture genuine presence.",
+            "description": "Authentic, compelling portraits that capture presence.",
             "thumbnail": "/images/aa-1.jpg",
             "nsfw": false,
             "modelGroups": [
