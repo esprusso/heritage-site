@@ -1,338 +1,79 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useContent } from '../contexts/ContentContext';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { emailHref } from '../lib/journal';
 
-const Layout = ({ children }) => {
-    const { content, loading, error } = useContent();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const location = useLocation();
-    const isHome = location.pathname === '/';
-    const menuCloseRef = useRef(null);
-    const menuToggleRef = useRef(null);
-    const mobileMenuRef = useRef(null);
-
+function RoutePosition() {
+    const { pathname, hash } = useLocation();
+    const navigate = useNavigate();
     useEffect(() => {
-        let ticking = false;
-        const handleScroll = () => {
-            if (!ticking) {
-                ticking = true;
-                requestAnimationFrame(() => {
-                    setScrolled(window.scrollY > 50);
-                    ticking = false;
-                });
-            }
-        };
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Close menu on route change
-    useEffect(() => {
-        setIsMenuOpen(false);
-    }, [location.pathname]);
-
-    // Body scroll lock and focus management for mobile menu
-    useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = 'hidden';
-            requestAnimationFrame(() => {
-                menuCloseRef.current?.focus();
-            });
-        } else {
-            document.body.style.overflow = '';
-            menuToggleRef.current?.focus();
+        if (hash === '#contact' && pathname === '/') {
+            navigate('/contact', { replace: true });
+            return;
         }
-        return () => {
-            document.body.style.overflow = '';
+        if (!hash) {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            return;
+        }
+        let targetId = hash === '#writing' ? 'journal' : hash.slice(1);
+        try { targetId = decodeURIComponent(targetId); } catch { /* Preserve a literal malformed fragment. */ }
+        let frame;
+        let attempts = 0;
+        const findTarget = () => {
+            const target = document.getElementById(targetId);
+            if (target) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+            else if (attempts++ < 60) frame = requestAnimationFrame(findTarget);
         };
-    }, [isMenuOpen]);
+        frame = requestAnimationFrame(findTarget);
+        return () => cancelAnimationFrame(frame);
+    }, [pathname, hash, navigate]);
+    return null;
+}
 
-    // Escape key to close mobile menu
-    useEffect(() => {
-        if (!isMenuOpen) return;
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') setIsMenuOpen(false);
-        };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [isMenuOpen]);
-
-    // Focus trap for mobile menu
-    useEffect(() => {
-        if (!isMenuOpen || !mobileMenuRef.current) return;
-        const menu = mobileMenuRef.current;
-
-        const handleTab = (e) => {
-            if (e.key !== 'Tab') return;
-            const focusable = menu.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])');
-            if (focusable.length === 0) return;
-            const first = focusable[0];
-            const last = focusable[focusable.length - 1];
-            if (e.shiftKey && document.activeElement === first) {
-                e.preventDefault();
-                last.focus();
-            } else if (!e.shiftKey && document.activeElement === last) {
-                e.preventDefault();
-                first.focus();
-            }
-        };
-
-        menu.addEventListener('keydown', handleTab);
-        return () => menu.removeEventListener('keydown', handleTab);
-    }, [isMenuOpen]);
-
-    if (loading) return <div className="loading-screen" role="status">Loading...</div>;
-    if (error || !content) return <div className="error-screen" role="alert">Error loading content.</div>;
-
-    const navLinks = [
-        { name: 'Home', href: '/#home' },
-        { name: 'Portfolio', href: '/portfolio' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'About', href: '/about' },
-        { name: 'Contact', href: '/#contact' },
-    ];
+export default function Layout({ children }) {
+    const { content, loading, error } = useContent();
+    const { pathname } = useLocation();
+    const isArticle = /^\/(blog|journal)\//.test(pathname);
+    const isJournal = pathname === '/' || isArticle;
+    const socials = content?.socials?.filter(social => social.name.toLowerCase() !== 'email') || [];
+    const email = emailHref(content);
 
     return (
-        <div className="layout-container">
-            <style>{`
-                .skip-to-content {
-                    position: absolute;
-                    top: -100%;
-                    left: 1rem;
-                    z-index: 1000;
-                    padding: 0.75rem 1.5rem;
-                    background: var(--accent-color);
-                    color: var(--bg-color);
-                    text-decoration: none;
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    border-radius: 0 0 4px 4px;
-                    transition: top 0.2s;
-                }
-                .skip-to-content:focus {
-                    top: 0;
-                }
-                .nav-container {
-                    padding: 2rem 3rem;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    z-index: 100;
-                    color: var(--text-color);
-                    transition: all 0.3s ease;
-                }
-                .nav-container.transparent-light {
-                    color: #FFFFFF;
-                }
-                .nav-container.scrolled {
-                    padding: 1.5rem 3rem;
-                    background: rgba(255, 255, 255, 0.9);
-                    backdrop-filter: blur(10px);
-                    border-bottom: 1px solid var(--border-color);
-                    color: var(--text-color) !important;
-                }
-                .logo {
-                    display: flex;
-                    align-items: center;
-                }
-                .logo-img {
-                    height: 38px;
-                    width: auto;
-                    display: block;
-                    transition: filter 0.3s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
-                }
-                .logo:hover .logo-img {
-                    transform: scale(1.06);
-                    opacity: 0.8;
-                }
-                .transparent-light .logo-img {
-                    filter: invert(1);
-                }
-                .desktop-menu {
-                    display: flex;
-                    gap: 2rem;
-                }
-                .desktop-menu a {
-                    font-size: 0.8rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1em;
-                    position: relative;
-                    font-weight: 500;
-                    transition: opacity 0.3s ease;
-                }
-                .desktop-menu:hover a {
-                    opacity: 0.4;
-                }
-                .desktop-menu:hover a:hover {
-                    opacity: 1;
-                }
-                .desktop-menu a::after {
-                    content: '';
-                    position: absolute;
-                    bottom: -4px;
-                    left: 0;
-                    width: 100%;
-                    height: 1px;
-                    background: currentColor;
-                    transform: scaleX(0);
-                    transform-origin: right;
-                    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-                }
-                .desktop-menu a:hover::after,
-                .desktop-menu a:focus-visible::after {
-                    transform: scaleX(1);
-                    transform-origin: left;
-                }
-                .mobile-toggle {
-                    display: none;
-                    cursor: pointer;
-                    background: none;
-                    border: none;
-                    color: inherit;
-                    padding: 0.5rem;
-                }
-                .mobile-toggle:focus-visible {
-                    outline: 2px solid currentColor;
-                    outline-offset: 4px;
-                }
-                @media (max-width: 768px) {
-                    .nav-container { padding: 1.5rem; }
-                    .desktop-menu { display: none; }
-                    .mobile-toggle { display: block; }
-                }
-                footer {
-                    padding: 3rem 2rem;
-                    text-align: center;
-                    background-color: #111;
-                    border-top: 1px solid rgba(255, 255, 255, 0.1);
-                }
-            `}</style>
-
-            {/* Grain Overlay */}
-            <div className="grain-overlay" aria-hidden="true"></div>
-
-            {/* Skip to content link */}
-            <a href="#main-content" className="skip-to-content">
-                Skip to main content
-            </a>
-
-            {/* Navigation */}
-            <nav className={`nav-container ${scrolled ? 'scrolled' : ''} ${!scrolled && isHome ? 'transparent-light' : ''}`} aria-label="Main navigation">
-                <Link to="/" className="logo">
-                    <img src="/images/RH_bw.png" alt={content.hero.title} className="logo-img" />
-                </Link>
-
-                <ul className="desktop-menu" role="menubar">
-                    {navLinks.map((link) => (
-                        <li key={link.name} role="none">
-                            <a href={link.href} role="menuitem">{link.name}</a>
-                        </li>
-                    ))}
-                </ul>
-
-                <button
-                    ref={menuToggleRef}
-                    className="mobile-toggle"
-                    onClick={() => setIsMenuOpen(true)}
-                    aria-label="Open navigation menu"
-                    aria-expanded={isMenuOpen}
-                    aria-controls="mobile-menu"
-                >
-                    <Menu size={24} />
-                </button>
-            </nav>
-
-            {/* Mobile Menu Overlay */}
-            <AnimatePresence>
-                {isMenuOpen && (
-                    <motion.div
-                        ref={mobileMenuRef}
-                        id="mobile-menu"
-                        role="dialog"
-                        aria-modal="true"
-                        aria-label="Navigation menu"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        style={{
-                            position: 'fixed',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100vh',
-                            backgroundColor: 'var(--bg-color)',
-                            zIndex: 200,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <button
-                            ref={menuCloseRef}
-                            onClick={() => setIsMenuOpen(false)}
-                            aria-label="Close navigation menu"
-                            style={{
-                                position: 'absolute',
-                                top: '2rem',
-                                right: '2rem',
-                                background: 'transparent',
-                                border: 'none',
-                                color: 'var(--text-color)',
-                                cursor: 'pointer',
-                                padding: '0.5rem'
-                            }}
-                        >
-                            <X size={32} />
-                        </button>
-
-                        <nav aria-label="Mobile navigation" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
-                            {navLinks.map((link) => (
-                                <motion.a
-                                    key={link.name}
-                                    href={link.href}
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    style={{
-                                        fontFamily: 'var(--font-display)',
-                                        fontSize: '3rem',
-                                        color: 'var(--accent-color)',
-                                        fontStyle: 'italic',
-                                        fontWeight: 400,
-                                        letterSpacing: '0.02em',
-                                    }}
-                                >
-                                    {link.name}
-                                </motion.a>
-                            ))}
-                        </nav>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Main Content */}
-            <main id="main-content">
-                {children}
+        <div className={'site-shell ' + (isArticle ? 'article-page' : 'airy airy-with-hero airy-refined')}>
+            <RoutePosition />
+            <a className="skip-link" href="#main-content">Skip to main content</a>
+            <div className={isArticle ? 'header-wrap' : undefined}>
+                <header className="site-header">
+                    <Link className="brand" to="/" aria-label="Russ Heritage homepage"><span className="brand-given">Russ</span> Heritage</Link>
+                    <nav className="site-nav" aria-label="Main navigation">
+                        <Link to="/" aria-current={isJournal ? 'page' : undefined}>Journal</Link>
+                        <NavLink to="/blog" end>Archive</NavLink>
+                        <NavLink to="/about">About</NavLink>
+                        <a className="desktop-only" href={email}>Say hello</a>
+                    </nav>
+                </header>
+            </div>
+            <main id="main-content" tabIndex={-1}>
+                {loading ? <div className="page-state" role="status"><p>Opening the journal…</p></div> : error ? (
+                    <div className="page-state" role="alert">
+                        <h1>The journal couldn’t be loaded.</h1>
+                        <p>Please check your connection and try again.</p>
+                        <button className="text-button" onClick={() => window.location.reload()}>Try again</button>
+                    </div>
+                ) : children}
             </main>
-
-            {/* Footer */}
-            <footer>
-                <p style={{ color: 'rgba(255, 255, 255, 0.3)', fontSize: '0.75rem' }}>
-                    &copy; {new Date().getFullYear()} {content.meta.title}
-                </p>
+            <footer className="site-footer" id="contact">
+                <div className="footer-primary">
+                    <span>© {new Date().getFullYear()} Russ Heritage</span>
+                    <span>Made with a little attention.</span>
+                    {socials[0] ? <a href={socials[0].url} target="_blank" rel="noopener noreferrer">{socials[0].name}</a> : <a href={email}>Say hello</a>}
+                </div>
+                <nav className="footer-links" aria-label="More from Russ">
+                    <Link to="/portfolio">Photo archive</Link>
+                    <Link to="/contact">Get in touch</Link>
+                    {socials.slice(1).map(social => <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>)}
+                </nav>
             </footer>
         </div>
     );
-};
-
-export default Layout;
+}

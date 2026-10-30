@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T23:37:23.270125+00:00",
+  "title": "Design System: Russ Heritage",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "White Paper",
+        "tonalRamp": [
+          "oklch(15% 0.004 135)",
+          "oklch(27% 0.0048 135)",
+          "oklch(39% 0.008 135)",
+          "oklch(51% 0.008 135)",
+          "oklch(63% 0.008 135)",
+          "oklch(75% 0.0064 135)",
+          "oklch(87% 0.0032 135)",
+          "oklch(95% 0.002 135)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Green-Black Ink",
+        "tonalRamp": [
+          "oklch(15% 0.004 135)",
+          "oklch(27% 0.0048 135)",
+          "oklch(39% 0.008 135)",
+          "oklch(51% 0.008 135)",
+          "oklch(63% 0.008 135)",
+          "oklch(75% 0.0064 135)",
+          "oklch(87% 0.0032 135)",
+          "oklch(95% 0.002 135)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Quiet Grey",
+        "tonalRamp": [
+          "oklch(15% 0.004 135)",
+          "oklch(27% 0.0048 135)",
+          "oklch(39% 0.008 135)",
+          "oklch(51% 0.008 135)",
+          "oklch(63% 0.008 135)",
+          "oklch(75% 0.0064 135)",
+          "oklch(87% 0.0032 135)",
+          "oklch(95% 0.002 135)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Muted Green",
+        "tonalRamp": [
+          "oklch(15% 0.004 148)",
+          "oklch(27% 0.015 148)",
+          "oklch(39% 0.025 148)",
+          "oklch(51% 0.025 148)",
+          "oklch(63% 0.025 148)",
+          "oklch(75% 0.020000000000000004 148)",
+          "oklch(87% 0.010000000000000002 148)",
+          "oklch(95% 0.002 148)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Fine Rule",
+        "tonalRamp": [
+          "oklch(15% 0.004 135)",
+          "oklch(27% 0.0048 135)",
+          "oklch(39% 0.008 135)",
+          "oklch(51% 0.008 135)",
+          "oklch(63% 0.008 135)",
+          "oklch(75% 0.0064 135)",
+          "oklch(87% 0.0032 135)",
+          "oklch(95% 0.002 135)"
+        ]
+      },
+      "wash": {
+        "role": "neutral",
+        "displayName": "Pale Wash",
+        "tonalRamp": [
+          "oklch(15% 0.004 135)",
+          "oklch(27% 0.0048 135)",
+          "oklch(39% 0.008 135)",
+          "oklch(51% 0.008 135)",
+          "oklch(63% 0.008 135)",
+          "oklch(75% 0.0064 135)",
+          "oklch(87% 0.0032 135)",
+          "oklch(95% 0.002 135)"
+        ]
+      },
+      "skeleton-color": {
+        "role": "neutral",
+        "displayName": "Loading Ground",
+        "tonalRamp": [
+          "oklch(15% 0.004 135)",
+          "oklch(27% 0.0048 135)",
+          "oklch(39% 0.008 135)",
+          "oklch(51% 0.008 135)",
+          "oklch(63% 0.008 135)",
+          "oklch(75% 0.0064 135)",
+          "oklch(87% 0.0032 135)",
+          "oklch(95% 0.002 135)"
+        ]
+      },
+      "skeleton-shine": {
+        "role": "neutral",
+        "displayName": "Loading Shine",
+        "tonalRamp": [
+          "oklch(15% 0.004 135)",
+          "oklch(27% 0.0048 135)",
+          "oklch(39% 0.008 135)",
+          "oklch(51% 0.008 135)",
+          "oklch(63% 0.008 135)",
+          "oklch(75% 0.0064 135)",
+          "oklch(87% 0.0032 135)",
+          "oklch(95% 0.002 135)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Desktop hero introduction."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Article title."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Ordinary journal title."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Long-form article copy."
+      },
+      "interface": {
+        "displayName": "Interface",
+        "purpose": "Base page and interface text."
+      },
+      "excerpt": {
+        "displayName": "Excerpt",
+        "purpose": "Journal story summaries."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Journal metadata."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "link-arrow",
+        "value": "transform .2s ease-out",
+        "purpose": "Text-link arrow shifts 4px right on hover."
+      },
+      {
+        "name": "image-crop",
+        "value": "transform .55s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Linked story image scales to 1.025 on hover."
+      },
+      {
+        "name": "scroll",
+        "value": "smooth",
+        "purpose": "html scroll-behavior; route-position restoration uses instant behavior."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}",
+        "purpose": "Literal source reduced-motion override; hover transform end states remain."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-wordmark",
+        "value": "350px"
+      },
+      {
+        "name": "single-sidebar",
+        "value": "430px"
+      },
+      {
+        "name": "mobile",
+        "value": "700px"
+      },
+      {
+        "name": "tablet",
+        "value": "960px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1250px"
+      },
+      {
+        "name": "wide",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Text link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Inline editorial action with a restrained arrow.",
+      "html": "<a class=\"ds-text-link\" href=\"#journal\">Explore the journal <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" aria-hidden=\"true\"><path d=\"M5 12h14m-7-7 7 7-7 7\"/></svg></a>",
+      "css": ".ds-text-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans,'DM Sans',sans-serif);font-size:14px;font-weight:500;color:var(--accent,#486151);min-height:36px;text-decoration:none;text-underline-offset:5px}.ds-text-link svg{width:20px;height:20px;transition:transform .2s ease-out}.ds-text-link:hover{text-decoration:underline}.ds-text-link:hover svg{transform:translateX(4px)}.ds-text-link:focus-visible{outline:2px solid var(--accent,#486151);outline-offset:5px}@media(max-width:700px){.ds-text-link{min-height:44px}}@media(prefers-reduced-motion:reduce){.ds-text-link svg{transition:none!important}}"
+    },
+    {
+      "name": "Text button",
+      "kind": "button",
+      "refersTo": "text-button",
+      "description": "Recovery and retry action.",
+      "html": "<button class=\"ds-text-button\">Try again</button>",
+      "css": ".ds-text-button{font-family:var(--sans,'DM Sans',sans-serif);font-size:16px;border:0;border-bottom:1px solid #9cac9e;background:transparent;color:var(--accent,#486151);min-height:40px;padding:5px 0;font-weight:500;cursor:pointer}.ds-text-button:focus-visible{outline:2px solid var(--accent,#486151);outline-offset:5px}.ds-text-button:disabled{cursor:wait;opacity:.6}"
+    },
+    {
+      "name": "Topic filters",
+      "kind": "chip",
+      "refersTo": "topic-filter",
+      "description": "Unfilled topic controls, selected by aria-pressed.",
+      "html": "<div class=\"ds-topics\"><button class=\"ds-filter\" aria-pressed=\"true\">All stories</button><button class=\"ds-filter\" aria-pressed=\"false\">Creativity</button></div>",
+      "css": ".ds-topics{display:flex;flex-direction:column;align-items:flex-start;gap:3px}.ds-filter{font-family:var(--sans,'DM Sans',sans-serif);background:none;border:0;padding:5px 0;text-align:left;color:var(--muted,#646d64);min-height:38px;font-size:14px;cursor:pointer}.ds-filter:hover{color:var(--ink,#20271f)}.ds-filter[aria-pressed=true]{color:var(--accent,#486151);font-weight:600;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}.ds-filter:focus-visible{outline:2px solid var(--accent,#486151);outline-offset:5px}@media(max-width:700px){.ds-topics{flex-direction:row;gap:21px;overflow-x:auto;border-bottom:1px solid var(--rule,#dce2da);padding-bottom:8px;white-space:nowrap}.ds-filter{min-height:44px;padding:6px 0;font-size:12px}}"
+    },
+    {
+      "name": "Main navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Quiet horizontal page links with current-page underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#journal\" aria-current=\"page\">Journal</a><a href=\"#archive\">Archive</a><a href=\"#about\">About</a><a class=\"ds-desktop\" href=\"#contact\">Say hello</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:33px;font-family:var(--sans,'DM Sans',sans-serif);font-size:14px;color:var(--ink,#20271f)}.ds-nav a{color:inherit;text-decoration:none;text-underline-offset:5px;white-space:nowrap;padding:8px 0}.ds-nav a:hover{text-decoration:underline}.ds-nav a[aria-current=page]{text-decoration:underline;text-decoration-color:var(--accent,#486151);text-decoration-thickness:1.5px;text-underline-offset:7px}.ds-nav a:focus-visible{outline:2px solid var(--accent,#486151);outline-offset:5px}@media(max-width:960px){.ds-nav{gap:25px}}@media(max-width:700px){.ds-nav{font-size:12px;gap:16px}.ds-desktop{display:none}}@media(max-width:350px){.ds-nav{gap:11px}}"
+    },
+    {
+      "name": "Archive search",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "A labeled search field with a single bottom stroke.",
+      "html": "<form class=\"ds-search\" role=\"search\"><label for=\"ds-search\">Search the journal</label><div><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input id=\"ds-search\" type=\"search\" placeholder=\"Find a story\"/></div></form>",
+      "css": ".ds-search{font-family:var(--sans,'DM Sans',sans-serif);margin:0 0 36px}.ds-search label{display:block;font-size:13px;color:var(--muted,#646d64);margin-bottom:10px}.ds-search>div{display:flex;gap:12px;align-items:center;border-bottom:1px solid #9ca99c;color:var(--accent,#486151)}.ds-search input{font-family:var(--sans,'DM Sans',sans-serif);color:var(--ink,#20271f);border:0;min-width:0;width:100%;min-height:46px;padding:7px 0;background:transparent;font-size:16px;caret-color:var(--accent,#486151)}.ds-search input::placeholder{color:var(--muted,#646d64)}.ds-search input:focus-visible{outline:2px solid var(--accent,#486151);outline-offset:5px}@media(max-width:700px){.ds-search{margin-bottom:25px}}"
+    },
+    {
+      "name": "Text-only journal story",
+      "kind": "card",
+      "refersTo": "journal-card",
+      "description": "The real feed pattern without a placeholder photograph.",
+      "html": "<article class=\"ds-story\"><div class=\"ds-meta\">Creativity<span class=\"ds-dot\" aria-hidden=\"true\"></span>5 min read</div><h2><a href=\"#story\">Write like it\u2019s 1999</a></h2><p>A story from the journal.</p><a class=\"ds-read\" href=\"#story\"><span>Read the story</span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" aria-hidden=\"true\"><path d=\"M5 12h14m-7-7 7 7-7 7\"/></svg></a></article>",
+      "css": ".ds-story{border-top:1px solid var(--rule,#dce2da);padding-top:28px;color:var(--ink,#20271f)}.ds-meta{display:flex;align-items:center;gap:10px;color:var(--muted,#646d64);font-family:var(--sans,'DM Sans',sans-serif);font-size:12px;line-height:1.4}.ds-dot{width:3px;height:3px;background:currentColor;border-radius:50%}.ds-story h2{font-family:var(--sans,'DM Sans',sans-serif);font-size:28px;line-height:1.2;font-weight:600;letter-spacing:-.03em;margin:12px 0 0}.ds-story h2 a{color:inherit;text-decoration:none}.ds-story h2 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:var(--accent,#486151)}.ds-story p{font-family:var(--serif,'Source Serif',serif);font-size:18px;line-height:1.65;margin:13px 0 0;color:#535e53}.ds-read{display:inline-flex;align-items:center;gap:9px;min-height:40px;margin-top:11px;padding:4px 0;font-family:var(--sans,'DM Sans',sans-serif);font-size:13px;font-weight:500;color:var(--accent,#486151);text-decoration:none}.ds-read span{border-bottom:1px solid #9cac9e;padding-bottom:2px}.ds-read svg{width:16px;height:16px}.ds-story a:focus-visible{outline:2px solid var(--accent,#486151);outline-offset:5px}@media(max-width:1250px){.ds-story h2{font-size:26px}}@media(max-width:960px){.ds-story{padding-top:23px}.ds-story h2{font-size:23px}.ds-story p{font-size:17px}}@media(max-width:700px){.ds-story{padding-top:24px}.ds-story h2{font-size:27px;margin-top:10px}.ds-story p{font-size:18px;margin-top:15px}.ds-read{min-height:44px;margin-top:8px}}"
+    },
+    {
+      "name": "Welcome panel",
+      "kind": "custom",
+      "refersTo": "welcome-panel",
+      "description": "White introduction panel; overlay positioning belongs to the hero layout.",
+      "html": "<div class=\"ds-welcome\"><h1>Words, pictures,<br>and <em>everything between.</em></h1><p>A journal of things worth paying attention to.</p></div>",
+      "css": ".ds-welcome{width:500px;max-width:100%;padding:40px;background:var(--paper,#fff);color:var(--ink,#20271f)}.ds-welcome h1{margin:0;font-family:var(--serif,'Source Serif',serif);font-size:56px;line-height:1.08;font-weight:400;letter-spacing:-.035em}.ds-welcome h1 em{font-weight:400;color:var(--ink,#20271f)}.ds-welcome p{font-family:var(--serif,'Source Serif',serif);font-size:18px;line-height:1.6;max-width:340px;margin:20px 0 0;color:#515c51}@media(max-width:1250px){.ds-welcome{width:460px;padding:34px}.ds-welcome h1{font-size:52px}}@media(max-width:960px){.ds-welcome{width:292px;padding:24px}.ds-welcome h1{font-size:40px}.ds-welcome p{font-size:16px;max-width:290px}}@media(max-width:700px){.ds-welcome{width:100%;padding:20px 0 0;background:transparent}.ds-welcome h1{font-size:36px;line-height:1.12}.ds-welcome p{max-width:410px;margin-top:13px}}@media(max-width:350px){.ds-welcome h1{font-size:33px}}"
+    },
+    {
+      "name": "Article quote",
+      "kind": "custom",
+      "refersTo": "article-quote",
+      "description": "Italic reading quotation between fine rules.",
+      "html": "<blockquote class=\"ds-quote\"><p>Words and pictures. Two ways of paying attention.</p></blockquote>",
+      "css": ".ds-quote{font-family:var(--serif,'Source Serif',serif);margin:38px 0;padding:24px 0;border-block:1px solid var(--rule,#dce2da);font-size:28px;line-height:1.5;font-style:italic;color:#56694d}.ds-quote p{margin:0}@media(max-width:700px){.ds-quote{font-size:25px;margin:30px 0;padding:22px 0}}"
+    },
+    {
+      "name": "Published content button",
+      "kind": "button",
+      "refersTo": "published-content-button",
+      "description": "Filled button link retained for authored Ghost content.",
+      "html": "<a class=\"ds-published-button\" href=\"#story\">Read more</a>",
+      "css": ".ds-published-button{display:inline-block;padding:10px 18px;background:var(--accent,#486151);color:var(--paper,#fff);font-family:var(--sans,'DM Sans',sans-serif);font-size:16px;text-decoration:none}.ds-published-button:focus-visible{outline:2px solid var(--accent,#486151);outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Open Journal",
+    "overview": "Open Journal brings photographs and writing into one airy editorial experience. Original photography supplies the visual presence; a white field, muted green accents, and generous margins give it room. The serif introduction and reading text feel personal, while sans serif story headings and navigation keep browsing clear.\n\nThe system is quiet and flat. Rectangular images, fine rules, and typographic contrast organize the page without ornamental containers. The journal and reading layouts share these materials while allowing their own composition.",
+    "keyCharacteristics": [
+      "Dominant original photography on a white field.",
+      "Local serif reading text paired with sans serif headings.",
+      "Muted green links, fine dividers, and square geometry.",
+      "Airy browsing and a bounded long-form reading column."
+    ],
+    "rules": [
+      {
+        "name": "The Quiet Accent Rule",
+        "body": "Use muted green for links, selected filters, and focus; let photography supply the broad color fields.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Use Source Serif for personal introductions and sustained reading, and DM Sans for story headings and interface text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Ground Rule",
+        "body": "Separate the editorial surfaces with whitespace, fine rules, and tonal ground rather than shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do retain original photographs and descriptive alternative text.",
+      "Do use the shared focus outline and visible selected states.",
+      "Do keep the desktop welcome panel fully inset and vertically centered, then put the introduction below the photograph on mobile.",
+      "Do preserve authored reading content, captions, embeds, and optional contents navigation."
+    ],
+    "donts": [
+      "Don't replace the white field and restrained green accents with ornamental surface treatments.",
+      "Don't wrap journal stories in raised, rounded cards.",
+      "Don't promote preserved legacy gallery styling into defaults for new editorial surfaces.",
+      "Don't treat the preview tonal ramps as shipped palette tokens."
+    ]
+  }
+}

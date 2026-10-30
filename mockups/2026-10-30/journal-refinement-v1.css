@@ -1,0 +1,119 @@
+/* Refinement of A, isolated from the preceding mockups. */
+.airy-refined {
+  --accent: #486151;
+  --muted: #646d64;
+  --rule: #dce2da;
+  --ink: #20271f;
+}
+.airy-refined::selection, .airy-refined ::selection { background: #dce8df; color: #203626; }
+.airy-refined .site-header { height: 94px; }
+.airy-refined .brand { font-size: 33px; font-weight: 500; letter-spacing: -.038em; white-space: nowrap; }
+.airy-refined .brand-given { font-style: italic; font-weight: 400; }
+.airy-refined .site-nav { gap: 33px; }
+.airy-refined .site-nav a[aria-current=page] { text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; }
+.airy-refined a:focus-visible, .airy-refined button:focus-visible { outline-color: var(--accent); }
+.airy-refined .airy-hero { height: 460px; margin-top: 26px; margin-bottom: 53px; }
+.airy-refined .airy-hero > img { object-position: center top; }
+.airy-refined .welcome-panel { left: -24px; top: 30px; width: 524px; padding: 28px 44px 28px 24px; }
+.airy-refined .welcome-panel h1 { font-size: 56px; line-height: 1.08; font-weight: 400; letter-spacing: -.035em; }
+.airy-refined .welcome-panel h1 em { font-weight: 400; color: var(--ink); }
+.airy-refined .welcome-panel p { font-family: var(--serif); font-size: 18px; line-height: 1.6; max-width: 340px; margin-top: 20px; color: #515c51; }
+.airy-refined .welcome-panel .text-link { margin-top: 14px; min-height: 44px; font-size: 14px; color: var(--accent); }
+.airy-refined .airy-layout { grid-template-columns: 226px minmax(0, 1fr); gap: 64px; }
+.airy-refined .journal-margin h2 { font-size: 29px; line-height: 1.2; }
+.airy-refined .journal-topics { margin-top: 22px; gap: 3px; }
+.airy-refined .filter-button { min-height: 38px; padding: 5px 0; font-size: 14px; }
+.airy-refined .filter-button[aria-pressed=true] { color: var(--accent); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.airy-refined .margin-rule { margin: 27px 0 21px; }
+.airy-refined .margin-about { font-size: 14px; line-height: 1.8; max-width: 180px; }
+.airy-refined .margin-about a { color: var(--accent); }
+.airy-refined .journal-feed { grid-template-columns: 1.08fr .92fr; column-gap: 44px; row-gap: 53px; }
+.airy-refined .journal-story { display: grid; grid-template-areas: 'image' 'meta' 'title' 'excerpt' 'read'; grid-template-rows: min-content; align-content: start; min-width: 0; }
+.airy-refined .journal-story .meta { grid-area: meta; margin-top: 20px; font-size: 12px; gap: 10px; }
+.airy-refined .journal-story h2 { grid-area: title; font-family: var(--sans); font-size: 28px; line-height: 1.2; font-weight: 600; letter-spacing: -.03em; margin-top: 12px; max-width: none; }
+.airy-refined .journal-story.lead-story h2 { font-size: 32px; }
+.airy-refined .story-title a:hover { text-decoration-color: var(--accent); }
+.airy-refined .journal-story .story-image { grid-area: image; height: 286px; }
+.airy-refined .journal-story.lead-story .story-image { height: 320px; }
+.airy-refined .journal-story .story-image img { object-position: center 8%; }
+.airy-refined .journal-story .excerpt { grid-area: excerpt; font-family: var(--serif); font-size: 18px; line-height: 1.65; margin-top: 13px; max-width: none; color: #535e53; }
+.airy-refined .journal-story .read-link { grid-area: read; display: inline-flex; align-items: center; justify-self: start; gap: 9px; min-height: 40px; margin-top: 11px; border: 0; padding: 4px 0; font-size: 13px; font-weight: 500; color: var(--accent); }
+.airy-refined .read-link span { border-bottom: 1px solid #9cac9e; padding-bottom: 2px; }
+.airy-refined .read-link:hover { text-decoration: none; }
+.airy-refined .read-link svg { width: 16px; height: 16px; }
+.airy-refined .journal-story.text-story { grid-template-areas: 'meta' 'title' 'excerpt' 'read'; border-top: 1px solid var(--rule); padding-top: 28px; }
+.airy-refined .journal-story.text-story .meta { margin-top: 0; }
+.airy-refined .journal-story.lead-essay { border-bottom: 0; padding-bottom: 0; }
+.airy-refined .journal-story.lead-essay h2 { font-size: 28px; }
+.airy-refined .journal-story.lead-essay .excerpt { margin-top: 21px; }
+.airy-refined .journal-more { padding-top: 25px; font-size: 13px; }
+.airy-refined .journal-more .text-link { color: var(--accent); font-size: 13px; }
+.airy-refined .site-footer { margin-top: 64px; font-size: 13px; }
+.airy-refined .site-footer a { color: var(--accent); }
+
+@media (min-width: 1600px) {
+  .airy-refined .airy-hero { height: 490px; }
+  .airy-refined .welcome-panel { top: 42px; }
+}
+@media (max-width: 1250px) {
+  .airy-refined .airy-layout { grid-template-columns: 195px minmax(0, 1fr); gap: 40px; }
+  .airy-refined .journal-feed { column-gap: 32px; }
+  .airy-refined .welcome-panel { width: 484px; }
+  .airy-refined .welcome-panel h1 { font-size: 52px; }
+  .airy-refined .journal-story h2, .airy-refined .journal-story.lead-essay h2 { font-size: 26px; }
+  .airy-refined .journal-story.lead-story h2 { font-size: 29px; }
+}
+@media (max-width: 960px) {
+  .airy-refined .site-header { height: 86px; }
+  .airy-refined .brand { font-size: 30px; }
+  .airy-refined .site-nav { gap: 25px; }
+  .airy-refined .airy-hero { height: 420px; margin-bottom: 43px; }
+  .airy-refined .welcome-panel { width: 394px; top: 26px; padding: 26px 34px 26px 24px; }
+  .airy-refined .welcome-panel h1 { font-size: 44px; }
+  .airy-refined .welcome-panel p { font-size: 16px; max-width: 290px; }
+  .airy-refined .airy-layout { grid-template-columns: 166px minmax(0, 1fr); gap: 30px; }
+  .airy-refined .journal-feed { grid-template-columns: 1fr 1fr; column-gap: 27px; row-gap: 39px; }
+  .airy-refined .journal-margin h2 { font-size: 26px; }
+  .airy-refined .journal-story h2, .airy-refined .journal-story.lead-essay h2 { font-size: 23px; }
+  .airy-refined .journal-story.lead-story h2 { font-size: 25px; }
+  .airy-refined .journal-story .excerpt { font-size: 17px; }
+  .airy-refined .journal-story .story-image { height: 245px; }
+  .airy-refined .journal-story.lead-story .story-image { height: 275px; }
+  .airy-refined .journal-story.text-story { padding-top: 23px; }
+}
+@media (max-width: 700px) {
+  .airy-refined .site-header { height: 74px; }
+  .airy-refined .brand { font-size: 26px; }
+  .airy-refined .site-nav { gap: 16px; }
+  .airy-refined .airy-hero { display: flex; flex-direction: column; height: auto; margin-top: 14px; margin-bottom: 27px; }
+  .airy-refined .airy-hero > img { height: 190px; object-position: center top; }
+  .airy-refined .welcome-panel { position: relative; left: auto; top: auto; width: 100%; padding: 20px 0 0; margin: 0; background: transparent; }
+  .airy-refined .welcome-panel h1 { font-size: 36px; line-height: 1.12; }
+  .airy-refined .welcome-panel p { font-size: 16px; line-height: 1.6; max-width: 410px; margin-top: 13px; }
+  .airy-refined .welcome-panel .text-link { display: none; }
+  .airy-refined .airy-layout { display: block; }
+  .airy-refined .journal-margin { margin-bottom: 25px; }
+  .airy-refined .journal-margin h2 { font-size: 26px; line-height: 1.25; }
+  .airy-refined .journal-topics { margin-top: 10px; gap: 21px; padding-bottom: 8px; }
+  .airy-refined .filter-button { min-height: 44px; padding: 6px 0; font-size: 12px; }
+  .airy-refined .journal-feed { grid-template-columns: 1fr; gap: 32px; }
+  .airy-refined .journal-story { grid-template-areas: 'meta' 'title' 'image' 'excerpt' 'read'; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .airy-refined .journal-story.lead-story { border-top: 0; padding-top: 0; }
+  .airy-refined .journal-story .meta { margin-top: 0; }
+  .airy-refined .journal-story h2, .airy-refined .journal-story.lead-story h2, .airy-refined .journal-story.lead-essay h2 { font-size: 27px; margin-top: 10px; line-height: 1.2; }
+  .airy-refined .journal-story .story-image { height: 250px; margin-top: 17px; }
+  .airy-refined .journal-story.lead-story .story-image { height: 275px; }
+  .airy-refined .journal-story .excerpt, .airy-refined .journal-story.lead-essay .excerpt { font-size: 18px; line-height: 1.65; margin-top: 15px; }
+  .airy-refined .journal-story .read-link { min-height: 44px; margin-top: 8px; font-size: 13px; }
+  .airy-refined .journal-story.text-story { padding-top: 24px; }
+  .airy-refined .journal-more { align-items: flex-start; font-size: 12px; }
+  .airy-refined .journal-more .text-link { font-size: 12px; }
+  .airy-refined .site-footer { font-size: 12px; margin-top: 43px; }
+}
+@media (max-width: 350px) {
+  .airy-refined .brand { font-size: 23px; }
+  .airy-refined .site-header { gap: 11px; }
+  .airy-refined .site-nav { gap: 11px; }
+  .airy-refined .airy-hero { width: calc(100% - 40px); }
+  .airy-refined .welcome-panel h1 { font-size: 33px; }
+}

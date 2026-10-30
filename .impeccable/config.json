@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "mockups/2026-10-30/personal.html"
+        ],
+        "createdAt": "2026-10-30T22:35:47.054Z",
+        "reason": "Agent decision: the intentionally warm ivory in direction C follows the supplied Kelsey O'Halloran and Art of Non-Conformity screenshots and distinguishes it from the white A and B mockups; this exception applies only to this proposal."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "mockups/2026-10-30/article.html"
+        ],
+        "createdAt": "2026-10-30T22:35:47.115Z",
+        "reason": "Agent verified false positive: the header-wrap contains a 94px flex header with centered 19px branding and 14px navigation, providing more than 35px of actual vertical space; children do not touch the background boundary."
+      }
+    ]
+  }
+}

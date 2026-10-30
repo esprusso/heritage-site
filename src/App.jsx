@@ -1,62 +1,28 @@
-import React, { lazy, Suspense } from 'react';
-import Layout from './components/Layout';
-import Hero from './components/Hero';
-import PortfolioCTA from './components/PortfolioCTA';
-import Writing from './components/Writing';
-import Contact from './components/Contact';
-
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Journal from './components/Journal';
 
-// Lazy load non-home routes — these are separate pages, not needed on initial load
-const VibeShowcase = lazy(() => import('./components/VibeShowcase'));
 const BlogPost = lazy(() => import('./components/BlogPost'));
+const PhotoStory = lazy(() => import('./components/PhotoStory'));
+const About = lazy(() => import('./components/About'));
+const Contact = lazy(() => import('./components/Contact'));
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const CategoryGallery = lazy(() => import('./components/CategoryGallery'));
-const About = lazy(() => import('./components/About'));
+const VibeShowcase = lazy(() => import('./components/VibeShowcase'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
-const RouteLoader = () => (
-    <div style={{
-        minHeight: '60vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontFamily: 'var(--font-heading)',
-        fontSize: '1rem',
-        textTransform: 'uppercase',
-        letterSpacing: '0.1em',
-        color: 'var(--sub-text-color)'
-    }}>
-        Loading...
-    </div>
-);
-
-const Home = () => (
-    <>
-        <Hero />
-        <PortfolioCTA />
-        <Writing />
-        <Contact />
-    </>
-);
-
-function App() {
-    return (
-        <Layout>
-            <Suspense fallback={<RouteLoader />}>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/portfolio" element={<Portfolio />} />
-                    <Route path="/portfolio/:categoryId" element={<CategoryGallery />} />
-                    <Route path="/vibe" element={<VibeShowcase />} />
-                    <Route path="/blog" element={<Writing />} />
-                    <Route path="/blog/:slug" element={<BlogPost />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </Suspense>
-        </Layout>
-    );
+export default function App() {
+    return <Layout><Suspense fallback={<div className="page-state" role="status"><p>Opening the journal…</p></div>}><Routes>
+        <Route path="/" element={<Journal />} />
+        <Route path="/blog" element={<Journal archive />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/journal/:slug" element={<PhotoStory />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/portfolio/:categoryId" element={<CategoryGallery />} />
+        <Route path="/vibe" element={<VibeShowcase />} />
+        <Route path="*" element={<NotFound />} />
+    </Routes></Suspense></Layout>;
 }
-
-export default App;

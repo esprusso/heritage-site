@@ -1,162 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { getSinglePost } from '../lib/ghost';
-import { ArrowLeft } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import DOMPurify from 'dompurify';
+import { getSinglePost } from '../lib/ghost';
+import { prepareArticle } from '../lib/articleContent';
+import { topicForPost, excerpt } from '../lib/journal';
+import { useContent } from '../contexts/ContentContext';
+import usePageMetadata from '../hooks/usePageMetadata';
+import ReadingLayout from './ReadingLayout';
 
-const BlogPost = () => {
+export default function BlogPost() {
     const { slug } = useParams();
-    const [post, setPost] = useState(null);
-    const [loading, setLoading] = useState(true);
-
+    const { content } = useContent();
+    const [state, setState] = useState({ status: 'loading', post: null, slug });
+    const [revision, setRevision] = useState(0);
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [slug]);
+        let active = true;
+        setState({ status: 'loading', post: null, slug });
+        getSinglePost(slug, { throwOnError: true }).then(post => {
+            if (active) setState({ status: post ? 'ready' : 'missing', post, slug });
+        }).catch(() => { if (active) setState({ status: 'error', post: null, slug }); });
+        return () => { active = false; };
+    }, [slug, revision]);
+    const post = state.post;
+    const prepared = useMemo(() => prepareArticle(post?.html), [post?.html]);
+    usePageMetadata(post?.title || 'The journal', post ? excerpt(post.custom_excerpt || post.excerpt, 160) : content.meta.description);
 
-    useEffect(() => {
-        async function fetchPost() {
-            setLoading(true);
-            const data = await getSinglePost(slug);
-            setPost(data);
-            setLoading(false);
-        }
-        if (slug) fetchPost();
-    }, [slug]);
-
-    if (loading) {
-        return (
-            <article style={{ maxWidth: '800px', margin: '0 auto', padding: '12rem 2rem 6rem', minHeight: '100vh' }}>
-                <div style={{ width: '120px', height: '1rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '4rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '80%', height: '4rem', backgroundColor: 'var(--skeleton-color)', margin: '0 auto 1rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100px', height: '1rem', backgroundColor: 'var(--skeleton-color)', margin: '0 auto 4rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100%', height: '400px', backgroundColor: 'var(--skeleton-color)', marginBottom: '4rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '1rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '100%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '1rem', borderRadius: '4px' }}></div>
-                <div style={{ width: '80%', height: '1.2rem', backgroundColor: 'var(--skeleton-color)', marginBottom: '1rem', borderRadius: '4px' }}></div>
-            </article>
-        );
-    }
-
-    if (!post) {
-        return (
-            <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '1rem' }}>
-                <h2>Post not found</h2>
-                <Link to="/" style={{ textDecoration: 'underline' }}>Return Home</Link>
-            </div>
-        );
-    }
+    if (state.slug !== slug || state.status === 'loading') return <div className="page-state" role="status"><p>Opening the story…</p></div>;
+    if (state.status === 'error') return <div className="page-state" role="alert"><h1>The story couldn’t be loaded.</h1><p>Please check your connection and try again.</p><button className="text-button" onClick={() => setRevision(value => value + 1)}>Try again</button><Link className="text-link" to="/#journal">Back to the journal</Link></div>;
+    if (!post) return <div className="page-state"><h1>That story isn’t here.</h1><p>It may have moved, or the link may be out of date.</p><Link className="text-link" to="/#journal">Back to the journal</Link></div>;
 
     return (
-        <article style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            padding: '12rem 2rem 6rem',
-            minHeight: '100vh'
-        }}>
-            <Link to="/" className="back-link" style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '4rem',
-                color: 'var(--sub-text-color)',
-                textDecoration: 'none',
-                textTransform: 'uppercase',
-                fontSize: '0.8rem',
-                fontWeight: 500,
-                letterSpacing: '0.1em',
-                transition: 'color 0.3s ease'
-            }}>
-                <ArrowLeft size={16} /> Back to Home
-            </Link>
-
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-            >
-                <header style={{ marginBottom: '4rem', textAlign: 'center' }}>
-                    <h1 style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                        marginBottom: '1rem',
-                        fontWeight: 400,
-                        fontStyle: 'italic',
-                        lineHeight: 1.2,
-                        letterSpacing: '0.02em',
-                    }}>
-                        {post.title}
-                    </h1>
-                    <time style={{
-                        color: 'var(--sub-text-color)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.2em',
-                        fontSize: '0.8rem',
-                        fontWeight: 400,
-                    }}>
-                        {new Date(post.published_at).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        })}
-                    </time>
-                </header>
-
-                {post.feature_image && (
-                    <figure style={{ marginBottom: '4rem', width: '100%' }}>
-                        <img
-                            src={post.feature_image}
-                            alt={post.title}
-                            style={{ width: '100%', height: 'auto', display: 'block' }}
-                        />
-                        {post.feature_image_caption && (
-                            <figcaption
-                                style={{
-                                    textAlign: 'center',
-                                    marginTop: '1rem',
-                                    color: 'var(--sub-text-color)',
-                                    fontSize: '0.9rem',
-                                    fontStyle: 'italic'
-                                }}
-                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.feature_image_caption) }}
-                            />
-                        )}
-                    </figure>
-                )}
-
-                <div
-                    className="gh-content"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html, {
-                        ADD_TAGS: ['iframe'],
-                        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src', 'width', 'height', 'title']
-                    }) }}
-                    style={{
-                        fontSize: '1.1rem',
-                        lineHeight: 1.8,
-                        color: 'var(--text-color)',
-                        fontFamily: 'var(--font-body)',
-                    }}
-                />
-
-                <style>{`
-                    .back-link:hover { color: var(--text-color); }
-                    .gh-content p { margin-bottom: 2rem; }
-                    .gh-content h2 { margin-top: 4rem; margin-bottom: 1.5rem; font-size: 2rem; }
-                    .gh-content h3 { margin-top: 3rem; margin-bottom: 1rem; font-size: 1.5rem; }
-                    .gh-content blockquote { border-left: 2px solid var(--accent-color); padding-left: 2rem; margin: 3rem 0; font-style: italic; }
-                    .gh-content a { text-decoration: underline; color: inherit; }
-                    .gh-content figure { margin: 3rem 0; }
-                    .gh-content figcaption { text-align: center; margin-top: 0.75rem; color: var(--sub-text-color); font-size: 0.9rem; font-style: italic; }
-                    .gh-content img { max-width: 100%; height: auto; }
-                    .gh-content iframe { max-width: 100%; display: block; margin: 0 auto; }
-                    .gh-content .kg-embed-card { margin: 3rem 0; }
-                    .gh-content .kg-embed-card iframe { width: 100%; aspect-ratio: 16/9; height: auto; }
-                    .gh-content ul, .gh-content ol { margin-bottom: 2rem; padding-left: 2rem; }
-                    .gh-content li { margin-bottom: 0.5rem; }
-                `}</style>
-            </motion.div>
-        </article>
+        <ReadingLayout title={post.title} description={post.custom_excerpt} topic={topicForPost(post, content)} readingLabel={Math.max(1, post.reading_time || 1) + ' min read'} date={post.published_at} author={post.primary_author?.name || post.authors?.[0]?.name || 'Russ Heritage'} headings={prepared.headings} entryId={post.id}>
+            <div className="article-copy">
+                {post.feature_image ? <figure className="article-feature"><img src={post.feature_image} alt={post.feature_image_alt || post.title} decoding="async" />{post.feature_image_caption ? <figcaption dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.feature_image_caption) }} /> : null}</figure> : null}
+                <div className="gh-content" dangerouslySetInnerHTML={{ __html: prepared.html }} />
+            </div>
+        </ReadingLayout>
     );
-};
-
-export default BlogPost;
+}

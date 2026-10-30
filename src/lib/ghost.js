@@ -19,29 +19,39 @@ if (url && key) {
     console.warn("Ghost API credentials missing in .env");
 }
 
-export async function getPosts() {
-    if (!api) return [];
-    return await api.posts
-        .browse({
-            limit: "all",
-            include: "tags,authors"
-        })
-        .catch(err => {
-            console.error(err);
-            return [];
-        });
+let cachedPosts = null;
+let fetchedAt = 0;
+let pendingPosts = null;
+
+export async function getPosts({ refresh = false, throwOnError = false } = {}) {
+    try {
+        if (!api) throw new Error('The journal connection is not configured.');
+        if (!refresh && cachedPosts && Date.now() - fetchedAt < 60000) return cachedPosts;
+        if (!pendingPosts) {
+            pendingPosts = api.posts.browse({ limit: 'all', include: 'tags,authors' })
+                .then(posts => {
+                    cachedPosts = posts.filter(post => post.slug);
+                    fetchedAt = Date.now();
+                    return cachedPosts;
+                })
+                .finally(() => { pendingPosts = null; });
+        }
+        return await pendingPosts;
+    } catch (error) {
+        if (throwOnError) throw error;
+        return [];
+    }
 }
 
-export async function getSinglePost(postSlug) {
-    if (!api) return null;
-    return await api.posts
-        .read({
-            slug: postSlug
-        }, {
-            include: "tags,authors"
-        })
-        .catch(err => {
-            console.error(err);
-            return null;
-        });
+export async function getSinglePost(postSlug, { throwOnError = false } = {}) {
+    try {
+        if (!api) throw new Error('The journal connection is not configured.');
+        const cached = cachedPosts?.find(post => post.slug === postSlug);
+        if (cached?.html) return cached;
+        return await api.posts.read({ slug: postSlug }, { include: 'tags,authors' });
+    } catch (error) {
+        if (error.response?.status === 404 || error.name === 'NotFoundError') return null;
+        if (throwOnError) throw error;
+        return null;
+    }
 }

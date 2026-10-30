@@ -1,0 +1,7 @@
+node_modules/
+dist/
+assets/
+mockups/
+.impeccable/
+.playwright-mcp/
+public/

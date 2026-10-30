@@ -1,0 +1,1 @@
+Source: public/images/mm-2.jpg, an existing photograph from Russ Heritage's website. Deterministic responsive derivative: cwebp -q 86 -resize 640 0. No generated or retouched imagery. Original photograph retained unchanged.
