@@ -1,0 +1,4 @@
+{
+  "prompt": "Source: public/images/mm-2.jpg, an existing photograph from Russ Heritage's website. Deterministic responsive derivative: cwebp -q 86 -resize 1920 0. No generated or retouched imagery. Original photograph retained unchanged.\n",
+  "createdAt": "2026-10-30T23:26:31.011Z"
+}

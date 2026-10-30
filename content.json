@@ -1,7 +1,8 @@
 {
     "meta": {
-        "title": "Ink Meets Lens",
-        "description": "Photography and Writing Portfolio"
+        "title": "Russ Heritage",
+        "description": "People, ideas, and the things that make me stop and look a little closer. A personal journal by Russ Heritage.",
+        "url": "https://www.russheritage.com"
     },
     "hero": {
         "title": "RUSS HERITAGE",
@@ -895,5 +896,76 @@
                 }
             ]
         }
-    ]
+    ],
+    "journal": {
+        "name": "Russ Heritage",
+        "title": "Notes on a life",
+        "titleEnd": "in progress.",
+        "introduction": "People, ideas, and the things that make me stop and look a little closer.",
+        "heroImage": "/images/journal/hero-1280.webp",
+        "heroAlt": "A rooftop portrait with a flowing white dress and the New York skyline beyond",
+        "about": "I'm Russ, a photographer and writer in the Twin Cities.",
+        "authorBio": "Russ Heritage is a photographer and writer in the Twin Cities.",
+        "topics": [
+            {
+                "id": "creativity",
+                "name": "Creativity"
+            },
+            {
+                "id": "culture",
+                "name": "Culture & the internet"
+            },
+            {
+                "id": "life",
+                "name": "Everyday life"
+            },
+            {
+                "id": "community",
+                "name": "Community"
+            }
+        ],
+        "postTopics": {
+            "write-like-its-1999": "culture",
+            "remember-the-old-internet": "culture",
+            "things-are-really-bad-here-in-minnesota": "community"
+        },
+        "photoStories": [
+            {
+                "slug": "portraits-of-meredith",
+                "title": "Portraits of Meredith",
+                "topic": "creativity",
+                "excerpt": "Five photographs from the editorial archive.",
+                "categoryId": "editorial",
+                "model": "meredith",
+                "image": "/images/ee-02.jpg",
+                "preview": "/images/journal/meredith-960.webp",
+                "previewSrcSet": "/images/journal/meredith-480.webp 480w, /images/journal/meredith-960.webp 960w",
+                "imageAlt": "Meredith in a red dress with pearl jewelry"
+            },
+            {
+                "slug": "portraits-of-brittni",
+                "title": "Portraits of Brittni",
+                "topic": "creativity",
+                "excerpt": "A seated portrait from the archive.",
+                "categoryId": "portraits",
+                "model": "brittni",
+                "image": "/images/ff-2.jpg",
+                "preview": "/images/journal/brittni-960.webp",
+                "previewSrcSet": "/images/journal/brittni-480.webp 480w, /images/journal/brittni-960.webp 960w",
+                "imageAlt": "Brittni seated in a vintage upholstered chair"
+            },
+            {
+                "slug": "portraits-of-valerie",
+                "title": "Portraits of Valerie",
+                "topic": "creativity",
+                "excerpt": "Three outdoor portraits from the archive.",
+                "categoryId": "portraits",
+                "model": "valerie",
+                "image": "/images/aa-1.jpg",
+                "preview": "/images/journal/valerie-960.webp",
+                "previewSrcSet": "/images/journal/valerie-480.webp 480w, /images/journal/valerie-960.webp 960w",
+                "imageAlt": "Valerie wearing a black hat and a pink dress outdoors"
+            }
+        ]
+    }
 }
