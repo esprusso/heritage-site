@@ -1,6 +1,6 @@
 # Implementation verification — October 30, 2026
 
-Production preview: http://127.0.0.1:4173/. This is a local build; nothing has been published or pushed.
+Production preview: http://127.0.0.1:4173/. This record began with local verification before publication. Deployment was subsequently authorized and verified at https://www.russheritage.com/.
 
 ## Build and static checks
 
@@ -40,3 +40,9 @@ All final normal screenshots were captured from the production build after the e
 - posts-error.png and content-error.png: deliberate error-state captures from the same production build.
 
 Approved blueprint: mockups/2026-10-30/airy-journal-refined.html with journal-refinement.css, screenshot screenshots/airy-journal-panel-opening.png. Companion article blueprint: mockups/2026-10-30/article.html and screenshots/article-desktop.png. Factual published copy and photo collections intentionally replace illustrative mockup essays; the approved layout and typography are retained.
+
+## Returning-visitor deployment regression
+
+The existing browser session exposed a cached pre-redesign content file alongside the new application. Content requests now include a revision derived from the file's SHA-256 and revalidate their cache. The provider rejects a configuration without the journal structure through the existing retry state.
+
+The production-preview browser test supplied the previous revision at the old unversioned URL: the new build bypassed it and rendered six stories. Supplying that previous configuration at the new versioned URL displayed the intended recovery page, without an uncaught application error; restoring the request and retrying rendered six stories again. Lint, build and whitespace checks passed after the fix.

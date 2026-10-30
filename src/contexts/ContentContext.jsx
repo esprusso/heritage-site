@@ -8,7 +8,7 @@ export const ContentProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('/content.json')
+        fetch(`/content.json?v=${import.meta.env.VITE_CONTENT_REVISION}`, { cache: 'no-cache' })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Failed to load content configuration');
@@ -16,6 +16,9 @@ export const ContentProvider = ({ children }) => {
                 return response.json();
             })
             .then((data) => {
+                if (!data.journal || !Array.isArray(data.journal.topics)) {
+                    throw new Error('The content configuration does not match this version of the site');
+                }
                 setContent(data);
                 setLoading(false);
             })

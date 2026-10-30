@@ -32,6 +32,8 @@ git push origin main
 
 **Content:** Site copy, the hero, about information, photography collections, journal configuration, and social links live in `/public/content.json`, loaded at runtime via `ContentContext`. The `journal.photoStories` entries reference existing unrestricted `portfolioCategories` model groups. Their image counts come from the underlying collection. Keep factual descriptions and original photographs intact; illustrative copy under `mockups/` is not publication copy.
 
+Vite derives a content revision from `public/content.json` for the runtime request URL. The provider revalidates that versioned URL and checks the journal configuration before rendering, so returning visitors do not mix a new app with an older cached content file.
+
 **Blog:** `PostsContext` loads Ghost posts through `/src/lib/ghost.js` using `VITE_GHOST_API_URL` and `VITE_GHOST_CONTENT_API_KEY`. Requests share a short-lived cache. Journal topic assignment prefers public Ghost tags matching the configured topic IDs or tags, then `journal.postTopics`, then `life`. Use the configured `creativity`, `culture`, `community`, and `life` topics. `articleContent.js` sanitizes published HTML while preserving media and heading anchors; `ReadingLayout` provides the article and photographic-series frame. Preserve published text, dates, authors, and media.
 
 **Fonts:** Locally hosted DM Sans for navigation and headings; Source Serif 4 for reading text, the personal introduction, and wordmark. Their licenses live in `/public/fonts/`.
