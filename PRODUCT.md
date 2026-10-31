@@ -13,6 +13,7 @@ Russ Heritage's personal website brings photography, essays, and observations to
 ## Capabilities and Constraints
 
 - The existing site uses React, Vite, React Router, and Ghost for posts.
+- The homepage feature showcases the latest published Ghost post automatically, including its cover, title, excerpt, and article link.
 - Preserve the current content, photography, routes, and Ghost publishing integration.
 - Publish through the existing `npm run deploy` workflow to the configured GitHub Pages site at www.russheritage.com. The approved implementation passed local verification and independent finish review before deployment.
 - Use real Ghost posts and existing photo collections in the implemented journal. Keep published text, dates, media, gallery behavior, and restricted-gallery confirmations intact.

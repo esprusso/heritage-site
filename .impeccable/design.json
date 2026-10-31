@@ -120,7 +120,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Desktop hero introduction."
+        "purpose": "Homepage feature headline and fallback introduction."
       },
       "headline": {
         "displayName": "Headline",
@@ -250,7 +250,7 @@
       "name": "Welcome panel",
       "kind": "custom",
       "refersTo": "welcome-panel",
-      "description": "White introduction panel; overlay positioning belongs to the hero layout.",
+      "description": "Inset white panel shared by the latest-post feature and introductory fallback. Featured headlines use authored text; fallback introductions may use italic emphasis. Featured layout uses a centered grid with minimum hero heights so long titles expand without clipping; mobile keeps the article reading action visible.",
       "html": "<div class=\"ds-welcome\"><h1>Words, pictures,<br>and <em>everything between.</em></h1><p>A journal of things worth paying attention to.</p></div>",
       "css": ".ds-welcome{width:500px;max-width:100%;padding:40px;background:var(--paper,#fff);color:var(--ink,#20271f)}.ds-welcome h1{margin:0;font-family:var(--serif,'Source Serif',serif);font-size:56px;line-height:1.08;font-weight:400;letter-spacing:-.035em}.ds-welcome h1 em{font-weight:400;color:var(--ink,#20271f)}.ds-welcome p{font-family:var(--serif,'Source Serif',serif);font-size:18px;line-height:1.6;max-width:340px;margin:20px 0 0;color:#515c51}@media(max-width:1250px){.ds-welcome{width:460px;padding:34px}.ds-welcome h1{font-size:52px}}@media(max-width:960px){.ds-welcome{width:292px;padding:24px}.ds-welcome h1{font-size:40px}.ds-welcome p{font-size:16px;max-width:290px}}@media(max-width:700px){.ds-welcome{width:100%;padding:20px 0 0;background:transparent}.ds-welcome h1{font-size:36px;line-height:1.12}.ds-welcome p{max-width:410px;margin-top:13px}}@media(max-width:350px){.ds-welcome h1{font-size:33px}}"
     },

@@ -10,6 +10,14 @@ export function excerpt(value = '', limit = 190) {
     return text.slice(0, ending > limit / 2 ? ending : limit).replace(/[.,;:]$/, '') + '…';
 }
 
+export function latestPublishedPost(posts = []) {
+    return posts.reduce((latest, post) => {
+        if (!post.slug || (post.status && post.status !== 'published')) return latest;
+        const publishedAt = Date.parse(post.published_at) || 0;
+        return !latest || publishedAt > (Date.parse(latest.published_at) || 0) ? post : latest;
+    }, null);
+}
+
 export function photoEntries(content) {
     return (content?.journal?.photoStories || []).flatMap(story => {
         const category = content.portfolioCategories?.find(item => item.id === story.categoryId && !item.nsfw);

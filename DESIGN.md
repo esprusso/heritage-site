@@ -144,7 +144,7 @@ Contextual source literals remain contextual rather than becoming extra accent f
 
 ### Hierarchy
 
-- **Display:** the frontmatter display role is the desktop introduction. At 1250px and below it becomes 52px; at 960px, 40px; at 700px, 36px/1.12; at 350px, 33px.
+- **Display:** the frontmatter display role is the homepage feature headline and fallback introduction. At 1250px and below it becomes 52px; at 960px, 40px; at 700px, 36px/1.12; at 350px, 33px.
 - **Headline:** the frontmatter headline is the article title. It steps to 50px, 43px, then 37px at the 1250px, 960px, and 700px breakpoints. Mobile tracking is -.03em. Archive and content-page titles use the serif at 54px, reducing to 41px on mobile.
 - **Title:** ordinary journal titles use the frontmatter title role; the lead title is 32px. At 1250px they are 26px/29px, at 960px 23px/25px, and at 700px both become 27px. Article subheadings are 28px/1.3 and 24px/1.35, reducing to 25px and 22px on mobile.
 - **Body:** article copy uses the frontmatter body role, bounded to 720px. At 960px it becomes 20px; at 700px, 19px/1.85. Paragraphs retain 24px bottom margin and adjacent-paragraph spacing of 25px (23px mobile). The opening drop cap is 75px/.83, reducing to 64px on mobile.
@@ -161,6 +161,8 @@ These are observed composition values, not a fabricated universal spacing scale.
 The masthead is 94px high, capped at 1312px with 40px internal horizontal padding; at 1600px it caps at 1400px. Height reduces to 86px at 960px and 74px with 24px padding at 700px. Mobile keeps Journal, Archive, and About visible; the extra email link is hidden.
 
 The desktop hero is 460px high, with 26px top and 53px bottom margin. Its square white panel is 500px wide, padded 40px, inset 32px from the left, and centered with `top:50%;transform:translateY(-50%)`. At 1250px it is 460px wide with 34px padding; at 960px the hero is 420px high and the panel is 292px wide with 24px padding and 24px inset. At 1600px the hero becomes 490px high. At 700px the image is 190px high; the introduction becomes normal flow below it, with 20px top padding, no panel fill, and no exploration link. At 350px only the hero outer gutter reduces to 20px.
+
+The primary homepage feature uses this same panel and type with the newest published Ghost post. A grid centers the panel inside 32px padding (24px at 960px), using the above heights as minimums so longer titles can grow without clipping. The post cover fills the background; its title, cover, and reading action link to the article. Below 700px, the cover is 190px high and the panel follows in normal flow; the reading action remains visible. The introductory hero described above remains the fallback when no published posts are available.
 
 The journal uses a 226px margin column, 64px gap, and a ruled edge with 32px inner padding. The feed is an asymmetric `1.08fr .92fr` grid with 53px row and 44px column gaps. At 1250px the margin/gap become 195px/40px and feed column gap 32px. At 960px they become 166px/30px, and the feed becomes equal columns with 39px/27px gaps. At 700px the layout stacks, topic filters scroll horizontally, and the feed becomes one column with 32px gaps. Mobile cards place metadata and heading before the photograph; desktop places the photograph first. Desktop images are 286px high (lead 320px), tablet 245px (lead 275px), mobile 250px (lead 275px).
 
@@ -203,6 +205,8 @@ The masthead balances the personal serif wordmark with a simple sans row. Deskto
 ### Welcome panel and reading furniture
 
 The inset welcome panel is specific to the photographic hero, with a serif heading and italic emphasis. Do not apply its overlay geometry to all components. Reading pages use a sans headline, serif deck, quiet byline, optional drop cap, ruled italic quotes, biography, optional contents, and related stories. Quotes use 28px/1.5 text (25px mobile), `#56694d`, and 24px vertical padding (22px mobile). Captions are centered 14px/1.6 sans in muted grey. Article links use a 1.5px underline in `#a8b59d`, offset 5px. Inline arrow icons are SVG, never font glyphs.
+
+For the latest-post feature, the panel carries the authored headline without added italic emphasis, a plain-text excerpt of up to 135 characters, and “Read the latest post.” Use the post's cover image and alternative text when supplied; otherwise keep the configured site photograph. Loading reserves the feature's layout with a pale image placeholder. Empty or failed post requests retain the introductory fallback; the journal's existing retry action handles failures.
 
 The page uses smooth scrolling by default. Under `prefers-reduced-motion:reduce`, scrolling becomes automatic and all CSS transitions and animations are disabled. Hover transforms remain instantaneous under that rule; the source does not remove their end states.
 
