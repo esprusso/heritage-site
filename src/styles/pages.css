@@ -3,6 +3,13 @@
 .about-intro{display:grid;grid-template-columns:1fr 360px;gap:90px;align-items:start}
 .about-lede{font-family:var(--serif);font-size:24px;line-height:1.7;margin-top:30px;max-width:650px}
 .about-journal-intro{font-family:var(--serif);font-size:21px;line-height:1.75;color:var(--muted);margin-top:24px;max-width:600px}
+.about-body{font-family:var(--serif);font-size:21px;line-height:1.8;max-width:650px;overflow-wrap:anywhere}
+.about-body>:first-child{margin-top:30px}
+.about-body>p:first-child{font-size:24px;line-height:1.7}
+.about-body>p:nth-child(2){color:var(--muted);line-height:1.75;max-width:600px}
+.about-body>:last-child{margin-bottom:0}
+.about-body .article-opening::first-letter{float:none;font:inherit;padding:0;margin:0;color:inherit}
+.about-intro>div{min-width:0}
 .about-photo{width:100%;height:auto;filter:grayscale(1)}
 .about-links{display:flex;flex-wrap:wrap;gap:25px;margin-top:25px}
 .about-section{max-width:740px;margin-top:45px;padding-top:30px;border-top:1px solid var(--rule)}
@@ -17,6 +24,8 @@
 .portfolio-page-section>div:first-child{text-align:left!important}
 .portfolio-page-section h1{font-size:54px!important;letter-spacing:-.035em!important;font-style:normal!important}
 .portfolio-page-section>div:first-child>p{margin-left:0!important;max-width:650px!important;font-family:var(--serif)!important;font-size:21px!important;line-height:1.7!important}
+@media(max-width:960px){.about-body>p:first-child{font-size:21px}.about-body>p:nth-child(2){font-size:19px}}
+@media(max-width:700px){.about-body>:first-child{margin-top:24px}}
 @media(max-width:1250px){.content-page{margin-left:60px;margin-right:60px}.about-intro{grid-template-columns:1fr 310px;gap:55px}}
 @media(max-width:960px){.content-page{margin-left:40px;margin-right:40px}.about-intro{grid-template-columns:1fr 260px;gap:35px}.about-lede{font-size:21px}.about-journal-intro{font-size:19px}}
 @media(max-width:700px){.content-page{margin:40px 24px 45px}.content-page h1{font-size:41px}.about-intro{grid-template-columns:1fr;gap:30px}.about-photo{max-width:370px;justify-self:start}.about-lede{font-size:21px;margin-top:24px}.about-journal-intro{font-size:19px}.about-links{gap:18px;margin-top:18px}.contact-intro{font-size:23px}.contact-email{font-size:24px;gap:12px}.contact-socials{gap:20px}.portfolio-page-section{padding-top:40px!important}.portfolio-page-section h1{font-size:43px!important}.cat-gallery-section{padding-top:35px!important}}

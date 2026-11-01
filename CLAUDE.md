@@ -19,6 +19,7 @@ git push origin main
 - `npm run dev` — start local dev server (Vite, port 5173)
 - `npm run build` — build to `dist/` (also copies `index.html` to `404.html` for SPA routing on GitHub Pages)
 - `npm run lint` — check source and configuration with ESLint
+- `npm test` — check the About page content and fallback behavior
 - `npm run preview` — serve the production build locally
 - `npm run deploy` — build + publish to GitHub Pages via `gh-pages`
 
@@ -30,13 +31,15 @@ git push origin main
 
 **Routes:** `/` is the mixed journal; `/blog` is the searchable, topic-filtered archive; `/blog/:slug` renders Ghost articles; `/journal/:slug` renders configured photographic series. `/about` and `/contact` use the same editorial system. The original `/portfolio`, `/portfolio/:categoryId`, and `/vibe` routes remain available. Preserve gallery lightboxes, keyboard controls, and restricted-gallery confirmation.
 
-**Content:** Site copy, the hero, about information, photography collections, journal configuration, and social links live in `/public/content.json`, loaded at runtime via `ContentContext`. The `journal.photoStories` entries reference existing unrestricted `portfolioCategories` model groups. Their image counts come from the underlying collection. Keep factual descriptions and original photographs intact; illustrative copy under `mockups/` is not publication copy.
+**Content:** Site copy, the hero, fallback about information, photography collections, journal configuration, and social links live in `/public/content.json`, loaded at runtime via `ContentContext`. The `journal.photoStories` entries reference existing unrestricted `portfolioCategories` model groups. Their image counts come from the underlying collection. Keep factual descriptions and original photographs intact; illustrative copy under `mockups/` is not publication copy.
 
 Vite derives a content revision from `public/content.json` for the runtime request URL. The provider revalidates that versioned URL and checks the journal configuration before rendering, so returning visitors do not mix a new app with an older cached content file.
 
 **Blog:** `PostsContext` loads Ghost posts through `/src/lib/ghost.js` using `VITE_GHOST_API_URL` and `VITE_GHOST_CONTENT_API_KEY`. Requests share a short-lived cache. Journal topic assignment prefers public Ghost tags matching the configured topic IDs or tags, then `journal.postTopics`, then `life`. Use the configured `creativity`, `culture`, `community`, and `life` topics. `articleContent.js` sanitizes published HTML while preserving media and heading anchors; `ReadingLayout` provides the article and photographic-series frame. Preserve published text, dates, authors, and media.
 
 The homepage hero selects the newest published post by `published_at`, independent of response ordering. Its cover image, headline, excerpt, and reading link update from Ghost without a site rebuild. A missing cover uses the configured site photograph; loading reserves the feature layout, and empty/error states retain the introductory fallback. Keep the reading action visible on mobile and let the inset panel grow for long headlines.
+
+**About:** `/about` reads the published Ghost **page** with slug `about` on each visit. Edit it in Ghost's **Pages** section (initial title: `Hi, I’m Russ.`), keep its URL slug `about` and access public, then click **Update**. The page title, rich-text body, optional feature image/alt text, and search metadata update without redeploying the website. The first paragraph is the lead; links, headings, lists, and media use the existing reading styles and HTML sanitizer. With no feature image, the original portrait remains. A missing/unpublished page or request failure uses the local About copy. An intentionally empty published body stays empty. `npm test` covers the content selection contract.
 
 **Fonts:** Locally hosted DM Sans for navigation and headings; Source Serif 4 for reading text, the personal introduction, and wordmark. Their licenses live in `/public/fonts/`.
 

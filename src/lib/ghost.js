@@ -55,3 +55,34 @@ export async function getSinglePost(postSlug, { throwOnError = false } = {}) {
         return null;
     }
 }
+
+/**
+ * @typedef {Object} GhostPage
+ * @property {string} id
+ * @property {string} slug
+ * @property {string} title
+ * @property {string|null} html
+ * @property {string|null} [feature_image]
+ * @property {string|null} [feature_image_alt]
+ * @property {string|null} [meta_title]
+ * @property {string|null} [meta_description]
+ * @property {string|null} [custom_excerpt]
+ * @property {string} [excerpt]
+ */
+
+/**
+ * Read on each visit so published page edits don't need a website deployment.
+ * @param {string} slug
+ * @param {{ throwOnError?: boolean }} [options]
+ * @returns {Promise<GhostPage|null>}
+ */
+export async function getSinglePage(slug, { throwOnError = false } = {}) {
+    try {
+        if (!api) throw new Error('The journal connection is not configured.');
+        return await api.pages.read({ slug });
+    } catch (error) {
+        if (error.response?.status === 404 || error.name === 'NotFoundError') return null;
+        if (throwOnError) throw error;
+        return null;
+    }
+}
