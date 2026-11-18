@@ -19,6 +19,21 @@ if (url && key) {
     console.warn("Ghost API credentials missing in .env");
 }
 
+/**
+ * Local preview only: `?sample-notes` adds illustrative notes from mockups/, `?sample-notes=2` adds just the
+ * newest two, and `?sample-notes=off` removes them.
+ */
+async function withPreviewNotes(posts) {
+    if (!import.meta.env.DEV) return posts;
+    const flag = new URLSearchParams(window.location.search).get('sample-notes');
+    if (flag !== null) sessionStorage.setItem('russ:sample-notes', flag === 'off' ? '' : flag || 'all');
+    const wanted = sessionStorage.getItem('russ:sample-notes');
+    if (!wanted) return posts;
+    const { sampleNotes } = await import('../../mockups/2026-11-18-soft-signal-site/sample-notes.js');
+    const samples = sampleNotes();
+    return [...samples.slice(0, Number(wanted) || samples.length), ...posts];
+}
+
 let cachedPosts = null;
 let fetchedAt = 0;
 let pendingPosts = null;
@@ -29,8 +44,9 @@ export async function getPosts({ refresh = false, throwOnError = false } = {}) {
         if (!refresh && cachedPosts && Date.now() - fetchedAt < 60000) return cachedPosts;
         if (!pendingPosts) {
             pendingPosts = api.posts.browse({ limit: 'all', include: 'tags,authors' })
+                .then(posts => withPreviewNotes(posts.filter(post => post.slug)))
                 .then(posts => {
-                    cachedPosts = posts.filter(post => post.slug);
+                    cachedPosts = posts;
                     fetchedAt = Date.now();
                     return cachedPosts;
                 })
@@ -46,6 +62,7 @@ export async function getPosts({ refresh = false, throwOnError = false } = {}) {
 export async function getSinglePost(postSlug, { throwOnError = false } = {}) {
     try {
         if (!api) throw new Error('The journal connection is not configured.');
+        if (import.meta.env.DEV && postSlug.startsWith('sample-note-')) await getPosts();
         const cached = cachedPosts?.find(post => post.slug === postSlug);
         if (cached?.html) return cached;
         return await api.posts.read({ slug: postSlug }, { include: 'tags,authors' });

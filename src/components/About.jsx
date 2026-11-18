@@ -26,7 +26,7 @@ export default function About() {
     const sections = content.about.sections?.map(section => ({ ...section, paragraphs: section.paragraphs.filter(text => text.trim() && text.trim() !== '...') })).filter(section => section.paragraphs.length) || [];
 
     return (
-        <article className="about-page content-page" aria-busy={state.loading}>
+        <article className="about-page content-page wrap" aria-busy={state.loading}>
             <div className="about-intro">
                 <div>
                     <h1>{about.title}</h1>
@@ -39,8 +39,8 @@ export default function About() {
                         </>
                     )}
                     <div className="about-links">
-                        <Link className="text-link" to="/#journal">Explore the journal <ArrowRight size={20} strokeWidth={1.4} aria-hidden="true" /></Link>
-                        <a className="text-link" href={emailHref(content)}>Say hello <ArrowRight size={20} strokeWidth={1.4} aria-hidden="true" /></a>
+                        <Link className="button" to="/#journal">Explore the journal <ArrowRight strokeWidth={1.8} aria-hidden="true" /></Link>
+                        <a className="button button-quiet" href={emailHref(content)}>Say hello</a>
                     </div>
                 </div>
                 <img className="about-photo" src={about.image} alt={about.imageAlt} width="440" height="550" />

@@ -1,227 +1,391 @@
 ---
 name: Russ Heritage
-description: An open journal of photographs, essays, and things noticed.
+description: Essays, short notes, and photographs as one journal, in the russ! Soft Signal identity.
 colors:
-  paper: "#fff"
-  ink: "#20271f"
-  muted: "#646d64"
-  accent: "#486151"
-  rule: "#dce2da"
-  wash: "#f3f5f1"
-  skeleton-color: "#edf0eb"
-  skeleton-shine: "#f6f7f4"
+  ink: "#000000"
+  ivory: "#f5f0e5"
+  signal: "#f3531c"
+  stone: "#d8d1c7"
+  muted: "#6c665c"
+  signal-deep: "#af3614"
+  on-ink-muted: "#b5b2a9"
+  ink-rule: "#3b3a37"
 typography:
   display:
-    fontFamily: "'Source Serif', serif"
-    fontSize: "56px"
+    fontFamily: "'Newsreader', Georgia, serif"
+    fontSize: "clamp(44px, 6.4vw, 92px)"
     fontWeight: 400
-    lineHeight: 1.08
-    letterSpacing: "-.035em"
+    lineHeight: 1
+    letterSpacing: "-.02em"
+  page-title:
+    fontFamily: "'Newsreader', Georgia, serif"
+    fontSize: "clamp(40px, 5.6vw, 80px)"
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: "-.02em"
+  statement:
+    fontFamily: "'Newsreader', Georgia, serif"
+    fontSize: "72px"
+    fontWeight: 400
+    lineHeight: "72px"
+    letterSpacing: "-.015em"
   headline:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: "56px"
-    fontWeight: 600
-    lineHeight: 1.16
-    letterSpacing: "-.034em"
+    fontFamily: "'Newsreader', Georgia, serif"
+    fontSize: "48px"
+    fontWeight: 400
+    lineHeight: "50px"
+    letterSpacing: "-.015em"
+  row-title:
+    fontFamily: "'Newsreader', Georgia, serif"
+    fontSize: "40px"
+    fontWeight: 400
+    lineHeight: "42px"
+    letterSpacing: "-.015em"
   title:
-    fontFamily: "'DM Sans', sans-serif"
+    fontFamily: "'Newsreader', Georgia, serif"
+    fontSize: "32px"
+    fontWeight: 500
+    lineHeight: "36px"
+    letterSpacing: "-.015em"
+  note:
+    fontFamily: "'Newsreader', Georgia, serif"
+    fontSize: "23px"
+    fontWeight: 400
+    lineHeight: "30px"
+    letterSpacing: "-.01em"
+  note-reading:
+    fontFamily: "'Newsreader', Georgia, serif"
     fontSize: "28px"
-    fontWeight: 600
-    lineHeight: 1.2
-    letterSpacing: "-.03em"
-  body:
-    fontFamily: "'Source Serif', serif"
-    fontSize: "22px"
     fontWeight: 400
-    lineHeight: 1.82
-  interface:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: "16px"
+    lineHeight: "36px"
+    letterSpacing: "-.01em"
+  lede:
+    fontFamily: "'Instrument Sans', Arial, sans-serif"
+    fontSize: "20px"
     fontWeight: 400
-    lineHeight: 1.55
-  excerpt:
-    fontFamily: "'Source Serif', serif"
+    lineHeight: "28px"
+  reading:
+    fontFamily: "'Instrument Sans', Arial, sans-serif"
     fontSize: "18px"
     fontWeight: 400
-    lineHeight: 1.65
-  label:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: "12px"
+    lineHeight: "28px"
+  body:
+    fontFamily: "'Instrument Sans', Arial, sans-serif"
+    fontSize: "16px"
     fontWeight: 400
-    lineHeight: 1.4
+    lineHeight: "24px"
+  nav:
+    fontFamily: "'Instrument Sans', Arial, sans-serif"
+    fontSize: "16px"
+    fontWeight: 500
+    lineHeight: "20px"
+  control:
+    fontFamily: "'Instrument Sans', Arial, sans-serif"
+    fontSize: "16px"
+    fontWeight: 600
+    lineHeight: "20px"
+  meta:
+    fontFamily: "'Instrument Sans', Arial, sans-serif"
+    fontSize: "13px"
+    fontWeight: 400
+    lineHeight: "20px"
+  flag:
+    fontFamily: "'Instrument Sans', Arial, sans-serif"
+    fontSize: "12px"
+    fontWeight: 600
+    lineHeight: "18px"
 rounded:
-  square: "0"
+  chip: "6px"
+  control: "12px"
+  card: "16px"
+  point: "24%"
 spacing:
-  mobile-gutter: "24px"
-  desktop-gutter: "40px"
-  journal-column-gap: "44px"
-  journal-row-gap: "53px"
-  journal-margin-gap: "64px"
+  "4": "4px"
+  "8": "8px"
+  "12": "12px"
+  "16": "16px"
+  "20": "20px"
+  "24": "24px"
+  "28": "28px"
+  "32": "32px"
+  "40": "40px"
+  "48": "48px"
+  "56": "56px"
+  "64": "64px"
+  "72": "72px"
+  "96": "96px"
+  inline-gap: "10px"
+  gutter: "48px"
+  gutter-medium: "32px"
+  gutter-narrow: "24px"
+  page: "1344px"
+  control-height: "48px"
 components:
-  text-link:
-    textColor: "{colors.accent}"
-    size: "14px"
-  text-button:
+  button-primary:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.ink}"
+    typography: "{typography.control}"
+    rounded: "{rounded.control}"
+    padding: "0 22px"
+    height: "48px"
+  button-primary-hover:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ivory}"
+  button-primary-on-ink-hover:
+    backgroundColor: "{colors.ivory}"
+    textColor: "{colors.ink}"
+  button-quiet:
     backgroundColor: "transparent"
-    textColor: "{colors.accent}"
-    padding: "5px 0"
-  topic-filter:
+    textColor: "{colors.ink}"
+    typography: "{typography.control}"
+    rounded: "{rounded.control}"
+    padding: "0 22px"
+    height: "48px"
+  button-ink:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ivory}"
+    typography: "{typography.control}"
+    rounded: "{rounded.control}"
+    padding: "0 22px"
+    height: "48px"
+  button-ink-hover:
+    backgroundColor: "{colors.ivory}"
+    textColor: "{colors.ink}"
+  link:
+    textColor: "{colors.signal-deep}"
+    typography: "{typography.control}"
+    height: "44px"
+  link-hover:
+    textColor: "{colors.ink}"
+  link-on-ink:
+    textColor: "{colors.ivory}"
+  link-on-ink-hover:
+    textColor: "{colors.signal}"
+  chip:
     backgroundColor: "transparent"
-    textColor: "{colors.muted}"
-    padding: "5px 0"
-    size: "14px"
-  topic-filter-selected:
-    textColor: "{colors.accent}"
-  navigation:
-    size: "14px"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.chip}"
+    padding: "0 10px"
+    height: "32px"
+  chip-selected:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ivory}"
   search-field:
-    backgroundColor: "transparent"
-    padding: "7px 0"
-    size: "16px"
-  journal-card:
-    typography: "{typography.title}"
-  welcome-panel:
-    backgroundColor: "{colors.paper}"
-    padding: "40px"
-    width: "500px"
-  article-quote:
-    padding: "24px 0"
-    size: "28px"
-  published-content-button:
-    backgroundColor: "{colors.accent}"
-    textColor: "{colors.paper}"
-    padding: "10px 18px"
-    size: "16px"
+    backgroundColor: "{colors.ivory}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+    rounded: "{rounded.control}"
+    padding: "0 14px"
+    height: "48px"
+  brand-tile:
+    backgroundColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    size: "104px"
+  ink-field:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ivory}"
+    rounded: "{rounded.card}"
+    padding: "32px"
+  poster-field:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "48px 220px 48px 48px"
+  new-flag:
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.ink}"
+    typography: "{typography.flag}"
+    rounded: "{rounded.chip}"
+    padding: "0 6px"
+  point:
+    backgroundColor: "{colors.signal}"
+    rounded: "{rounded.point}"
+    size: "10px"
 ---
 
 # Design System: Russ Heritage
 
 ## Overview
 
-**Creative North Star: "Open Journal"**
+**Creative North Star: "Soft Signal"**
 
-Open Journal brings photographs and writing into one airy editorial experience. Original photography supplies the visual presence; a white field, muted green accents, and generous margins give it room. The serif introduction and reading text feel personal, while sans serif story headings and navigation keep browsing clear.
+The site is a personal journal in the russ! Soft Signal identity. The page is Ivory. Type, rules that close a section, and a few large fields are Ink. Signal orange appears as solid shapes: the punctuation of the logo, a tapered upright stem, small rounded-square points, and the fill of the primary button. Headlines and notes are set in Newsreader; reading copy, navigation, and controls are set in Instrument Sans.
 
-The system is quiet and flat. Rectangular images, fine rules, and typographic contrast organize the page without ornamental containers. The journal and reading layouts share these materials while allowing their own composition.
+The journal has three formats and each has its own scale. An essay gets a display headline and a cover. A note is shown in full, in Newsreader, on a dated stem. A photographic series sits on an Ink field. They are never put in the same box at the same size. The front page puts the newest essay beside an Ink column of notes; the archive puts every entry on one stem, grouped by month.
+
+Surfaces are flat. There are no cast shadows, gradients, or blurs. Contrast comes from Ivory against Ink, from the jump between display type and 13px meta text, and from one Signal stem per view. All copy is sentence case.
+
+The portfolio, category gallery, and `/vibe` pages are older surfaces kept for their behaviour. They read these tokens through aliases, but their local styling is not part of this system. Do not copy patterns from them.
 
 **Key Characteristics:**
-
-- Dominant original photography on a white field.
-- Local serif reading text paired with sans serif headings.
-- Muted green links, fine dividers, and square geometry.
-- Airy browsing and a bounded long-form reading column.
-
-This record describes the finished editorial system in `src/styles/{base,journal,reading,pages}.css`, sampled against Layout, JournalHero, JournalCard, Journal, and ReadingLayout. The preserved portfolio, category gallery, and /vibe interiors remain compatibility surfaces; their local styling is not the normative vocabulary for new pages.
+- Ivory ground, Ink type, Ink fields with 16px corners for notes, photographs, and the footer.
+- Signal as solid shapes only: stem, points, primary button, current-page underline.
+- Newsreader at regular weight for headlines and for the full text of notes; Instrument Sans for everything practical.
+- One dated thread per view: a tapered Signal stem, a rounded-square point per entry, a Signal dot at the end.
+- Flat surfaces, 1px rules, sentence case, no uppercase labels.
+- The unaltered russ! mark on an Ink tile at the top left of every page.
 
 ## Colors
 
-A white and green-grey palette supports the photographs without competing with them. The frontmatter records the source custom properties literally.
+Three core colours do almost all the work: Ink, Ivory, and Signal. Three supporting colours handle rules, secondary text, and small coloured text. Two more are Ivory stepped toward Ink for use inside Ink fields.
 
 ### Primary
-
-- **Muted Green** (`accent`): links, selected topic filters, caret, and keyboard focus.
+- **Signal** (`signal`): the brand orange. Used for the logo's exclamation, the thread stem and its closing dot, the 10px point that opens a meta row or marks the current format, the primary button fill, the underline under the current navigation link, the "New" flag, the point of a note published since the last visit, text selection, and the 2px underline that appears under an Ink headline on hover. It is the whole field on the 404 poster and nowhere else.
+- **Deep Signal** (`signal-deep`): small coloured text on Ivory. Used for underlined links, list markers in essays, and the text caret. Use this, not Signal, whenever orange has to be read as text on Ivory.
 
 ### Neutral
+- **Ink** (`ink`): pure black. Primary text, the logo tile, the Notes column, the Photographs band, series plates, the footer, code blocks, the selected chip, focus outlines, and the 1px rule that closes a section heading.
+- **Ivory** (`ivory`): the page ground, text on Ink, the search field fill, and the points on an Ink thread.
+- **Stone** (`stone`): 1px dividers between rows, the placeholder colour behind loading images and skeleton bars. Decorative only.
+- **Muted** (`muted`): secondary text on Ivory (meta rows, excerpts, captions, counts, placeholder text) and the 1px boundary of controls that need one (search field, chips, quiet button, bookmark cards).
+- **Muted on Ink** (`on-ink-muted`): secondary text inside an Ink field. In the stylesheet it is Ivory mixed 74% into Ink.
+- **Rule on Ink** (`ink-rule`): dividers, image placeholders, and skeleton bars inside an Ink field. In the stylesheet it is Ivory mixed 24% into Ink.
 
-- **White Paper** (`paper`): page and desktop welcome-panel ground.
-- **Green-Black Ink** (`ink`): headings and primary interface text.
-- **Quiet Grey** (`muted`): metadata, secondary copy, and footer text.
-- **Fine Rule** (`rule`): dividers and structural borders.
-- **Pale Wash** (`wash`): empty image ground and published code blocks.
-- **Loading Ground / Shine** (`skeleton-color`, `skeleton-shine`): compatibility custom properties; the journal's static placeholders use the ground only. There is no shimmer animation in the editorial styles.
+### Named Rules
+**The Solid Signal Rule.** On Ivory, Signal is a shape or a fill, never a text colour. Coloured text on Ivory is Deep Signal. Inside an Ink field, Signal may be the hover colour of a link.
 
-Contextual source literals remain contextual rather than becoming extra accent families: the introduction uses `#515c51`, excerpts `#535e53`, article decks `#5a6256`, article copy `#30382b`, and quotes `#56694d`. Selection is `background:#dce8df;color:#203626`; article mastheads use `#f8f9f6`. Link rules and search strokes retain their literal declarations in the sidecar.
+**The Ink Field Rule.** Anything placed on Ink takes the on-Ink set: Ivory text, Muted on Ink for secondary text, Rule on Ink for dividers and placeholders, an Ivory focus outline, and Ivory links that turn Signal on hover. A primary button on Ink hovers to Ivory instead of Ink.
 
-**The Quiet Accent Rule.** Use muted green for links, selected filters, and focus; let photography supply the broad color fields.
+**The Boundary Rule.** A control that needs an edge gets 1px of Muted, and 2px of Ink on hover. Stone is for dividers and placeholders; it is too faint to bound a control.
 
 ## Typography
 
-**Display / Reading Font:** Source Serif 4, registered locally under the CSS family name `Source Serif`, with `serif` fallback. Normal weights 400–700 and italic weights 400–600 are hosted as WOFF2 with `font-display:swap`.
+**Display Font:** Newsreader, variable 200 to 800, roman and italic (with Georgia, serif)
+**Body Font:** Instrument Sans, variable 400 to 700, roman and italic (with Arial, sans-serif)
+**Label/Mono Font:** none. Labels are Instrument Sans. Code in published essays falls back to the system monospace stack.
 
-**Heading / Interface Font:** DM Sans, locally hosted normal weights 400–700, with `sans-serif` fallback. No external font service is required.
-
-**Character:** Serif text carries the personal, reflective voice. The sans serif headlines are substantial but restrained, with tight tracking and balanced line wrapping.
+**Character:** Newsreader carries anything said in Russ's voice: headlines, section titles, the full text of notes, pull quotes, the About lead. Instrument Sans carries anything practical: essay body copy, excerpts, meta rows, navigation, and controls. Both families are hosted locally in `public/fonts` with their OFL files.
 
 ### Hierarchy
+- **Display** (400, `clamp(44px, 6.4vw, 92px)`, line-height 1, -0.02em): the lead essay headline on the front page. One per page.
+- **Page title** (400, `clamp(40px, 5.6vw, 80px)`, line-height 1, -0.02em): the headline of an essay, a photographic series, About, and Contact. The 404 poster uses the same style up to 96px.
+- **Statement** (400, 72/72px, -0.015em): the footer line. Steps to 56/58px at 1100px and 44/46px at 700px.
+- **Headline** (400, 48/50px, -0.015em): the Photographs band title, an essay title on the archive thread, empty and error states. The archive's own title is the same style at 64/64px. Steps down to 40/42px and 34/36px on smaller screens.
+- **Row title** (400, 40/42px, -0.015em): an essay in the Earlier essays list. Steps to 34/36px and 30/32px.
+- **Title** (500, 32/36px, -0.015em): section titles, the Notes column title, month headings on the thread, h2 inside an essay. Titles that are also links (series plates, previous/next) use the same size at weight 400. h3 inside an essay and photo names are 26/30px.
+- **Note** (Newsreader 400, 23/30px, -0.01em): the full text of a note in the front-page column. On the archive thread it is 28/36px with a 25em measure. On its own page it is `clamp(30px, 3.4vw, 44px)` at line-height 1.18 with a 21em measure. A note's optional title is Instrument Sans 600 at 16/24px, so the serif text stays the main voice.
+- **Lede** (Instrument Sans 400, 20/28px): the excerpt beside the lead button; an essay's deck is 20/30px in Muted. Both drop to 18/28px at 700px.
+- **Reading** (400, 18/28px): essay body copy, with a 33em measure, which is about 70 characters. Also the archive introduction and excerpts on the thread.
+- **Body** (400, 16/24px): the default. Excerpts in lists, author bio, footer links at weight 500.
+- **Navigation** (500, 16/20px) and **Control** (600, 16/20px): masthead links; buttons and text links.
+- **Meta** (400, 13/20px, Muted): the row of facts under a headline, captions, counts, the search label, footer column headings. The first fact, usually the format name, is weight 600 in Ink.
+- **Flag** (600, 12/18px): the "New" flag only.
 
-- **Display:** the frontmatter display role is the homepage feature headline and fallback introduction. At 1250px and below it becomes 52px; at 960px, 40px; at 700px, 36px/1.12; at 350px, 33px.
-- **Headline:** the frontmatter headline is the article title. It steps to 50px, 43px, then 37px at the 1250px, 960px, and 700px breakpoints. Mobile tracking is -.03em. Archive and content-page titles use the serif at 54px, reducing to 41px on mobile.
-- **Title:** ordinary journal titles use the frontmatter title role; the lead title is 32px. At 1250px they are 26px/29px, at 960px 23px/25px, and at 700px both become 27px. Article subheadings are 28px/1.3 and 24px/1.35, reducing to 25px and 22px on mobile.
-- **Body:** article copy uses the frontmatter body role, bounded to 720px. At 960px it becomes 20px; at 700px, 19px/1.85. Paragraphs retain 24px bottom margin and adjacent-paragraph spacing of 25px (23px mobile). The opening drop cap is 75px/.83, reducing to 64px on mobile.
-- **Excerpt:** journal excerpts use the frontmatter role, with a 17px intermediate tablet size. Hero introduction copy is 18px/1.6 and becomes 16px at 960px.
-- **Label / interface:** metadata uses the label role. Navigation is 14px, reducing to 12px on mobile. Article bylines use 12px uppercase with .055em tracking; the credit phrase remains italic serif, 15px desktop and 14px mobile. These identify content, rather than forming decorative heading kickers.
-- **Wordmark:** Source Serif at 33px/1, weight 500, -.038em tracking; the given name is italic weight 400. It steps to 30px at 960px, 26px at 700px, 23px at 350px. Article wordmarks begin at 29px.
+### Named Rules
+**The Two Voices Rule.** If the words are Russ talking, set them in Newsreader. If the words describe, label, or operate something, set them in Instrument Sans. An essay's body copy is Instrument Sans; a note's body is Newsreader.
 
-**The Two Voices Rule.** Use Source Serif for personal introductions and sustained reading, and DM Sans for story headings and interface text.
+**The Sentence Case Rule.** No uppercase text and no letter-spaced labels. Negative tracking is used on Newsreader only: -0.02em at display sizes, -0.015em on headlines and titles, -0.01em on note text. Instrument Sans stays at normal tracking.
+
+**The Italic Year Rule.** In display headlines, a four-digit year is set in Newsreader Italic by the `Headline` component. The published words are not changed. The second half of the journal's own title is italic in the same way.
 
 ## Layout
 
-These are observed composition values, not a fabricated universal spacing scale. Desktop editorial containers use 40px outer gutters, mobile uses 24px. The primary journal width is `calc(100% - 80px)`, capped at 1232px; at 1600px and wider it caps at 1320px. Mobile journal containers become `calc(100% - 48px)`.
+Content sits in one centred wrap, at most 1344px wide. The outer gutter is 48px, 32px at 1100px and below, and 24px at 700px and below. There is no shared column grid; each page has its own two-part layout built from a flexible column and a fixed one.
 
-The masthead is 94px high, capped at 1312px with 40px internal horizontal padding; at 1600px it caps at 1400px. Height reduces to 86px at 960px and 74px with 24px padding at 700px. Mobile keeps Journal, Archive, and About visible; the extra email link is hidden.
+- **Front page:** the lead essay and Earlier essays in a flexible column, the Notes column fixed at 400px beside them with a 48px gap (344px and 32px at 1200px). A short Notes column is sticky 24px from the top; a long one runs the height of the lead and the essays. At 900px the order becomes lead, notes, earlier essays, and the column shows only the latest three notes.
+- **Archive:** a sticky 304px side column (title, format list, search, topic chips) and the thread, 64px apart. On the thread, dates sit in an 80px right-aligned column, the stem at 96px, and entries start at 136px. At 900px the side column stacks on top, the format list becomes a horizontally scrolling row, the stem moves to the left edge, and each date sits above its entry.
+- **Essay:** a 720px column and a 304px sticky margin for the author and the contents list, 72px apart. The margin drops below the essay at 900px.
+- **Photographic series:** a six-column grid inside an Ink field. Figures span two or three columns, chosen from the count so the last row is never short. One column at 700px.
 
-The desktop hero is 460px high, with 26px top and 53px bottom margin. Its square white panel is 500px wide, padded 40px, inset 32px from the left, and centered with `top:50%;transform:translateY(-50%)`. At 1250px it is 460px wide with 34px padding; at 960px the hero is 420px high and the panel is 292px wide with 24px padding and 24px inset. At 1600px the hero becomes 490px high. At 700px the image is 190px high; the introduction becomes normal flow below it, with 20px top padding, no panel fill, and no exploration link. At 350px only the hero outer gutter reduces to 20px.
+Vertical rhythm uses a 4px base. The steps in use are 4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 56, 64, 72, and 96. Major sections on a page are 72px apart (56px at 900px). The footer starts 96px below the content (64px at 700px). List rows have 28px of padding; thread entries are 44px apart. A 10px gap is used between a point or icon and its label, and between meta items.
 
-The primary homepage feature uses this same panel and type with the newest published Ghost post. A grid centers the panel inside 32px padding (24px at 960px), using the above heights as minimums so longer titles can grow without clipping. The post cover fills the background; its title, cover, and reading action link to the article. Below 700px, the cover is 190px high and the panel follows in normal flow; the reading action remains visible. The introductory hero described above remains the fallback when no published posts are available.
-
-The journal uses a 226px margin column, 64px gap, and a ruled edge with 32px inner padding. The feed is an asymmetric `1.08fr .92fr` grid with 53px row and 44px column gaps. At 1250px the margin/gap become 195px/40px and feed column gap 32px. At 960px they become 166px/30px, and the feed becomes equal columns with 39px/27px gaps. At 700px the layout stacks, topic filters scroll horizontally, and the feed becomes one column with 32px gaps. Mobile cards place metadata and heading before the photograph; desktop places the photograph first. Desktop images are 286px high (lead 320px), tablet 245px (lead 275px), mobile 250px (lead 275px).
-
-Reading pages cap at 1192px. The desktop main track is up to 858px with 77px right padding; the sidebar has a left rule and 45px left padding. Header top/bottom padding is 91px/61px; reading copy begins after 49px. At 1250px, outer margins are 60px and sidebar 240px; at 960px margins are 40px and sidebar 205px. At 700px, 24px margins frame one reading column, the title padding becomes 43px/32px, copy top padding is 32px, and sidebar content follows the article in two columns. At 430px the sidebar becomes one column. Related entries stack at 700px. About and contact use the same outer margin steps; About's image moves below the text at 700px.
+Interactive targets: buttons and the search field are 48px high. Text links have a 44px minimum height. Chips are 32px, and 36px at 900px and below. Breakpoints are 1200, 1100, 900, 800, 700, and 350px.
 
 ## Elevation & Depth
 
-The editorial system uses no box shadows. White panels over photography, pale article mastheads, rectangular media, and fine one-pixel rules create its layers. Article quotes have ruled edges; journal cards sit directly on the page. Preserved legacy modal and gallery effects are outside this vocabulary.
+The system is flat. Nothing casts a shadow, nothing is blurred, and there are no gradients. Depth is the difference between the Ivory page and an Ink field placed on it. Sticky columns stay in the same plane as the page.
 
-**The Flat Ground Rule.** Separate the editorial surfaces with whitespace, fine rules, and tonal ground rather than shadows.
+`box-shadow` is used in three places, all of them hard edges and none of them elevation: the inset boundary of the quiet button, the 4px ring around a thread point (in the colour of the field behind it, so the point reads as sitting on the stem), and the 2px Signal underline on the current tab of the archive's format row on small screens.
+
+### Named Rules
+**The Flat Field Rule.** A surface is a single flat colour: Ivory, Ink, or, for the 404 poster, Signal. To separate two things, change the field or draw a 1px rule.
 
 ## Shapes
 
-Square corners are the editorial default. Images crop through rectangular overflow frames; the hero uses `object-position:center top`, journal previews `center 8%`. Full photographic stories retain their natural aspect ratios, and article feature images use containment. Small circular metadata separators are 3px dots; they are punctuation, not rounded containers. Borders are generally 1px rules; links use underlines rather than filled capsules.
+Three radii, by size of object: 6px for chips, the "New" flag, inline code, skeleton bars, and images inside a note; 12px for 48px controls, code blocks, callouts, and the small logo tile; 16px for Ink fields, the poster, the full logo tile, and the author photo. Brand points are squares with a radius of 24% of their side, in 10px (meta rows, markers) and 12px (thread) sizes.
+
+Photographs in frames have square corners: the lead cover, list thumbnails, photo cards, series plates, essay covers, and the About portrait. Frames have a Stone placeholder (Rule on Ink inside an Ink field) and clip their image.
+
+Rules are 1px. An Ink rule closes a section heading or opens the author block and previous/next; Stone rules separate rows. The current navigation link and hover states use a 2px line.
+
+The stem is 12px wide with a rounded top. It narrows to half its width at the bottom and ends in a 6px round tip. A 12px Signal point sits under it as the closing dot. Together they repeat the logo's exclamation. The exclamation itself, from the brand vector, is used large in three places: cropped at the right edge of the footer, filling the Notes column before the first note is published, and in Ink on the 404 poster.
 
 ## Components
 
-### Buttons and text links
+### Buttons
+- **Shape:** 48px high, 12px radius, 22px side padding, Instrument Sans 600, optional 18px arrow after the label with a 10px gap.
+- **Primary:** Signal fill, Ink label. One per view, for the main action ("Read the essay").
+- **Hover / Focus:** hover turns the fill Ink and the label Ivory over 0.2s; on an Ink field it turns Ivory with an Ink label. The arrow moves 4px right. Focus is a 2px Ink outline offset 2px, Ivory inside an Ink field.
+- **Quiet:** transparent, Ink label, 1px inset Muted boundary that becomes 2px Ink on hover. For the second action beside a primary button and for empty states.
+- **Ink:** Ink fill, Ivory label, hovering to Ivory. Used only on the Signal poster, where a Signal button would disappear.
+- **Disabled:** 60% opacity with a wait cursor.
 
-Restrained text actions use green type. The text button is transparent, has a bottom stroke `#9cac9e`, 5px vertical padding, and 40px minimum height. Text links are inline-flex with a 12px gap, 14px weight-500 text and 36px minimum height (44px mobile). Their 20px arrow moves 4px right over `.2s ease-out`. Read links use 13px text, a 16px arrow, 9px gap, and a thin underline under the label; their minimum height is 40px desktop and 44px mobile. Published Ghost button cards preserve a filled green, white-text square link with 10px 18px padding and 16px sans text.
+### Links
+- **Text link:** Instrument Sans 600, Deep Signal, underlined, 44px minimum height, optional arrow. Hover turns it Ink. On Ink it is Ivory and hovers to Signal.
+- **Headline link:** an Ink Newsreader headline with no underline at rest. Hover adds a Signal underline (0.06em thick on large headlines, 2px on titles).
+- **Links in essays:** Deep Signal, underlined, Ink on hover.
 
-All links, buttons, and inputs receive `outline:2px solid var(--accent);outline-offset:5px` on `:focus-visible`. Ordinary links underline on hover; the wordmark does not. Disabled buttons have opacity .6 and a wait cursor. No distinct error-input or pressed-action appearance is defined. The skip link is hidden above the viewport until focused, then appears at 16px from the top.
+### Chips
+- **Style:** 32px high, 6px radius, 10px side padding, 14/20px weight 500, 1px Muted border, transparent fill.
+- **State:** hover thickens the border to 2px Ink. The selected chip is Ink with Ivory text. Used for topic filters in the archive. On small screens they scroll in one row.
 
-### Topic filters
+### Cards / Containers
+- **Ink field:** Ink, 16px radius, no border, no shadow. Padding is 32px for the Notes column, 40px for the Photographs band and the series field, 24px for a series plate, reducing to 24px, 16px, or 20px on small screens.
+- **Series plate:** an Ink field that interrupts the archive thread. Title and count at the bottom left, up to three 4:5 frames at the right with 8px gaps. The whole plate is one link; hover underlines the title in Signal.
+- **Rows:** essays in lists are not cards. They are rows separated by 1px Stone rules with an optional 4:3 thumbnail at the right.
+- **Notice:** an error message between two 1px Stone rules with a "Try again" text link.
 
-Text buttons, not pills: transparent, borderless, muted, left aligned, 14px with 5px vertical padding and 38px minimum height. Hover changes to ink. `aria-pressed=true` changes to green, weight 600, and a 1px underline offset 6px. Mobile filters use 12px text and 44px minimum height in a horizontally scrollable row with 21px gaps and a bottom rule.
-
-### Journal cards
-
-Image, metadata, tight sans heading, serif excerpt, and reading link form an unboxed story. Text-only entries begin with a top rule and 28px padding (23px tablet, 24px mobile). The first mobile lead omits the top rule. Image hover scales to 1.025 over `.55s cubic-bezier(.16,1,.3,1)`. This is a restrained crop interaction; the card itself does not lift. Loading stories are static pale bars, and recovery actions reuse text buttons.
-
-### Inputs / fields
-
-Archive search uses a 13px muted label above a flex row with 12px gap, green search SVG, and `border-bottom:1px solid #9ca99c`. The transparent borderless field has 16px text, 46px minimum height, 7px vertical padding, muted placeholder, and green caret. Keyboard focus uses the shared outline. Search has no separate error or disabled styling.
+### Inputs / Fields
+- **Style:** 48px high, 12px radius, 1px Muted border, Ivory fill, 18px search icon, Muted placeholder, a visible label above in 13px weight 500.
+- **Focus:** the 2px Ink outline is drawn around the whole field, offset 2px.
 
 ### Navigation
+- **Masthead:** the logo tile and name at the left, text links at the right. The full mark is 80px wide on a 104px Ink tile with a 16px radius. At 800px and below the tile is 56px with a 12px radius and shows only the exclamation at 36px high. The name is Newsreader 500 at 26/28px with a Muted 14px line under it, hidden at 1100px.
+- **Links:** Instrument Sans 500, 36px apart. Hover draws a 2px Ink underline from the left over 0.3s. The current section has a 2px Signal underline. At 700px the links move to their own row under a 1px Stone rule and spread across the width.
+- **Format list (archive):** rows 48px high separated by Stone rules, with a count at the right. The current row is marked with a Signal point.
+- **Previous / next:** two Newsreader titles under an Ink rule, each with a meta line and a 16px arrow, followed by a link to the full list.
+- **Footer:** an Ink field, full width, with the statement line, three link columns under 13px headings, a rule, and the exclamation cropped at the right edge.
 
-The masthead balances the personal serif wordmark with a simple sans row. Desktop navigation uses 33px gaps, reducing to 25px at 960px, 16px at 700px, and 11px at 350px. Current-page links use a green 1.5px underline offset 7px; hover retains ordinary underlining. Footer navigation is separated by fine rules and wraps as needed.
+### Meta row
+One line of facts in 13px Muted, separated by 3px round dots. The first fact is weight 600 in Ink. It may open with one 10px Signal point; use the point under a page's main headline and leave it off in lists. The separators belong to the item after them and are clipped at line starts, so a wrapped row never begins with a dot. Captions use the same size and colour.
 
-### Welcome panel and reading furniture
+### The thread (signature)
+The dated stem that carries notes on the front page and every entry in the archive.
+- **Stem:** Signal, 12px wide, tapered, on the left of the entries. One per view.
+- **Points:** a 12px rounded square per entry with a 4px ring in the field colour. Ivory on the Ink column, Ink on the Ivory archive. An entry published since the reader's last visit has a Signal point and a "New" flag in its meta row.
+- **End:** a 12px Signal dot under the stem, beside the closing link or the entry count.
+- **Entries:** a note is shown in full; one that runs past seven lines is clamped and gets a "Keep reading" link. An essay is a headline, excerpt, meta row, and thumbnail. A series is an Ink plate.
+- **Motion:** on the front-page column only, once on load, the stem is revealed top to bottom over 1.2s, each point scales in over 0.6s at 0.09s intervals, and the closing dot lands at 0.85s. Easing is `cubic-bezier(.16, 1, .3, 1)`. The text is in place from the first frame. The archive thread does not animate. All of it is removed under reduced motion.
 
-The inset welcome panel is specific to the photographic hero, with a serif heading and italic emphasis. Do not apply its overlay geometry to all components. Reading pages use a sans headline, serif deck, quiet byline, optional drop cap, ruled italic quotes, biography, optional contents, and related stories. Quotes use 28px/1.5 text (25px mobile), `#56694d`, and 24px vertical padding (22px mobile). Captions are centered 14px/1.6 sans in muted grey. Article links use a 1.5px underline in `#a8b59d`, offset 5px. Inline arrow icons are SVG, never font glyphs.
+### Story break and ending
+A horizontal rule in an essay is drawn as a single 10px Signal point. An essay ends with one point and a short sign-off line in 14px Muted.
 
-For the latest-post feature, the panel carries the authored headline without added italic emphasis, a plain-text excerpt of up to 135 characters, and “Read the latest post.” Use the post's cover image and alternative text when supplied; otherwise keep the configured site photograph. Loading reserves the feature's layout with a pale image placeholder. Empty or failed post requests retain the introductory fallback; the journal's existing retry action handles failures.
+### Poster (404)
+A Signal field with a 16px radius, at least 600px or 72% of the viewport high. Ink Newsreader headline at the bottom left, one line of 20px copy, an Ink button, and the exclamation in Ink at full height on the right. This is the only Signal field on the site.
 
-The page uses smooth scrolling by default. Under `prefers-reduced-motion:reduce`, scrolling becomes automatic and all CSS transitions and animations are disabled. Hover transforms remain instantaneous under that rule; the source does not remove their end states.
+### Loading and empty states
+Loading shows Stone bars with a 6px radius in the shape of what will arrive (Rule on Ink inside the Notes column). A page-level state is a 48/50px Newsreader sentence, one line of 18px Muted copy, and a button or link, left-aligned in a 720px column.
 
 ## Do's and Don'ts
 
 ### Do:
-
-- **Do** retain original photographs and descriptive alternative text.
-- **Do** use the shared focus outline and visible selected states.
-- **Do** keep the desktop welcome panel fully inset and vertically centered, then put the introduction below the photograph on mobile.
-- **Do** preserve authored reading content, captions, embeds, and optional contents navigation.
+- **Do** put the russ! mark on an Ink tile, unaltered, with Ivory letters and Signal punctuation. Scale it uniformly.
+- **Do** give each format its own scale: display Newsreader and a cover for an essay, full text in Newsreader on the stem for a note, an Ink field for photographs.
+- **Do** use Deep Signal for coloured text and links on Ivory, and Ink labels on Signal fills.
+- **Do** switch to the on-Ink set inside any Ink field: Ivory text, Muted on Ink, Rule on Ink, Ivory focus outline.
+- **Do** bound controls with 1px Muted and separate rows with 1px Stone.
+- **Do** keep one primary Signal button and one stem per view.
+- **Do** keep essay body copy within 33em and notes within 21 to 25em.
+- **Do** keep every animation behind `prefers-reduced-motion`, and keep text visible from the first frame.
+- **Do** use radii by object size: 6px chips, 12px controls, 16px fields, 24% points.
 
 ### Don't:
-
-- **Don't** replace the white field and restrained green accents with ornamental surface treatments.
-- **Don't** wrap journal stories in raised, rounded cards.
-- **Don't** promote preserved legacy gallery styling into defaults for new editorial surfaces.
-- **Don't** treat the preview tonal ramps as shipped palette tokens.
+- **Don't** set Signal as text on Ivory, and don't use it as a page or section background outside the 404 poster.
+- **Don't** put a note and an essay in the same card at the same size.
+- **Don't** add cast shadows, gradients, blurs, or tinted overlays. Surfaces are flat Ivory, Ink, or Signal.
+- **Don't** use uppercase or letter-spaced labels. Everything is sentence case.
+- **Don't** round the corners of framed photographs. Radius belongs to fields, controls, the logo tile, images inside a note, and the author photo.
+- **Don't** use Stone as the boundary of a control or as a text colour.
+- **Don't** redraw, recolour, or re-space the mark. The exclamation may be cropped by an edge as a graphic; the full mark may not.
+- **Don't** take patterns from the portfolio, category gallery, or `/vibe` pages. They keep their own older styling.
+- **Don't** animate the archive thread or add a second entrance animation. The front-page stem draw is the one authored motion.

@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContent } from '../contexts/ContentContext';
-import { emailHref } from '../lib/journal';
+import { usePosts } from '../contexts/PostsContext';
+import { emailHref, formatForPost } from '../lib/journal';
+import { BrandMark, Exclamation } from './BrandMark';
+
+const HAS_NOTES_KEY = 'russ:has-notes';
 
 function RoutePosition() {
     const { pathname, hash } = useLocation();
@@ -30,49 +34,97 @@ function RoutePosition() {
     return null;
 }
 
+/** Notes join the navigation with the first published note, and stay there between visits. */
+function useHasNotes(content, posts, status) {
+    const hasNotes = status === 'ready' && Boolean(content) && posts.some(post => formatForPost(post, content) === 'note');
+    useEffect(() => {
+        if (status !== 'ready' || !content) return;
+        try { localStorage.setItem(HAS_NOTES_KEY, hasNotes ? '1' : '0'); } catch { /* Private browsing: the link appears once posts load. */ }
+    }, [status, content, hasNotes]);
+    if (status === 'ready' && content) return hasNotes;
+    try { return localStorage.getItem(HAS_NOTES_KEY) === '1'; } catch { return false; }
+}
+
+function currentSection(pathname, content, posts) {
+    if (pathname === '/essays') return 'essay';
+    if (pathname === '/notes') return 'note';
+    if (pathname === '/photos' || /^\/(journal|portfolio)(\/|$)/.test(pathname)) return 'photo';
+    if (pathname === '/blog') return 'archive';
+    if (pathname === '/about' || pathname === '/contact') return 'about';
+    const slug = pathname.match(/^\/blog\/([^/]+)/)?.[1];
+    const post = slug && posts.find(item => item.slug === slug);
+    return post && content ? formatForPost(post, content) : '';
+}
+
 export default function Layout({ children }) {
     const { content, loading, error } = useContent();
+    const { posts, status } = usePosts();
     const { pathname } = useLocation();
-    const isArticle = /^\/(blog|journal)\//.test(pathname);
-    const isJournal = pathname === '/' || isArticle;
+    const hasNotes = useHasNotes(content, posts, status);
+    const section = currentSection(pathname, content, posts);
     const socials = content?.socials?.filter(social => social.name.toLowerCase() !== 'email') || [];
     const email = emailHref(content);
+    const current = id => (section === id ? 'page' : undefined);
 
     return (
-        <div className={'site-shell ' + (isArticle ? 'article-page' : 'airy airy-with-hero airy-refined')}>
+        <div className="site-shell">
             <RoutePosition />
             <a className="skip-link" href="#main-content">Skip to main content</a>
-            <div className={isArticle ? 'header-wrap' : undefined}>
-                <header className="site-header">
-                    <Link className="brand" to="/" aria-label="Russ Heritage homepage"><span className="brand-given">Russ</span> Heritage</Link>
-                    <nav className="site-nav" aria-label="Main navigation">
-                        <Link to="/" aria-current={isJournal ? 'page' : undefined}>Journal</Link>
-                        <NavLink to="/blog" end>Archive</NavLink>
-                        <NavLink to="/about">About</NavLink>
-                        <a className="desktop-only" href={email}>Say hello</a>
-                    </nav>
-                </header>
-            </div>
+            <header className="masthead wrap">
+                <Link className="brand" to="/" aria-label="Russ Heritage, home">
+                    <span className="brand-tile">
+                        <BrandMark className="brand-full" aria-hidden="true" />
+                        <Exclamation className="brand-symbol" />
+                    </span>
+                    <span className="brand-name">
+                        <strong>Russ Heritage</strong>
+                        {content?.journal?.about ? <span>{content.journal.about}</span> : null}
+                    </span>
+                </Link>
+                <nav className="site-nav" aria-label="Main navigation">
+                    <Link to="/essays" aria-current={current('essay')}>Essays</Link>
+                    {hasNotes ? <Link to="/notes" aria-current={current('note')}>Notes</Link> : null}
+                    <Link to="/photos" aria-current={current('photo')}>Photos</Link>
+                    <Link to="/blog" aria-current={current('archive')}>Archive</Link>
+                    <Link to="/about" aria-current={current('about')}>About</Link>
+                </nav>
+            </header>
             <main id="main-content" tabIndex={-1}>
                 {loading ? <div className="page-state" role="status"><p>Opening the journal…</p></div> : error ? (
                     <div className="page-state" role="alert">
                         <h1>The journal couldn’t be loaded.</h1>
                         <p>Please check your connection and try again.</p>
-                        <button className="text-button" onClick={() => window.location.reload()}>Try again</button>
+                        <button className="button" onClick={() => window.location.reload()}>Try again</button>
                     </div>
                 ) : children}
             </main>
-            <footer className="site-footer" id="contact">
-                <div className="footer-primary">
-                    <span>© {new Date().getFullYear()} Russ Heritage</span>
-                    <span>Made with a little attention.</span>
-                    {socials[0] ? <a href={socials[0].url} target="_blank" rel="noopener noreferrer">{socials[0].name}</a> : <a href={email}>Say hello</a>}
+            <footer className="site-footer on-ink" id="contact">
+                <div className="footer-inner wrap">
+                    <p className="footer-line">Made with a little attention.</p>
+                    <div className="footer-columns">
+                        <nav aria-label="The journal">
+                            <h2>The journal</h2>
+                            <Link to="/essays">Essays</Link>
+                            {hasNotes ? <Link to="/notes">Notes</Link> : null}
+                            <Link to="/photos">Photographs</Link>
+                            <Link to="/blog">Archive</Link>
+                        </nav>
+                        <nav aria-label="Russ">
+                            <h2>Russ</h2>
+                            <Link to="/about">About</Link>
+                            <Link to="/portfolio">Photo archive</Link>
+                            <a href={email}>Say hello</a>
+                        </nav>
+                        {socials.length ? (
+                            <nav aria-label="Elsewhere">
+                                <h2>Elsewhere</h2>
+                                {socials.map(social => <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>)}
+                            </nav>
+                        ) : null}
+                    </div>
+                    <p className="footer-legal">© {new Date().getFullYear()} Russ Heritage</p>
+                    <Exclamation className="footer-mark" />
                 </div>
-                <nav className="footer-links" aria-label="More from Russ">
-                    <Link to="/portfolio">Photo archive</Link>
-                    <Link to="/contact">Get in touch</Link>
-                    {socials.slice(1).map(social => <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>)}
-                </nav>
             </footer>
         </div>
     );

@@ -929,6 +929,23 @@
             "remember-the-old-internet": "culture",
             "things-are-really-bad-here-in-minnesota": "community"
         },
+        "formats": {
+            "note": {
+                "maxWords": 120,
+                "tags": [
+                    "note",
+                    "notes",
+                    "hash-note"
+                ]
+            },
+            "essay": {
+                "tags": [
+                    "essay",
+                    "essays",
+                    "hash-essay"
+                ]
+            }
+        },
         "photoStories": [
             {
                 "slug": "portraits-of-meredith",
@@ -940,7 +957,14 @@
                 "image": "/images/ee-02.jpg",
                 "preview": "/images/journal/meredith-960.webp",
                 "previewSrcSet": "/images/journal/meredith-480.webp 480w, /images/journal/meredith-960.webp 960w",
-                "imageAlt": "Meredith in a red dress with pearl jewelry"
+                "imageAlt": "Meredith in a red dress with pearl jewelry",
+                "thumbs": {
+                    "/images/ee-01.jpg": "/images/journal/ee-01-480.webp",
+                    "/images/ee-02.jpg": "/images/journal/meredith-480.webp",
+                    "/images/ee-03.jpg": "/images/journal/ee-03-480.webp",
+                    "/images/ee-51.jpg": "/images/journal/ee-51-480.webp",
+                    "/images/ee-61.jpg": "/images/journal/ee-61-480.webp"
+                }
             },
             {
                 "slug": "portraits-of-brittni",
@@ -952,7 +976,10 @@
                 "image": "/images/ff-2.jpg",
                 "preview": "/images/journal/brittni-960.webp",
                 "previewSrcSet": "/images/journal/brittni-480.webp 480w, /images/journal/brittni-960.webp 960w",
-                "imageAlt": "Brittni seated in a vintage upholstered chair"
+                "imageAlt": "Brittni seated in a vintage upholstered chair",
+                "thumbs": {
+                    "/images/ff-2.jpg": "/images/journal/brittni-480.webp"
+                }
             },
             {
                 "slug": "portraits-of-valerie",
@@ -964,7 +991,12 @@
                 "image": "/images/aa-1.jpg",
                 "preview": "/images/journal/valerie-960.webp",
                 "previewSrcSet": "/images/journal/valerie-480.webp 480w, /images/journal/valerie-960.webp 960w",
-                "imageAlt": "Valerie wearing a black hat and a pink dress outdoors"
+                "imageAlt": "Valerie wearing a black hat and a pink dress outdoors",
+                "thumbs": {
+                    "/images/aa-1.jpg": "/images/journal/valerie-480.webp",
+                    "/images/aa-2.jpg": "/images/journal/aa-2-480.webp",
+                    "/images/aa-3.jpg": "/images/journal/aa-3-480.webp"
+                }
             }
         ]
     }

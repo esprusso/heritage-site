@@ -20,6 +20,87 @@
         ],
         "createdAt": "2026-10-30T22:35:47.115Z",
         "reason": "Agent verified false positive: the header-wrap contains a 94px flex header with centered 19px branding and 14px navigation, providing more than 35px of actual vertical space; children do not touch the background boundary."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "newsreader",
+        "files": [
+          "mockups/2026-11-17-soft-signal/journal.css"
+        ],
+        "createdAt": "2026-11-17T22:23:47.644Z",
+        "reason": "The requested Soft Signal redesign study uses the headline face specified in the supplied brand kit. This exception applies only to its mockup stylesheet."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "instrument sans",
+        "files": [
+          "mockups/2026-11-17-soft-signal/journal.css"
+        ],
+        "createdAt": "2026-11-17T22:23:51.287Z",
+        "reason": "The requested Soft Signal redesign study uses the reading and navigation face specified in the supplied brand kit. This exception applies only to its mockup stylesheet."
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument sans",
+        "files": [
+          "mockups/2026-11-17-soft-signal/journal.css"
+        ],
+        "createdAt": "2026-11-17T22:32:08.708Z",
+        "reason": "The supplied Soft Signal brand system specifies Instrument Sans for reading copy, navigation, captions, labels and controls. This exception covers the proposal stylesheet only."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "newsreader",
+        "files": [
+          "mockups/2026-11-18-soft-signal-journal/journal.css"
+        ],
+        "createdAt": "2026-11-18T17:47:35.314Z",
+        "reason": "The supplied Soft Signal brand kit specifies Newsreader for the proposal’s headlines."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "instrument sans",
+        "files": [
+          "mockups/2026-11-18-soft-signal-journal/journal.css"
+        ],
+        "createdAt": "2026-11-18T17:47:35.329Z",
+        "reason": "The supplied Soft Signal brand kit specifies Instrument Sans for the proposal’s reading copy and controls."
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument sans",
+        "files": [
+          "mockups/2026-11-18-soft-signal-journal/journal.css"
+        ],
+        "createdAt": "2026-11-18T17:49:28.536Z",
+        "reason": "Instrument Sans is the reading and interface face in the supplied Soft Signal kit."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "newsreader",
+        "files": [
+          "src/styles/base.css"
+        ],
+        "createdAt": "2026-11-18T19:23:13.042Z",
+        "reason": "Brief-pinned: the user asked for a redesign guided by the Soft Signal brand kit, which specifies Newsreader for headlines. DESIGN.md is rewritten from this build at finish."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "instrument sans",
+        "files": [
+          "src/styles/base.css"
+        ],
+        "createdAt": "2026-11-18T19:23:13.062Z",
+        "reason": "Brief-pinned: the Soft Signal brand kit specifies Instrument Sans for reading copy, navigation, and controls. DESIGN.md is rewritten from this build at finish."
+      },
+      {
+        "rule": "overused-font",
+        "value": "instrument sans",
+        "files": [
+          "src/styles/base.css"
+        ],
+        "createdAt": "2026-11-18T19:41:46.168Z",
+        "reason": "Brief-pinned: Instrument Sans is the practical family specified by the Soft Signal brand kit the user asked this redesign to follow."
       }
     ]
   }

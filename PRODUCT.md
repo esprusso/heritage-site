@@ -8,32 +8,37 @@ web
 
 ## Product Purpose
 
-Russ Heritage's personal website brings photography, essays, and observations together as a unified blog. The user approved the refined Open Journal mockup, including its fully inset photographic hero panel, authorized implementation, and explicitly authorized deployment on October 30, 2026.
+Russ Heritage's personal website brings essays, short notes, and photography together as one journal. On November 18, 2026 the user asked for a redesign guided by the russ! Soft Signal brand kit: "a modern editorial blog that is exciting to add shortform and longform content to, presented in a visually interesting format that is easy to navigate." From the structures offered they liked the dated thread and the front page, asked for the two combined, and chose "Front page + notes thread". The redesign is built and verified locally; publishing it has not been requested.
 
 ## Capabilities and Constraints
 
-- The existing site uses React, Vite, React Router, and Ghost for posts.
-- The homepage feature showcases the latest published Ghost post automatically, including its cover, title, excerpt, and article link.
+- The site uses React, Vite, React Router, and Ghost for posts.
+- The front page leads with the newest published essay from Ghost, including its cover, title, excerpt, and article link.
+- A Ghost post tagged `note` or `#note`, or any untagged post of 120 words or fewer, is a note and is shown in full on the front page and in the archive. An `essay` tag keeps a short post long-form.
 - Preserve the current content, photography, routes, and Ghost publishing integration.
-- Publish through the existing `npm run deploy` workflow to the configured GitHub Pages site at www.russheritage.com. The approved implementation passed local verification and independent finish review before deployment.
-- Use real Ghost posts and existing photo collections in the implemented journal. Keep published text, dates, media, gallery behavior, and restricted-gallery confirmations intact.
-- The user authorized original sample headlines and excerpts based on the existing posts and photography. Identify them as illustrative in the mockup presentation.
+- Publish through the existing `npm run deploy` workflow to the configured GitHub Pages site at www.russheritage.com, and only when the user asks.
+- Use real Ghost posts and existing photo collections. Keep published text, dates, media, gallery behavior, and restricted-gallery confirmations intact.
+- Sample notes exist for local preview only (`?sample-notes` on the dev server) and are excluded from production builds.
 
 ## Brand Commitments
 
-- Keep photography and writing together in one editorial experience.
-- Use the supplied James Clear screenshot as the article layout and typography reference.
-- Use the supplied Notion screenshot for airiness, Deem for photographic presence, and the Art of Non-Conformity and Kelsey O'Halloran screenshots for the homepage's personal, editorial character.
+- The russ! Soft Signal brand kit is the identity: its unaltered mark on an Ink tile, Ink, Ivory, and Signal with Stone, Muted, and Deep Signal in support, Newsreader for headlines and notes, Instrument Sans for reading and controls.
+- Keep the kit's graphic language: the tapered upright, the rounded-square point, flat colour fields, precise rules. Give Signal one clear job per view.
+- Voice: curious, direct, informal, lightly playful; ordinary words and sentence case.
+- Essays, notes, and photographs are three formats of one journal, each with its own scale.
+- The October 2026 Open Journal direction and its screenshot references are superseded by this redesign.
 
 ## Evidence on Hand
 
+- Brand kit: `~/Desktop/design/russ-soft-signal-brand-kit` (guidelines in `04-guidelines/BRAND-SYSTEM.md`).
 - Existing site: public/content.json and src/.
 - Original photographs: public/images/.
-- Current posts observed on the public site: Write like it's 1999; Remember the Old Internet?; Things are really bad here in Minnesota.
-- Five screenshot references supplied in the chat on October 30, 2026.
+- Published posts on November 18, 2026: Write like it's 1999; Remember the Old Internet?; Things are really bad here in Minnesota. No notes are published yet.
+- Structure sketches from the decision round: `.impeccable/mocks/decision/`.
 
 ## Open Decisions
 
-- Approved direction: refined Open Journal A, revision refined-2, in mockups/2026-10-30/airy-journal-refined.html.
-- The actual site should use that design and the James Clear-inspired companion article layout.
-- Sample copy in the mockups is not approved publication copy.
+- Chosen structure: "Front page + notes thread", composition reference `.impeccable/mocks/decision/front-page-notes-thread.html`.
+- Until the first note is published the Ink column introduces the journal and Notes stays out of the navigation.
+- Photographic series have no dates, so they sit between dated entries in the archive; adding a `date` to a series in `content.json` places it by day.
+- Sample copy in `mockups/` is not approved publication copy.
