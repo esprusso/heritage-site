@@ -8,7 +8,7 @@ web
 
 ## Product Purpose
 
-Russ Heritage's personal website brings essays, short notes, and photography together as one journal. On November 18, 2026 the user asked for a redesign guided by the russ! Soft Signal brand kit: "a modern editorial blog that is exciting to add shortform and longform content to, presented in a visually interesting format that is easy to navigate." From the structures offered they liked the dated thread and the front page, asked for the two combined, and chose "Front page + notes thread". The redesign is built and verified locally; publishing it has not been requested.
+Russ Heritage's personal website brings essays, short notes, and photography together as one journal. On November 18, 2026 the user asked for a redesign guided by the russ! Soft Signal brand kit: "a modern editorial blog that is exciting to add shortform and longform content to, presented in a visually interesting format that is easy to navigate." From the structures offered they liked the dated thread and the front page, asked for the two combined, and chose "Front page + notes thread". The user then asked for it to be deployed, and it was published to www.russheritage.com on November 18, 2026.
 
 ## Capabilities and Constraints
 
